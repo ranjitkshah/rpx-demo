@@ -10,6 +10,11 @@ const isPublic = (path: string) => {
 }
 
 export default withClerkMiddleware((request: NextRequest) => {
+	// TODO: Ensure this is safe
+	if (process.env.NODE_ENV === 'development') {
+		return NextResponse.next()
+	}
+
 	if (isPublic(request.nextUrl.pathname)) {
 		return NextResponse.next()
 	}
