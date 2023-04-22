@@ -6,14 +6,14 @@ import { withAuth } from '@clerk/nextjs/dist/api'
 
 const handler = withAuth(async (req: NextApiRequest, res: NextApiResponse) => {
 	const { method } = req
+	const db = getFirestore(firebase_app)
+	const collectionRef = collection(db, CollectionNames.USERS)
 
 	if (method !== APIMethods.GET) {
 		return res.status(404).json({ status: APIStatuses.ERROR, type: GeneralAPIResponses.INVALID_REQUEST_TYPE })
 	}
 
 	try {
-		const db = getFirestore(firebase_app)
-		const collectionRef = collection(db, CollectionNames.USERS)
 		const querySnapshot = await getDocs(collectionRef)
 		const documents = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
 
