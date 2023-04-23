@@ -4,10 +4,14 @@ import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
 import Link from 'next/link'
+import Modal from '@/components/modal'
+import SampleModalContent from '@/components/modal/SampleModalContent'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+	const [isModalOpen, setIsModalOpen] = React.useState(false)
+
 	return (
 		<>
 			<Head>
@@ -39,6 +43,9 @@ export default function Home() {
 							/>
 						</a>
 					</div>
+					<button className="btn btn-primary mt-4" onClick={() => setIsModalOpen(!isModalOpen)}>
+						Open Modal
+					</button>
 				</div>
 
 				<div className={styles.center}>
@@ -47,6 +54,7 @@ export default function Home() {
 						<Image src="/thirteen.svg" alt="13" width={40} height={31} priority />
 					</div>
 				</div>
+				<Modal isOpen={isModalOpen} handleClose={() => setIsModalOpen(false)} content={<SampleModalContent />} />
 
 				<div className={`${styles.grid}`}>
 					<Link href="/auth/sign-up" className={styles.card}>

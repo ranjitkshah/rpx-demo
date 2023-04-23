@@ -39,6 +39,12 @@ export enum SignupMethods {
 	EMAIL = 'Email'
 }
 
+export enum UserTypes {
+	ADMIN = 'Admin',
+	GAMER = 'Gamer',
+	FAN = 'Fan'
+}
+
 export interface TypedRequest<T> extends NextApiRequest {
 	body: T
 }
@@ -53,6 +59,7 @@ export type User = {
 	firstName: string
 	lastName: string
 	signupMethod: SignupMethods
+	userType: UserTypes
 	createdAt: Date | string
 	updatedAt: Date | string
 	lastSignInAt: Date | string
