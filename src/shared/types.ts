@@ -53,7 +53,13 @@ export interface TypedResponse<T> extends NextApiResponse {
 	json: Send<T, this>
 }
 
-// TODO: Update dates to timestamps
+// TODO: Update ref types
+export type OwnedCoin = {
+	coinRef: Record<string, any>
+	quantity: number
+}
+
+// TODO: Update dates to FB timestamps
 export type User = {
 	id?: string
 	firstName: string
@@ -62,5 +68,20 @@ export type User = {
 	userType: UserTypes
 	createdAt: Date | string
 	updatedAt: Date | string
+	ownedCoins: OwnedCoin[]
 	lastSignInAt: Date | string
+}
+
+export type Coin = {
+	id?: string
+	name: string
+	creatorRef: Record<string, any>
+	description: string
+	imageUrl: string
+	currentPrice: number
+	previousPrice: number
+	amountMinted: number
+	amountPurchased: number
+	createdAt: Date | string
+	updatedAt: Date | string
 }

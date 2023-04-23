@@ -1,4 +1,4 @@
-import { APIMethods, APIStatuses, CollectionNames, DocumentResponses, GeneralAPIResponses } from '@/shared/types'
+import { APIMethods, APIStatuses, Coin, CollectionNames, DocumentResponses, GeneralAPIResponses } from '@/shared/types'
 import { NextApiRequest, NextApiResponse } from 'next'
 import { deleteDoc, doc, getDoc, getFirestore, updateDoc } from 'firebase/firestore'
 import firebase_app from '@/lib/firebase'
@@ -20,6 +20,17 @@ const handler = withAuth(async (req: NextApiRequest, res: NextApiResponse) => {
 
 			if (documentSnapshot.exists()) {
 				const document = documentSnapshot.data()
+				const ownedCoins = []
+
+				for (let i = 0; i < document.ownedCoins.length; i++) {
+					const ownedCoin = document.ownedCoins[i]
+					const coinDoc = await getDoc(ownedCoin.coinRef)
+					const coin = coinDoc.data() as Coin
+					ownedCoins.push({ quantity: ownedCoin.quantity, ...coin })
+				}
+
+				document.ownedCoins = ownedCoins
+
 				return res.status(200).json({
 					status: APIStatuses.SUCCESS,
 					type: DocumentResponses.DATA_FOUND,
