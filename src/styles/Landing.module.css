@@ -1,0 +1,56 @@
+.mainLanding {
+	background-image: url('../resources/images/purplerect.png');
+	background-postion: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.landingContainer {
+	background-image: url('../resources/images/graph.png');
+	/* TODO: Update when elements are on page */
+	background-postion: 25%;
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+
+.loginButtons {
+	height: 64px;
+	padding: 15px 20px;
+	font-weight: 500;
+	font-size: 23px;
+	letter-spacing: 0.5px;
+}
+
+/* TODO Switch up hover colors for lighter shades of these */
+.twitchButton {
+	background-color: #a275ff;
+}
+
+.twitchButton:hover {
+	background-color: #a275ff;
+}
+
+.twitterButton {
+	background-color: #62c7f5;
+}
+
+.twitterButton:hover {
+	background-color: #62c7f5;
+}
+
+.googleButton {
+	background-color: #e1492b;
+}
+
+.googleButton:hover {
+	background-color: #e1492b;
+}
+
+.signupText {
+	font-size: 12px;
+	letter-spacing: 0.5px;
+}
+
+.signupLink {
+	color: #78d4b4;
+}

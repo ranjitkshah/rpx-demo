@@ -9,6 +9,6 @@ const SignInPage = () => (
 	</div>
 )
 
-// SignInPage.getLayout = (page: React.ReactChild) => <SecondaryLayout>{page}</SecondaryLayout>
+SignInPage.getLayout = (page: React.ReactChild) => <>{page}</>
 
 export default SignInPage

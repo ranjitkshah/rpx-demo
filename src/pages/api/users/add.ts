@@ -7,8 +7,8 @@ import {
 	TypedRequest,
 	User
 } from '@/shared/types'
-import { NextApiRequest, NextApiResponse } from 'next'
-import { addDoc, collection, getDocs, getFirestore } from 'firebase/firestore'
+import { NextApiResponse } from 'next'
+import { addDoc, collection, getFirestore } from 'firebase/firestore'
 import firebase_app from '@/lib/firebase'
 import { withAuth } from '@clerk/nextjs/dist/api'
 
