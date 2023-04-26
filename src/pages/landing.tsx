@@ -16,8 +16,8 @@ const LandingPage = () => {
 			return signIn!.authenticateWithRedirect({
 				strategy,
 				redirectUrl: '/sso-callback',
-				// TODO: Update to redirect to actual page
-				redirectUrlComplete: '/'
+				// TODO: Can we do a role-based redirect here?
+				redirectUrlComplete: '/app/initial-intake'
 			})
 		} catch (error) {
 			console.log('clerk error', error)
@@ -25,7 +25,7 @@ const LandingPage = () => {
 	}
 
 	return (
-		<div className={`h-[100vh] w-full`}>
+		<main className={`h-[100vh] w-full`}>
 			<div className={`${styles.landingContainer} h-[100%]`}>
 				<div className="container mx-auto w-[90vw] max-w-[400px] pt-[23vh]">
 					<div>
@@ -62,7 +62,7 @@ const LandingPage = () => {
 					</p>
 				</div>
 			</div>
-		</div>
+		</main>
 	)
 }
 

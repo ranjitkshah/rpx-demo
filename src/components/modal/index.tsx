@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import * as React from 'react'
 import { createPortal } from 'react-dom'
 
@@ -12,7 +13,7 @@ const Modal = ({ isOpen, content, handleClose }: Props) => {
 		<div className={`modal ${isOpen ? 'modal-open' : ''}`}>
 			<div className="modal-box relative h-screen">
 				<label onClick={handleClose} htmlFor="my-modal-3" className="btn btn-sm btn-circle absolute left-2 top-2">
-					✕
+					<Image alt="Back button" src={require('../../resources/images/back.png')} />
 				</label>
 				{content}
 			</div>

@@ -1,0 +1,38 @@
+.intakeContainer {
+	background-image: url('../../resources/images/graph.png');
+	/* TODO: Update when elements are on page */
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: 75%;
+}
+
+@media (max-width: 768px) {
+	.intakeContainer {
+		background-position: 25%;
+		background-size: contain;
+	}
+}
+
+.intakeButtons {
+	height: 64px;
+	padding: 15px 20px;
+	font-weight: 500;
+	font-size: 23px;
+	letter-spacing: 0.5px;
+}
+
+.gamerButton {
+	background-color: #a275ff;
+}
+
+.gamerButton:hover {
+	background-color: #a275ff;
+}
+
+.fanButton {
+	background-color: #62c7f5;
+}
+
+.fanButton:hover {
+	background-color: #62c7f5;
+}
