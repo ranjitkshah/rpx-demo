@@ -3,11 +3,27 @@ import styles from '../styles/Landing.module.css'
 import Image from 'next/image'
 import Link from 'next/link'
 import { OAuthStrategy } from '@clerk/nextjs/dist/api'
+import { useSignIn } from '@clerk/nextjs'
 
 // TODO: Build login out following these steps: https://clerk.com/docs/authentication/oauth-custom-flow
 
 // TODO: Do an auth check and default here if the user isn't logged in
 const LandingPage = () => {
+	const { signIn } = useSignIn()
+
+	const signInWith = (strategy: OAuthStrategy) => {
+		try {
+			return signIn!.authenticateWithRedirect({
+				strategy,
+				redirectUrl: '/sso-callback',
+				// TODO: Update to redirect to actual page
+				redirectUrlComplete: '/'
+			})
+		} catch (error) {
+			console.log('clerk error', error)
+		}
+	}
+
 	return (
 		<div className={`${styles.mainLanding} h-[100vh] w-full`}>
 			<div className={`${styles.landingContainer} h-[100%]`}>
@@ -18,13 +34,22 @@ const LandingPage = () => {
 					</div>
 				</div>
 				<div className="flex flex-col mt-[100px] w-[90vh] max-w-[320px] mx-auto">
-					<button className={`btn btn-block normal-case my-2 ${styles.loginButtons} ${styles.twitchButton}`}>
+					<button
+						onClick={() => signInWith('oauth_twitch')}
+						className={`btn btn-block normal-case my-2 ${styles.loginButtons} ${styles.twitchButton}`}
+					>
 						Twitch Login
 					</button>
-					<button className={`btn btn-block normal-case my-2 ${styles.loginButtons} ${styles.twitterButton}`}>
+					<button
+						onClick={() => signInWith('oauth_twitter')}
+						className={`btn btn-block normal-case my-2 ${styles.loginButtons} ${styles.twitterButton}`}
+					>
 						Twitter Login
 					</button>
-					<button className={`btn btn-block normal-case my-2 ${styles.loginButtons} ${styles.googleButton}`}>
+					<button
+						onClick={() => signInWith('oauth_google')}
+						className={`btn btn-block normal-case my-2 ${styles.loginButtons} ${styles.googleButton}`}
+					>
 						Google Login
 					</button>
 				</div>

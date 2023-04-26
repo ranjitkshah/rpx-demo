@@ -8,9 +8,16 @@
 .landingContainer {
 	background-image: url('../resources/images/graph.png');
 	/* TODO: Update when elements are on page */
-	background-postion: 25%;
 	background-repeat: no-repeat;
-	background-size: contain;
+	background-size: cover;
+	background-position: 75%;
+}
+
+@media (max-width: 768px) {
+	.landingContainer {
+		background-position: 25%;
+		background-size: contain;
+	}
 }
 
 .loginButtons {

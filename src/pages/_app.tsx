@@ -7,7 +7,7 @@ import Layout from '@/components/Layout'
 
 function MyApp({ Component, pageProps }: AppProps) {
 	// @ts-ignore
-	const renderWithLayout = Component.getLayout || ((page) => <Layout>{page}</Layout>)
+	const renderWithLayout = Component.getLayout || ((page) => <>{page}</>)
 
 	return (
 		<ErrorBoundary>

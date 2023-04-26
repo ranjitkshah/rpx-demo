@@ -6,11 +6,23 @@ import styles from '@/styles/Home.module.css'
 import Link from 'next/link'
 import Modal from '@/components/modal'
 import SampleModalContent from '@/components/modal/SampleModalContent'
+import { useAuth } from '@clerk/nextjs'
+import LandingPage from './landing'
 
 const inter = Inter({ subsets: ['latin'] })
 
+// 1. Display the background everywhere
+// 2. Add loading spinner if not loaded here
+// 3. If not signed in, display the landing page
+// 4. If signed in, redirect somewhere else idk it just has to match landing
+
 export default function Home() {
 	const [isModalOpen, setIsModalOpen] = React.useState(false)
+	const { isLoaded, isSignedIn, signOut } = useAuth()
+
+	React.useEffect(() => {
+		console.log('isSignedIn', isSignedIn)
+	}, [isSignedIn])
 
 	return (
 		<>
@@ -20,7 +32,21 @@ export default function Home() {
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
-			<main className={styles.main}>
+			<>
+				{!isLoaded ? (
+					<div>loading...</div>
+				) : !isSignedIn ? (
+					<LandingPage />
+				) : (
+					<>
+						<div>signed in</div>
+						<button className="btn btn-primary mt-4" onClick={() => signOut()}>
+							Sign out
+						</button>
+					</>
+				)}
+			</>
+			{/* <main className={styles.main}>
 				<div className={`${styles.description}`}>
 					<p>
 						Get started by editing&nbsp;
@@ -85,7 +111,7 @@ export default function Home() {
 						<p className={inter.className}>Also requires auth</p>
 					</Link>
 				</div>
-			</main>
+			</main> */}
 		</>
 	)
 }
