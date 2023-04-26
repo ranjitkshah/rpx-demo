@@ -8,6 +8,7 @@ import Modal from '@/components/modal'
 import SampleModalContent from '@/components/modal/SampleModalContent'
 import { useAuth } from '@clerk/nextjs'
 import LandingPage from './landing'
+import Loading from '@/components/general/Loading'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -34,13 +35,13 @@ export default function Home() {
 			</Head>
 			<>
 				{!isLoaded ? (
-					<div>loading...</div>
+					<Loading />
 				) : !isSignedIn ? (
 					<LandingPage />
 				) : (
 					<>
 						<div>signed in</div>
-						<button className="btn btn-primary mt-4" onClick={() => signOut()}>
+						<button className="btn btn-primary mt-4" onClick={signOut}>
 							Sign out
 						</button>
 					</>

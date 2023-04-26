@@ -25,7 +25,7 @@ const LandingPage = () => {
 	}
 
 	return (
-		<div className={`${styles.mainLanding} h-[100vh] w-full`}>
+		<div className={`h-[100vh] w-full`}>
 			<div className={`${styles.landingContainer} h-[100%]`}>
 				<div className="container mx-auto w-[90vw] max-w-[400px] pt-[23vh]">
 					<div>
