@@ -2,6 +2,9 @@ import * as React from 'react'
 import styles from '../styles/Landing.module.css'
 import Image from 'next/image'
 import Link from 'next/link'
+import { OAuthStrategy } from '@clerk/nextjs/dist/api'
+
+// TODO: Build login out following these steps: https://clerk.com/docs/authentication/oauth-custom-flow
 
 // TODO: Do an auth check and default here if the user isn't logged in
 const LandingPage = () => {
