@@ -3,14 +3,16 @@ import React from 'react'
 import styles from '../../styles/pages/Intake.module.css'
 import Modal from '@/components/modal'
 import SampleModalContent from '@/components/modal/SampleModalContent'
-import IntakeModalContents, { IntakeModalTypes } from '@/components/modal/IntakeModalContents'
+import FanIntakeModalContents from '@/components/modal/FanIntakeModalContents'
+import { UserTypes } from '@/shared/types'
+import GamerIntakeModalContents from '@/components/modal/GameIntakeModalContents'
 
 // TODO: replace background here
 const InitialIntakePage = () => {
 	const [isOpen, setIsOpen] = React.useState<boolean>(false)
-	const [modalType, setModalType] = React.useState<IntakeModalTypes>(IntakeModalTypes.GAMER)
+	const [modalType, setModalType] = React.useState<UserTypes>(UserTypes.GAMER)
 
-	const handleOpenModal = (type: IntakeModalTypes) => {
+	const handleOpenModal = (type: UserTypes) => {
 		setModalType(type)
 		setIsOpen(true)
 	}
@@ -34,23 +36,22 @@ const InitialIntakePage = () => {
 				</div>
 				<div className="flex flex-col mt-[20px] w-[90vh] max-w-[320px] mx-auto">
 					<button
-						onClick={() => handleOpenModal(IntakeModalTypes.GAMER)}
+						onClick={() => handleOpenModal(UserTypes.GAMER)}
 						className={`btn btn-block normal-case my-2 ${styles.intakeButtons} ${styles.gamerButton}`}
 					>
 						Are you a Gamer?
 					</button>
 					<button
-						onClick={() => handleOpenModal(IntakeModalTypes.FAN)}
+						onClick={() => handleOpenModal(UserTypes.FAN)}
 						className={`btn btn-block normal-case my-2 ${styles.intakeButtons} ${styles.fanButton}`}
 					>
 						Are you a Fan?
 					</button>
 				</div>
 			</div>
-			{/* TODO: Wire up with different components depending on which button is clicked */}
 			<Modal
 				isOpen={isOpen}
-				content={<IntakeModalContents modalType={modalType} onClick={() => console.log('farts')} />}
+				content={modalType === UserTypes.FAN ? <FanIntakeModalContents /> : <GamerIntakeModalContents />}
 				handleClose={() => setIsOpen(false)}
 			/>
 		</main>
