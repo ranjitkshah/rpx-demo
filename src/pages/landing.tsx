@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { OAuthStrategy } from '@clerk/nextjs/dist/api'
 import { useSignIn } from '@clerk/nextjs'
 
-// TODO: Build login out following these steps: https://clerk.com/docs/authentication/oauth-custom-flow
+// TODO: Fix twitter auth error
 
 // TODO: Do an auth check and default here if the user isn't logged in
 const LandingPage = () => {

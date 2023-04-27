@@ -3,10 +3,17 @@ import React from 'react'
 import styles from '../../styles/pages/Intake.module.css'
 import Modal from '@/components/modal'
 import SampleModalContent from '@/components/modal/SampleModalContent'
+import IntakeModalContents, { IntakeModalTypes } from '@/components/modal/IntakeModalContents'
 
 // TODO: replace background here
 const InitialIntakePage = () => {
 	const [isOpen, setIsOpen] = React.useState<boolean>(false)
+	const [modalType, setModalType] = React.useState<IntakeModalTypes>(IntakeModalTypes.GAMER)
+
+	const handleOpenModal = (type: IntakeModalTypes) => {
+		setModalType(type)
+		setIsOpen(true)
+	}
 
 	return (
 		<main className={`h-[100vh] w-full`}>
@@ -27,13 +34,13 @@ const InitialIntakePage = () => {
 				</div>
 				<div className="flex flex-col mt-[20px] w-[90vh] max-w-[320px] mx-auto">
 					<button
-						onClick={() => setIsOpen(true)}
+						onClick={() => handleOpenModal(IntakeModalTypes.GAMER)}
 						className={`btn btn-block normal-case my-2 ${styles.intakeButtons} ${styles.gamerButton}`}
 					>
 						Are you a Gamer?
 					</button>
 					<button
-						onClick={() => setIsOpen(true)}
+						onClick={() => handleOpenModal(IntakeModalTypes.FAN)}
 						className={`btn btn-block normal-case my-2 ${styles.intakeButtons} ${styles.fanButton}`}
 					>
 						Are you a Fan?
@@ -41,7 +48,11 @@ const InitialIntakePage = () => {
 				</div>
 			</div>
 			{/* TODO: Wire up with different components depending on which button is clicked */}
-			<Modal isOpen={isOpen} content={<SampleModalContent />} handleClose={() => setIsOpen(false)} />
+			<Modal
+				isOpen={isOpen}
+				content={<IntakeModalContents modalType={modalType} onClick={() => console.log('farts')} />}
+				handleClose={() => setIsOpen(false)}
+			/>
 		</main>
 	)
 }
