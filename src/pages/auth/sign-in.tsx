@@ -1,6 +1,6 @@
 import React from 'react'
 import { SignIn } from '@clerk/nextjs'
-import Layout from '@/components/Layout'
+import Layout from '@/components/Layout/authLayout'
 
 const SignInPage = () => (
 	<div className="h-[90vh] w-[100vw] flex justify-center items-center">

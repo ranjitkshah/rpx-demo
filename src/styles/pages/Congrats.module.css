@@ -1,0 +1,34 @@
+.congratsContainer {
+	background-image: url('../../resources/images/graph.png');
+	/* TODO: Update when elements are on page */
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: 75%;
+}
+
+/* TODO: Update this background strategy everywhere */
+@media (max-width: 640px) {
+	.congratsContainer {
+		background-image: url('../../resources/images/homebackground.png');
+	}
+}
+
+@media (max-width: 640px) {
+	.bottomButtonContainer {
+		position: absolute;
+		bottom: 10px;
+		width: 100%;
+	}
+}
+
+.congratsButton {
+	height: 64px;
+	font-weight: 500;
+	font-size: 23px;
+	letter-spacing: 0.5px;
+	background-color: #a275ff;
+}
+
+.congratsButton:hover {
+	background-color: #a275ff;
+}

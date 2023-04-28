@@ -1,6 +1,6 @@
 import React from 'react'
 import { SignUp } from '@clerk/nextjs'
-import Layout from '@/components/Layout'
+import Layout from '@/components/Layout/authLayout'
 
 const SignUpPage = () => (
 	<div className="h-[90vh] w-[100vw] flex justify-center items-center flex-col">
