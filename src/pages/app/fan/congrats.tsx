@@ -7,7 +7,7 @@ const CongratsPage = () => {
 	const router = useRouter()
 
 	const handleChangeView = () => {
-		router.push('/app/fan/claim')
+		router.push('/app/main')
 	}
 
 	return (

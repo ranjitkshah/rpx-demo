@@ -17,7 +17,7 @@ const Header = () => {
 					<Image
 						className="max-w-[200px] mx-auto translate-y-[10px]"
 						alt="RPX logo"
-						src={require('../../resources/images/rpxlogo.png')}
+						src={require('../../../resources/images/rpxlogo.png')}
 					/>
 				</Link>
 			</nav>
