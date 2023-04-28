@@ -30,7 +30,7 @@ const Navbar = () => {
 						router.push('/coins')
 					}}
 				>
-					<div>
+					<div className="translate-y-[1px]">
 						<Image alt="Coins Icon" src={require('../../../resources//images/coin.png')} width={40} height={36} />
 					</div>
 				</div>
@@ -40,7 +40,7 @@ const Navbar = () => {
 						router.push('/collectibles')
 					}}
 				>
-					<div>
+					<div className="translate-y-[2.5px]">
 						<Image
 							alt="Collectibles icon"
 							src={require('../../../resources//images/collectibles.png')}
@@ -55,7 +55,7 @@ const Navbar = () => {
 						router.push('/userprofile')
 					}}
 				>
-					<div>
+					<div className="translate-y-[1px]">
 						<Image alt="My stuff icon" src={require('../../../resources//images/mystuff.png')} width={50} height={35} />
 					</div>
 				</div>
@@ -65,7 +65,7 @@ const Navbar = () => {
 						router.push('/more')
 					}}
 				>
-					<div>
+					<div className="translate-y-[1px]">
 						<Image alt="More icon" src={require('../../../resources//images/more.png')} width={40} height={36} />
 					</div>
 				</div>
