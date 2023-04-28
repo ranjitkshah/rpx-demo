@@ -1,8 +1,14 @@
 import React from 'react'
 import styles from '../../styles/components/IntakeModal.module.css'
 import Image from 'next/image'
+import type { UserResource } from '@clerk/types'
+import LoadingSpinner from '../general/LoadingSpinner'
 
-const FanIntakeModalContents = () => {
+type Props = {
+	user: UserResource
+}
+
+const FanIntakeModalContents = ({ user }: Props) => {
 	return (
 		<div>
 			<div className="mb-4">
@@ -47,7 +53,14 @@ const FanIntakeModalContents = () => {
 					collectible!
 				</p>
 				<button className={`${styles.button} btn btn-block normal-case text-black`} onClick={() => console.log('farts')}>
-					Claim Free Gamer Coin
+					{user ? (
+						'Claim Free Gamer Coin'
+					) : (
+						<div className="translate-y-[-3px]">
+							{/* TODO: Update color */}
+							<LoadingSpinner fillColor="fill-black" />
+						</div>
+					)}
 				</button>
 			</div>
 		</div>

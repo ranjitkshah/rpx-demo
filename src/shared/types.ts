@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import { Send } from 'express-serve-static-core'
+import { OAuthProvider } from '@clerk/nextjs/dist/api'
 
 export enum CollectionNames {
 	USERS = 'users',
@@ -60,8 +61,9 @@ export type OwnedCoin = {
 }
 
 // TODO: Update dates to FB timestamps
-export type User = {
+export type RPXUser = {
 	id?: string
+	clerkId: string
 	firstName: string
 	lastName: string
 	signupMethod: SignupMethods
@@ -69,6 +71,18 @@ export type User = {
 	createdAt: Date | string
 	updatedAt: Date | string
 	ownedCoins: OwnedCoin[]
+	lastSignInAt: Date | string
+}
+
+export type NewUser = {
+	id?: string
+	clerkId: string
+	firstName: string
+	lastName: string
+	signupMethod: OAuthProvider | string // TODO: Extend
+	userType: UserTypes
+	createdAt: Date | string
+	updatedAt: Date | string
 	lastSignInAt: Date | string
 }
 

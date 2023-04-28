@@ -1,16 +1,17 @@
 import Image from 'next/image'
 import React from 'react'
 import styles from '../../styles/pages/Intake.module.css'
-import Modal from '@/components/modal'
-import SampleModalContent from '@/components/modal/SampleModalContent'
+import Modal from '@/components/modal/index'
 import FanIntakeModalContents from '@/components/modal/FanIntakeModalContents'
-import { UserTypes } from '@/shared/types'
 import GamerIntakeModalContents from '@/components/modal/GameIntakeModalContents'
+import { useUser } from '@clerk/nextjs'
+import { UserTypes } from '@/shared/types'
 
 // TODO: replace background here
 const InitialIntakePage = () => {
 	const [isOpen, setIsOpen] = React.useState<boolean>(false)
 	const [modalType, setModalType] = React.useState<UserTypes>(UserTypes.GAMER)
+	const { user } = useUser()
 
 	const handleOpenModal = (type: UserTypes) => {
 		setModalType(type)
@@ -51,7 +52,11 @@ const InitialIntakePage = () => {
 			</div>
 			<Modal
 				isOpen={isOpen}
-				content={modalType === UserTypes.FAN ? <FanIntakeModalContents /> : <GamerIntakeModalContents />}
+				content={
+					// TODO: Handle when the user is undefined here
+					// @ts-ignore
+					modalType === UserTypes.FAN ? <FanIntakeModalContents user={user} /> : <GamerIntakeModalContents user={user} />
+				}
 				handleClose={() => setIsOpen(false)}
 			/>
 		</main>

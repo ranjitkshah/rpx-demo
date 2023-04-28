@@ -5,7 +5,7 @@ import {
 	DocumentResponses,
 	GeneralAPIResponses,
 	TypedRequest,
-	User
+	RPXUser
 } from '@/shared/types'
 import { NextApiResponse } from 'next'
 import { addDoc, collection, getFirestore } from 'firebase/firestore'
@@ -13,7 +13,7 @@ import firebase_app from '@/lib/firebase'
 import { withAuth } from '@clerk/nextjs/dist/api'
 
 // TODO: Add shape validation here?
-const handler = withAuth(async (req: TypedRequest<User>, res: NextApiResponse) => {
+const handler = withAuth(async (req: TypedRequest<RPXUser>, res: NextApiResponse) => {
 	const { method, body } = req
 	const db = getFirestore(firebase_app)
 	const collectionRef = collection(db, CollectionNames.USERS)

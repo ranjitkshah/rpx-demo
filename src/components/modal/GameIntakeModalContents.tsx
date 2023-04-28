@@ -1,8 +1,14 @@
 import React from 'react'
 import styles from '../../styles/components/IntakeModal.module.css'
 import Image from 'next/image'
+import type { UserResource } from '@clerk/types'
+import LoadingSpinner from '../general/LoadingSpinner'
 
-const GamerIntakeModalContents = () => {
+type Props = {
+	user: UserResource
+}
+
+const GamerIntakeModalContents = ({ user }: Props) => {
 	return (
 		<div>
 			<div className="mb-4">
@@ -46,7 +52,14 @@ const GamerIntakeModalContents = () => {
 				</div>
 				{/* TODO: On these buttons update the user records w/ their role */}
 				<button className={`${styles.button} btn btn-block normal-case text-black`} onClick={() => console.log('farts')}>
-					Create your first coin!
+					{user ? (
+						'Create your first coin!'
+					) : (
+						<div className="translate-y-[-3px]">
+							{/* TODO: Update color */}
+							<LoadingSpinner fillColor="fill-black" />
+						</div>
+					)}
 				</button>
 			</div>
 		</div>
