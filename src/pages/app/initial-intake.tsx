@@ -12,6 +12,7 @@ import type { UserResource } from '@clerk/types'
 const InitialIntakePage = () => {
 	const [isOpen, setIsOpen] = React.useState<boolean>(false)
 	const [modalType, setModalType] = React.useState<UserTypes>(UserTypes.GAMER)
+	const [showToast, setShowToast] = React.useState<boolean>(false)
 	const { user } = useUser()
 
 	const handleIntakeUser = async (intakeType: UserTypes) => {
@@ -26,7 +27,6 @@ const InitialIntakePage = () => {
 			lastSignInAt: user!.lastSignInAt?.toISOString() ?? new Date().toISOString()
 		}
 
-		// TODO: Toast if there is an error
 		try {
 			await fetch('/api/users/intake', {
 				method: 'POST',
@@ -36,7 +36,12 @@ const InitialIntakePage = () => {
 				body: JSON.stringify(newUser)
 			})
 		} catch (error) {
-			console.error(`Couldn't intake user`)
+			console.error(error)
+			setShowToast(true)
+
+			setTimeout(() => {
+				setShowToast(false)
+			}, 10000)
 		}
 	}
 
@@ -79,8 +84,8 @@ const InitialIntakePage = () => {
 			</div>
 			<Modal
 				isOpen={isOpen}
+				onClick={() => setShowToast(false)}
 				content={
-					// TODO: Handle when the user is undefined here
 					modalType === UserTypes.FAN ? (
 						// @ts-ignore
 						<FanIntakeModalContents handleIntakeUser={handleIntakeUser} user={user} />
@@ -91,6 +96,18 @@ const InitialIntakePage = () => {
 				}
 				handleClose={() => setIsOpen(false)}
 			/>
+			<div className="toast toast-center z-999">
+				{showToast && (
+					<div className="alert alert-error w-[300px]">
+						<div>
+							<span>
+								Error creating account, contact
+								<br /> charlie@sparksfullstack.io for help.
+							</span>
+						</div>
+					</div>
+				)}
+			</div>
 		</main>
 	)
 }
