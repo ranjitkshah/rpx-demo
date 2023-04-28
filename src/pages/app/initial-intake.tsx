@@ -15,6 +15,7 @@ const InitialIntakePage = () => {
 	const [showToast, setShowToast] = React.useState<boolean>(false)
 	const { user } = useUser()
 
+	// TODO: We should either only extend clerk data or rethink our nullish safety here in the future, but this is safe for now
 	const handleIntakeUser = async (intakeType: UserTypes) => {
 		const newUser: NewUser = {
 			clerkId: user!.id,
