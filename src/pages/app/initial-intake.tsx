@@ -5,13 +5,40 @@ import Modal from '@/components/modal/index'
 import FanIntakeModalContents from '@/components/modal/FanIntakeModalContents'
 import GamerIntakeModalContents from '@/components/modal/GameIntakeModalContents'
 import { useUser } from '@clerk/nextjs'
-import { UserTypes } from '@/shared/types'
+import { NewUser, UserTypes } from '@/shared/types'
+import type { UserResource } from '@clerk/types'
 
 // TODO: replace background here
 const InitialIntakePage = () => {
 	const [isOpen, setIsOpen] = React.useState<boolean>(false)
 	const [modalType, setModalType] = React.useState<UserTypes>(UserTypes.GAMER)
 	const { user } = useUser()
+
+	const handleIntakeUser = async (intakeType: UserTypes) => {
+		const newUser: NewUser = {
+			clerkId: user!.id,
+			firstName: user!.firstName ?? 'DEFAULT',
+			lastName: user!.lastName ?? 'DEFAULT',
+			signupMethod: user!.externalAccounts[0].provider ?? 'DEFAULT',
+			userType: intakeType,
+			createdAt: user!.createdAt?.toISOString() ?? new Date().toISOString(),
+			updatedAt: user!.updatedAt?.toISOString() ?? new Date().toISOString(),
+			lastSignInAt: user!.lastSignInAt?.toISOString() ?? new Date().toISOString()
+		}
+
+		// TODO: Toast if there is an error
+		try {
+			await fetch('/api/users/intake', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify(newUser)
+			})
+		} catch (error) {
+			console.error(`Couldn't intake user`)
+		}
+	}
 
 	const handleOpenModal = (type: UserTypes) => {
 		setModalType(type)
@@ -54,8 +81,13 @@ const InitialIntakePage = () => {
 				isOpen={isOpen}
 				content={
 					// TODO: Handle when the user is undefined here
-					// @ts-ignore
-					modalType === UserTypes.FAN ? <FanIntakeModalContents user={user} /> : <GamerIntakeModalContents user={user} />
+					modalType === UserTypes.FAN ? (
+						// @ts-ignore
+						<FanIntakeModalContents handleIntakeUser={handleIntakeUser} user={user} />
+					) : (
+						// @ts-ignore
+						<GamerIntakeModalContents handleIntakeUser={handleIntakeUser} user={user} />
+					)
 				}
 				handleClose={() => setIsOpen(false)}
 			/>

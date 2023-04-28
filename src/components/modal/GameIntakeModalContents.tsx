@@ -3,12 +3,14 @@ import styles from '../../styles/components/IntakeModal.module.css'
 import Image from 'next/image'
 import type { UserResource } from '@clerk/types'
 import LoadingSpinner from '../general/LoadingSpinner'
+import { UserTypes } from '@/shared/types'
 
 type Props = {
 	user: UserResource
+	handleIntakeUser: (intakeType: UserTypes) => Promise<void>
 }
 
-const GamerIntakeModalContents = ({ user }: Props) => {
+const GamerIntakeModalContents = ({ user, handleIntakeUser }: Props) => {
 	return (
 		<div>
 			<div className="mb-4">
@@ -50,8 +52,10 @@ const GamerIntakeModalContents = ({ user }: Props) => {
 						src={require('../../resources/images/Group 2.png')}
 					/>
 				</div>
-				{/* TODO: On these buttons update the user records w/ their role */}
-				<button className={`${styles.button} btn btn-block normal-case text-black`} onClick={() => console.log('farts')}>
+				<button
+					className={`${styles.button} btn btn-block normal-case text-black`}
+					onClick={() => handleIntakeUser(UserTypes.GAMER)}
+				>
 					{user ? (
 						'Create your first coin!'
 					) : (

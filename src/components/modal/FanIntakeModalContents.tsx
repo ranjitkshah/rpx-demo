@@ -3,12 +3,14 @@ import styles from '../../styles/components/IntakeModal.module.css'
 import Image from 'next/image'
 import type { UserResource } from '@clerk/types'
 import LoadingSpinner from '../general/LoadingSpinner'
+import { UserTypes } from '@/shared/types'
 
 type Props = {
 	user: UserResource
+	handleIntakeUser: (intakeType: UserTypes) => Promise<void>
 }
 
-const FanIntakeModalContents = ({ user }: Props) => {
+const FanIntakeModalContents = ({ user, handleIntakeUser }: Props) => {
 	return (
 		<div>
 			<div className="mb-4">
@@ -52,7 +54,10 @@ const FanIntakeModalContents = ({ user }: Props) => {
 					2. We’re giving you a <b>free Coin right now</b> because you signed up. With it, you’ll be able to buy any card or
 					collectible!
 				</p>
-				<button className={`${styles.button} btn btn-block normal-case text-black`} onClick={() => console.log('farts')}>
+				<button
+					className={`${styles.button} btn btn-block normal-case text-black`}
+					onClick={() => handleIntakeUser(UserTypes.FAN)}
+				>
 					{user ? (
 						'Claim Free Gamer Coin'
 					) : (
