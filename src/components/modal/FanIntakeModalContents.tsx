@@ -6,11 +6,11 @@ import LoadingSpinner from '../general/LoadingSpinner'
 import { UserTypes } from '@/shared/types'
 
 type Props = {
-	user: UserResource
 	handleIntakeUser: (intakeType: UserTypes) => Promise<void>
+	showLoadingSpinner: boolean
 }
 
-const FanIntakeModalContents = ({ user, handleIntakeUser }: Props) => {
+const FanIntakeModalContents = ({ handleIntakeUser, showLoadingSpinner }: Props) => {
 	return (
 		<div>
 			<div className="mb-4">
@@ -58,13 +58,13 @@ const FanIntakeModalContents = ({ user, handleIntakeUser }: Props) => {
 					className={`${styles.button} btn btn-block normal-case text-black`}
 					onClick={() => handleIntakeUser(UserTypes.FAN)}
 				>
-					{user ? (
-						'Claim Free Gamer Coin'
-					) : (
+					{showLoadingSpinner ? (
 						<div className="translate-y-[-3px]">
 							{/* TODO: Update color */}
 							<LoadingSpinner fillColor="fill-black" />
 						</div>
+					) : (
+						'Claim Free Gamer Coin'
 					)}
 				</button>
 			</div>

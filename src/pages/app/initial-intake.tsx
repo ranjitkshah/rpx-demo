@@ -7,16 +7,25 @@ import GamerIntakeModalContents from '@/components/modal/GameIntakeModalContents
 import { useUser } from '@clerk/nextjs'
 import { NewUser, UserTypes } from '@/shared/types'
 import type { UserResource } from '@clerk/types'
+import { useRouter } from 'next/router'
 
 // TODO: replace background here
 const InitialIntakePage = () => {
+	const router = useRouter()
+	const { user } = useUser()
 	const [isOpen, setIsOpen] = React.useState<boolean>(false)
 	const [modalType, setModalType] = React.useState<UserTypes>(UserTypes.GAMER)
 	const [showToast, setShowToast] = React.useState<boolean>(false)
-	const { user } = useUser()
+	const [showLoadingSpinner, setShowLoadingSpinner] = React.useState<boolean>(false)
+
+	React.useEffect(() => {
+		setShowLoadingSpinner(user ? false : true)
+	}, [user])
 
 	// TODO: We should either only extend clerk data or rethink our nullish safety here in the future, but this is safe for now
 	const handleIntakeUser = async (intakeType: UserTypes) => {
+		setShowLoadingSpinner(true)
+
 		const newUser: NewUser = {
 			clerkId: user!.id,
 			firstName: user!.firstName ?? 'DEFAULT',
@@ -36,7 +45,18 @@ const InitialIntakePage = () => {
 				},
 				body: JSON.stringify(newUser)
 			})
+
+			setShowLoadingSpinner(false)
+
+			if (intakeType === UserTypes.FAN) {
+				router.push('/app/fan/congrats')
+			} else {
+				// TODO: Update with gamer path
+				router.push('/app/fan/congrats')
+			}
+			router
 		} catch (error) {
+			setShowLoadingSpinner(false)
 			console.error(error)
 			setShowToast(true)
 
@@ -89,10 +109,10 @@ const InitialIntakePage = () => {
 				content={
 					modalType === UserTypes.FAN ? (
 						// @ts-ignore
-						<FanIntakeModalContents handleIntakeUser={handleIntakeUser} user={user} />
+						<FanIntakeModalContents showLoadingSpinner={showLoadingSpinner} handleIntakeUser={handleIntakeUser} />
 					) : (
 						// @ts-ignore
-						<GamerIntakeModalContents handleIntakeUser={handleIntakeUser} user={user} />
+						<GamerIntakeModalContents showLoadingSpinner={showLoadingSpinner} handleIntakeUser={handleIntakeUser} />
 					)
 				}
 				handleClose={() => setIsOpen(false)}

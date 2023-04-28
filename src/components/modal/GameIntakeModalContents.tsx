@@ -1,16 +1,15 @@
 import React from 'react'
 import styles from '../../styles/components/IntakeModal.module.css'
 import Image from 'next/image'
-import type { UserResource } from '@clerk/types'
 import LoadingSpinner from '../general/LoadingSpinner'
 import { UserTypes } from '@/shared/types'
 
 type Props = {
-	user: UserResource
 	handleIntakeUser: (intakeType: UserTypes) => Promise<void>
+	showLoadingSpinner: boolean
 }
 
-const GamerIntakeModalContents = ({ user, handleIntakeUser }: Props) => {
+const GamerIntakeModalContents = ({ handleIntakeUser, showLoadingSpinner }: Props) => {
 	return (
 		<div>
 			<div className="mb-4">
@@ -56,13 +55,13 @@ const GamerIntakeModalContents = ({ user, handleIntakeUser }: Props) => {
 					className={`${styles.button} btn btn-block normal-case text-black`}
 					onClick={() => handleIntakeUser(UserTypes.GAMER)}
 				>
-					{user ? (
-						'Create your first coin!'
-					) : (
+					{showLoadingSpinner ? (
 						<div className="translate-y-[-3px]">
 							{/* TODO: Update color */}
 							<LoadingSpinner fillColor="fill-black" />
 						</div>
+					) : (
+						'Create your first coin!'
 					)}
 				</button>
 			</div>
