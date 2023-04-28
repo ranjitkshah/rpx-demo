@@ -15,7 +15,7 @@ const Header = () => {
 						<div
 							className="ml-2"
 							onClick={() => {
-								router.push('/main')
+								router.push('/app/main')
 							}}
 						>
 							<Image alt="RPX Logo" src={require('../../../resources/images/rpxlogo.png')} width={80} height={25} />
