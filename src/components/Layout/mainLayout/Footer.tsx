@@ -1,11 +1,77 @@
-import * as React from 'react'
+import styles from '../../../styles/layout/mainLayout/Footer.module.css'
+import Image from 'next/image'
+import { useRouter } from 'next/router'
 
-const Footer = () => {
+const Navbar = () => {
+	const router = useRouter()
+
 	return (
-		<footer style={{ grid: 'none' }} className="footer bg-dark-footer relative text-gray-200 dark:text-gray-200">
-			<p>Footer content goes here</p>
+		<footer>
+			<div className={styles.footerNav}>
+				<div
+					className={styles.footerNavItem}
+					onClick={() => {
+						router.push('/main')
+					}}
+				>
+					<div>
+						<Image
+							alt="Home Icon"
+							src={require('../../../resources//images/home.png')}
+							style={{ opacity: 0.85 }}
+							width={30}
+							height={34}
+						/>
+					</div>
+				</div>
+				<div
+					className={styles.footerNavItem}
+					onClick={() => {
+						router.push('/coins')
+					}}
+				>
+					<div>
+						<Image alt="Coins Icon" src={require('../../../resources//images/coin.png')} width={40} height={36} />
+					</div>
+				</div>
+				<div
+					className={styles.footerNavItem}
+					onClick={() => {
+						router.push('/collectibles')
+					}}
+				>
+					<div>
+						<Image
+							alt="Collectibles icon"
+							src={require('../../../resources//images/collectibles.png')}
+							width={60}
+							height={36}
+						/>
+					</div>
+				</div>
+				<div
+					className={styles.footerNavItem}
+					onClick={() => {
+						router.push('/userprofile')
+					}}
+				>
+					<div>
+						<Image alt="My stuff icon" src={require('../../../resources//images/mystuff.png')} width={50} height={35} />
+					</div>
+				</div>
+				<div
+					className={styles.footerNavItem}
+					onClick={() => {
+						router.push('/more')
+					}}
+				>
+					<div>
+						<Image alt="More icon" src={require('../../../resources//images/more.png')} width={40} height={36} />
+					</div>
+				</div>
+			</div>
 		</footer>
 	)
 }
 
-export default Footer
+export default Navbar

@@ -21,7 +21,7 @@ const Header = () => {
 							<Image alt="RPX Logo" src={require('../../../resources/images/rpxlogo.png')} width={80} height={25} />
 						</div>
 						<div className="">
-							<input className="px-2 rounded-lg border-0 h-[195px] w-[24px] text-sm" type={'text'} placeholder={'Search'} />
+							<input className="px-2 rounded-lg border-0 w-[195px] h-[24px] text-sm" type={'text'} placeholder={'Search'} />
 						</div>
 						<div className="">
 							<Image alt="Notification bell icon" src={require('../../../resources/images/bell.png')} width={25} height={20} />
