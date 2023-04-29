@@ -12,7 +12,7 @@ import { NextApiResponse } from 'next'
 import { collection, doc, getDocs, getFirestore, writeBatch } from 'firebase/firestore'
 import firebase_app from '@/lib/firebase'
 import { withAuth } from '@clerk/nextjs/dist/api'
-import { getRandomInt } from '@/shared/utils'
+import { getRandomInt, getRandomPrice } from '@/shared/utils'
 
 // TODO: We need to re-run this at a set interval w/ the patch request for price flucuations
 const handler = withAuth(async (req: TypedRequest<NewUser>, res: NextApiResponse) => {
@@ -44,8 +44,8 @@ const handler = withAuth(async (req: TypedRequest<NewUser>, res: NextApiResponse
 				const newCoin: Coin = {
 					name: `${coinName}'s Coin`,
 					creatorName: coinName,
-					currentPrice: getRandomInt(1, 100),
-					previousPrice: getRandomInt(1, 100),
+					currentPrice: getRandomPrice(1, 100),
+					previousPrice: getRandomPrice(1, 100),
 					amountMinted: mintedAmount,
 					amountPurchased: getRandomInt(1, mintedAmount),
 					createdAt: new Date().toISOString(),
@@ -71,7 +71,7 @@ const handler = withAuth(async (req: TypedRequest<NewUser>, res: NextApiResponse
 		coinDocuments.forEach((coinDocument) => {
 			const coinDocumentRef = doc(db, CollectionNames.COINS, coinDocument.id)
 			const updatedCoinData = {
-				currentPrice: getRandomInt(1, 100),
+				currentPrice: getRandomPrice(1, 100),
 				// @ts-ignore
 				previousPrice: coinDocument.currentPrice,
 				updatedAt: new Date().toISOString()
