@@ -5,6 +5,8 @@ import Link from 'next/link'
 import CollectableCard from '@/components/general/CollectableCard'
 import Layout from '@/components/Layout/mainLayout'
 // import * from '../../resources/images/ducoin.png`'
+import Ch40sQueen from '../../resources/images/coins/Ch40sQueen.png'
+import Ch40sQueenText from '../../resources/images/coins/Ch40sQueenText.png'
 
 const CoinsPage = () => {
 	return (
@@ -24,116 +26,130 @@ const CoinsPage = () => {
 					<div className={`${styles.horizontalScroll}`}>
 						<CollectableCard
 							linkLocation="/collectables/123"
-							collectibleName="Disguised Unicorn"
-							hasBackground
+							collectibleNameSrc={Ch40sQueenText.src}
+							imgSrc={Ch40sQueen.src}
 							itemPrice={20.0}
 						/>
 						<CollectableCard
 							linkLocation="/collectables/123"
-							collectibleName="Disguised Unicorn"
-							hasBackground
+							collectibleNameSrc={Ch40sQueenText.src}
+							itemPrice={20.0}
+							imgSrc={Ch40sQueen.src}
+						/>
+						{/* <CollectableCard
+							imgSrc={ducoinImage.src}
+							linkLocation="/collectables/123"
+							collectibleNameSrc="Disguised Unicorn"
+							
 							itemPrice={20.0}
 						/>
 						<CollectableCard
+							imgSrc={ducoinImage.src}
 							linkLocation="/collectables/123"
-							collectibleName="Disguised Unicorn"
-							hasBackground
+							collectibleNameSrc="Disguised Unicorn"
+							
 							itemPrice={20.0}
-						/>
-						<CollectableCard
-							linkLocation="/collectables/123"
-							collectibleName="Disguised Unicorn"
-							hasBackground
-							itemPrice={20.0}
-						/>
+						/> */}
 					</div>
 				</div>
 			</div>
 			<div>
 				<h2 className={styles.scrollTitle}>Latest Drops</h2>
 				<div className={styles.horizontalScroll}>
-					<CollectableCard
+					{/* <CollectableCard
+						imgSrc={ducoinImage.src}
 						linkLocation="/collectables/123"
-						collectibleName="Disguised Unicorn"
-						hasBackground
+						collectibleNameSrc="Disguised Unicorn"
+						
 						itemPrice={20.0}
 					/>
 					<CollectableCard
+						imgSrc={ducoinImage.src}
 						linkLocation="/collectables/123"
-						collectibleName="Disguised Unicorn"
-						hasBackground
+						collectibleNameSrc="Disguised Unicorn"
+						
 						itemPrice={20.0}
 					/>
 					<CollectableCard
+						imgSrc={ducoinImage.src}
 						linkLocation="/collectables/123"
-						collectibleName="Disguised Unicorn"
-						hasBackground
+						collectibleNameSrc="Disguised Unicorn"
+						
 						itemPrice={20.0}
 					/>
 					<CollectableCard
+						imgSrc={ducoinImage.src}
 						linkLocation="/collectables/123"
-						collectibleName="Disguised Unicorn"
-						hasBackground
+						collectibleNameSrc="Disguised Unicorn"
+						
 						itemPrice={20.0}
-					/>
+					/> */}
 				</div>
 			</div>
 			<div>
 				<h2 className={styles.scrollTitle}>Esports</h2>
 				<div className={styles.horizontalScroll}>
-					<CollectableCard
+					{/* <CollectableCard
+						imgSrc={ducoinImage.src}
 						linkLocation="/collectables/123"
-						collectibleName="Disguised Unicorn"
-						hasBackground
+						collectibleNameSrc="Disguised Unicorn"
+						
 						itemPrice={20.0}
 					/>
 					<CollectableCard
+						imgSrc={ducoinImage.src}
 						linkLocation="/collectables/123"
-						collectibleName="Disguised Unicorn"
-						hasBackground
+						collectibleNameSrc="Disguised Unicorn"
+						
 						itemPrice={20.0}
 					/>
 					<CollectableCard
+						imgSrc={ducoinImage.src}
 						linkLocation="/collectables/123"
-						collectibleName="Disguised Unicorn"
-						hasBackground
+						collectibleNameSrc="Disguised Unicorn"
+						
 						itemPrice={20.0}
 					/>
 					<CollectableCard
+						imgSrc={ducoinImage.src}
 						linkLocation="/collectables/123"
-						collectibleName="Disguised Unicorn"
-						hasBackground
+						collectibleNameSrc="Disguised Unicorn"
+						
 						itemPrice={20.0}
-					/>
+					/> */}
 				</div>
 			</div>
 			<div>
 				<h2 className={styles.scrollTitle}>Creators</h2>
 				<div className={styles.horizontalScroll}>
-					<CollectableCard
+					{/* <CollectableCard
+						imgSrc={ducoinImage.src}
 						linkLocation="/collectables/123"
-						collectibleName="Disguised Unicorn"
-						hasBackground
+						collectibleNameSrc="Disguised Unicorn"
+						
 						itemPrice={20.0}
 					/>
 					<CollectableCard
+						imgSrc={ducoinImage.src}
 						linkLocation="/collectables/123"
-						collectibleName="Disguised Unicorn"
-						hasBackground
+						collectibleNameSrc="Disguised Unicorn"
+						
 						itemPrice={20.0}
 					/>
 					<CollectableCard
+						imgSrc={ducoinImage.src}
 						linkLocation="/collectables/123"
-						collectibleName="Disguised Unicorn"
-						hasBackground
+						collectibleNameSrc="Disguised Unicorn"
+						
 						itemPrice={20.0}
 					/>
 					<CollectableCard
+						imgSrc={ducoinImage.src}
 						linkLocation="/collectables/123"
-						collectibleName="Disguised Unicorn"
-						hasBackground
+						collectibleNameSrc="Disguised Unicorn"
+						
 						itemPrice={20.0}
-					/>
+					/> */}
 				</div>
 			</div>
 
