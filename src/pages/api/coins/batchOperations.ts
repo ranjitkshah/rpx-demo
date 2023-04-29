@@ -13,24 +13,11 @@ import { collection, doc, getDocs, getFirestore, writeBatch } from 'firebase/fir
 import firebase_app from '@/lib/firebase'
 import { withAuth } from '@clerk/nextjs/dist/api'
 import { getRandomInt, getRandomPrice } from '@/shared/utils'
+import { currentCoinCreatorNames } from '@/shared/constants'
 
 // TODO: We need to re-run this at a set interval w/ the patch request for price flucuations
 const handler = withAuth(async (req: TypedRequest<NewUser>, res: NextApiResponse) => {
 	const { method, body } = req
-
-	const coinNames = [
-		'Ch40sQueen',
-		'Cr1msonAvenger',
-		'D3athBlow',
-		'DarkNightm4re',
-		'FuryFight3r',
-		'Infern0Assassin',
-		'NightHunter',
-		'R0gueRider',
-		'StealthSniper',
-		'ThunderB0ltz',
-		'TitanWarrior188'
-	]
 
 	const db = getFirestore(firebase_app)
 	const batch = writeBatch(db)
@@ -38,7 +25,7 @@ const handler = withAuth(async (req: TypedRequest<NewUser>, res: NextApiResponse
 
 	if (method === APIMethods.POST) {
 		try {
-			coinNames.forEach((coinName) => {
+			currentCoinCreatorNames.forEach((coinName) => {
 				const coinsRef = doc(coinCollectionRef)
 				const mintedAmount = getRandomInt(1, 20)
 				const newCoin: Coin = {

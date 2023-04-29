@@ -27,9 +27,12 @@ import ThunderB0ltzText from '../../resources/images/coins/ThunderB0ltzText.png'
 import TitanWarrior188 from '../../resources/images/coins/TitanWarrior188.png'
 import TitanWarrior188Text from '../../resources/images/coins/TitanWarrior188Text.png'
 import ExploreMore from '@/components/sections/ExploreMore'
+import { useCoinsForPurchase } from '@/components/hooks/useCoinsForPurchase'
 
-// TODO: Wire up purchase routes based on which elemeent was clicked
+// TODO: Pull live coin prices and update here
 const CoinsPage = () => {
+	const { coins, isLoading, error } = useCoinsForPurchase()
+
 	return (
 		<main className="container mx-auto pb-[80px]">
 			<div className={styles.title}>

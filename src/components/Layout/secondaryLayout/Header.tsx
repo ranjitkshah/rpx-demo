@@ -1,12 +1,13 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import React from 'react'
 
 const Header = () => {
-	const [isOpen, setIsOpen] = React.useState<boolean>(false)
+	const router = useRouter()
 
-	const handleToggle = () => {
-		setIsOpen((prevIsOpen) => !prevIsOpen)
+	const handleBackButton = () => {
+		router.back()
 	}
 
 	// TODO: Also update once client application form flow is done
@@ -20,13 +21,13 @@ const Header = () => {
 						src={require('../../../resources/images/rpxlogo.png')}
 					/>
 				</Link>
-				<Link className="cursor-pointer inline-block ml-6 translate-y-[-35px]" href="/">
+				<div className="cursor-pointer inline-block ml-6 translate-y-[-35px]" onClick={handleBackButton}>
 					<Image
 						className="w-[22px] mx-auto translate-y-[10px]"
 						alt="Back button"
 						src={require('../../../resources/images/back.png')}
 					/>
-				</Link>
+				</div>
 			</nav>
 		</header>
 	)
