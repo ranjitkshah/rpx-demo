@@ -3,7 +3,7 @@ import { GetStaticProps, GetStaticPropsContext } from 'next'
 import { Coin } from '@/shared/types'
 
 export const useCoinsForPurchase = () => {
-	const [coinsMap, setCoinsMap] = React.useState<Coin[]>()
+	const [coinsMap, setCoinsMap] = React.useState<Record<string, number>>()
 	const [isLoading, setIsLoading] = React.useState<boolean>(true)
 	const [error, setError] = React.useState<boolean>(false)
 
@@ -17,7 +17,7 @@ export const useCoinsForPurchase = () => {
 			})
 			const result = await response.json()
 			const { coins } = result.data
-			const coinsWithPriceMap = coins.reduce((acc: Record<string, number>, currentCoin: Coin) => {
+			const coinsWithPriceMap: Record<string, number> = coins.reduce((acc: Record<string, number>, currentCoin: Coin) => {
 				const updatedAcc = { ...acc }
 				updatedAcc[currentCoin.creatorName] = currentCoin.currentPrice
 				return updatedAcc

@@ -9,14 +9,15 @@ export const useCoinByCreator = (creator: string) => {
 
 	const fetchCoinData = async (creator: string) => {
 		try {
-			const result = await fetch(`/api/coins/${creator}`, {
+			const response = await fetch(`/api/coins/${creator}`, {
 				method: 'GET',
 				headers: {
 					'Content-Type': 'application/json'
 				}
 			})
-			const foundCoin = await result.json()
-			setCoin(foundCoin)
+			const result = await response.json()
+			const { coin } = result.data
+			setCoin(coin)
 		} catch (error) {
 			console.error(error)
 			setError(true)

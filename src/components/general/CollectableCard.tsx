@@ -2,17 +2,17 @@ import Link from 'next/link'
 import React from 'react'
 import styles from '../../styles/components/CollectableCard.module.css'
 import Image from 'next/image'
+import LoadingSpinner from './LoadingSpinner'
 
 type Props = {
 	linkLocation: string
 	collectibleNameSrc: string
 	imgSrc: string
-	itemPrice: number
+	itemPrice: number | undefined
+	isPriceLoading: boolean
 }
 
-const CollectableCard = ({ linkLocation, collectibleNameSrc, itemPrice, imgSrc }: Props) => {
-	const price = itemPrice.toFixed(2)
-
+const CollectableCard = ({ linkLocation, collectibleNameSrc, itemPrice, imgSrc, isPriceLoading }: Props) => {
 	return (
 		<Link className={`${styles.collectibleLinkBox}`} href={linkLocation}>
 			<div className={`${styles.collectibleContainer}`}>
@@ -25,10 +25,14 @@ const CollectableCard = ({ linkLocation, collectibleNameSrc, itemPrice, imgSrc }
 						Required to buy collectibles
 					</p>
 					<Image alt="Horizontal Line" src={require('../../resources/images/horizontalline.png')} />
-					<div className="w-full mx-auto text-center flex justify-center items-center mt-[7px]">
-						<h4 className={`${styles.collectibleText} font-bold text-lg`}>
-							Price: <span className={styles.priceText}>${price}</span>
-						</h4>
+					<div className="w-full mx-auto text-center max-h-[28px] flex justify-center items-center mt-[7px]">
+						{isPriceLoading ? (
+							<LoadingSpinner />
+						) : (
+							<h4 className={`${styles.collectibleText} font-bold text-lg`}>
+								Price: <span className={styles.priceText}>${itemPrice}</span>
+							</h4>
+						)}
 					</div>
 				</div>
 			</div>

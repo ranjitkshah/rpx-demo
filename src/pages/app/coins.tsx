@@ -3,6 +3,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import CollectableCard from '@/components/general/CollectableCard'
 import Layout from '@/components/Layout/mainLayout'
+
+// TODO: Refactor so there's a proper source of truth for coins instead of this, but for now it's fine
 // TODO: Absolutely want to revist just importing all these god damn assets but for now it's fine
 import Ch40sQueen from '../../resources/images/coins/Ch40sQueen.png'
 import Ch40sQueenText from '../../resources/images/coins/Ch40sQueenText.png'
@@ -38,7 +40,7 @@ const CoinsPage = () => {
 			<div className={styles.title}>
 				<div className={styles.absolute}>
 					<Link href="/app/main">
-						<Image alt="Back button" src={require('../../resources/images/back.png')} width={30} height={30} />
+						<Image alt="Back button" src={'../../resources/images/back.png'} width={30} height={30} />
 					</Link>
 				</div>
 				Coins
@@ -49,28 +51,32 @@ const CoinsPage = () => {
 					<h2 className={styles.scrollTitle}>Top Trending</h2>
 					<div className={`${styles.horizontalScroll}`}>
 						<CollectableCard
+							isPriceLoading={isLoading}
 							linkLocation={`/app/collectibles/buy/Ch40sQueen`}
 							collectibleNameSrc={Ch40sQueenText.src}
 							imgSrc={Ch40sQueen.src}
-							itemPrice={20.0}
+							itemPrice={coinsMap?.Ch40sQueen}
 						/>
 						<CollectableCard
+							isPriceLoading={isLoading}
 							linkLocation={`/app/collectibles/Cr1msonAvenger`}
 							collectibleNameSrc={Cr1msonAvengerText.src}
-							itemPrice={20.0}
 							imgSrc={Cr1msonAvenger.src}
+							itemPrice={coinsMap?.Cr1msonAvenger}
 						/>
 						<CollectableCard
+							isPriceLoading={isLoading}
 							linkLocation={`/app/collectibles/D3athBlow`}
 							collectibleNameSrc={D3athBlowText.src}
-							itemPrice={20.0}
 							imgSrc={D3athBlow.src}
+							itemPrice={coinsMap?.Cr1msonAvenger}
 						/>
 						<CollectableCard
+							isPriceLoading={isLoading}
 							linkLocation={`/app/collectibles/DarkNightm4re`}
 							collectibleNameSrc={DarkKnightm4reText.src}
-							itemPrice={20.0}
 							imgSrc={DarkNightm4re.src}
+							itemPrice={coinsMap?.DarkNightm4re}
 						/>
 					</div>
 				</div>
@@ -79,28 +85,32 @@ const CoinsPage = () => {
 				<h2 className={styles.scrollTitle}>Latest Drops</h2>
 				<div className={styles.horizontalScroll}>
 					<CollectableCard
+						isPriceLoading={isLoading}
 						linkLocation={`/app/collectibles/FuryFight3r`}
 						collectibleNameSrc={FuryFight3rText.src}
 						imgSrc={FuryFight3r.src}
-						itemPrice={20.0}
+						itemPrice={coinsMap?.FuryFight3r}
 					/>
 					<CollectableCard
+						isPriceLoading={isLoading}
 						linkLocation={`/app/collectibles/Infern0Assassin`}
 						collectibleNameSrc={Infern0AssassinText.src}
-						itemPrice={20.0}
 						imgSrc={Infern0Assassin.src}
+						itemPrice={coinsMap?.Infern0Assassin}
 					/>
 					<CollectableCard
+						isPriceLoading={isLoading}
 						linkLocation={`/app/collectibles/D3athBlow`}
 						collectibleNameSrc={D3athBlowText.src}
-						itemPrice={20.0}
 						imgSrc={D3athBlow.src}
+						itemPrice={coinsMap?.D3athBlow}
 					/>
 					<CollectableCard
+						isPriceLoading={isLoading}
 						linkLocation={`/app/collectibles/NightHunter`}
 						collectibleNameSrc={NightHunterText.src}
-						itemPrice={20.0}
 						imgSrc={NightHunter.src}
+						itemPrice={coinsMap?.NightHunter}
 					/>
 				</div>
 			</div>
@@ -108,28 +118,32 @@ const CoinsPage = () => {
 				<h2 className={styles.scrollTitle}>Esports</h2>
 				<div className={styles.horizontalScroll}>
 					<CollectableCard
+						isPriceLoading={isLoading}
 						linkLocation={`/app/collectibles/R0gueRider`}
 						collectibleNameSrc={R0gueRiderText.src}
 						imgSrc={R0gueRider.src}
-						itemPrice={20.0}
+						itemPrice={coinsMap?.R0gueRider}
 					/>
 					<CollectableCard
+						isPriceLoading={isLoading}
 						linkLocation={`/app/collectibles/StealthSniper`}
 						collectibleNameSrc={StealthSniperText.src}
-						itemPrice={20.0}
 						imgSrc={StealthSniper.src}
+						itemPrice={coinsMap?.StealthSniper}
 					/>
 					<CollectableCard
+						isPriceLoading={isLoading}
 						linkLocation={`/app/collectibles/ThunderB0ltz`}
 						collectibleNameSrc={ThunderB0ltzText.src}
-						itemPrice={20.0}
 						imgSrc={ThunderB0ltz.src}
+						itemPrice={coinsMap?.ThunderB0ltz}
 					/>
 					<CollectableCard
+						isPriceLoading={isLoading}
 						linkLocation={`/app/collectibles/TitanWarrior188`}
 						collectibleNameSrc={TitanWarrior188Text.src}
-						itemPrice={20.0}
 						imgSrc={TitanWarrior188.src}
+						itemPrice={coinsMap?.TitanWarrior188}
 					/>
 				</div>
 			</div>
@@ -137,28 +151,32 @@ const CoinsPage = () => {
 				<h2 className={styles.scrollTitle}>Creators</h2>
 				<div className={styles.horizontalScroll}>
 					<CollectableCard
+						isPriceLoading={isLoading}
 						linkLocation={`/app/collectibles/Ch40sQueen`}
 						collectibleNameSrc={Ch40sQueenText.src}
 						imgSrc={Ch40sQueen.src}
-						itemPrice={20.0}
+						itemPrice={coinsMap?.Ch40sQueen}
 					/>
 					<CollectableCard
+						isPriceLoading={isLoading}
 						linkLocation={`/app/collectibles/Cr1msonAvenger`}
 						collectibleNameSrc={Cr1msonAvengerText.src}
-						itemPrice={20.0}
 						imgSrc={Cr1msonAvenger.src}
+						itemPrice={coinsMap?.Cr1msonAvenger}
 					/>
 					<CollectableCard
+						isPriceLoading={isLoading}
 						linkLocation={`/app/collectibles/D3athBlow`}
 						collectibleNameSrc={D3athBlowText.src}
-						itemPrice={20.0}
 						imgSrc={D3athBlow.src}
+						itemPrice={coinsMap?.Cr1msonAvenger}
 					/>
 					<CollectableCard
+						isPriceLoading={isLoading}
 						linkLocation={`/app/collectibles/DarkNightm4re`}
 						collectibleNameSrc={DarkKnightm4reText.src}
-						itemPrice={20.0}
 						imgSrc={DarkNightm4re.src}
+						itemPrice={coinsMap?.DarkNightm4re}
 					/>
 				</div>
 			</div>
