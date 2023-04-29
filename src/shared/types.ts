@@ -91,9 +91,10 @@ export type NewUser = {
 export type Coin = {
 	id?: string
 	name: string
-	creatorRef: Record<string, any>
-	description: string
-	imageUrl: string
+	creatorName: string
+	creatorRef?: Record<string, any>
+	description?: string
+	imageUrl?: string
 	currentPrice: number
 	previousPrice: number
 	amountMinted: number
