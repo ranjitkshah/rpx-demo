@@ -20,6 +20,13 @@ const Header = () => {
 						src={require('../../../resources/images/rpxlogo.png')}
 					/>
 				</Link>
+				<Link className="cursor-pointer inline-block ml-2 translate-y-[-53px]" href="/">
+					<Image
+						className="max-w-[40px] mx-auto translate-y-[10px]"
+						alt="Back button"
+						src={require('../../../resources/images/back.png')}
+					/>
+				</Link>
 			</nav>
 		</header>
 	)

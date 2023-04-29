@@ -5,13 +5,14 @@ import { useRouter } from 'next/router'
 const Navbar = () => {
 	const router = useRouter()
 
+	// TODO: Renable the links when the pages are created
 	return (
 		<footer>
 			<div className={styles.footerNav}>
 				<div
 					className={styles.footerNavItem}
 					onClick={() => {
-						router.push('/main')
+						router.push('/app/main')
 					}}
 				>
 					<div>
@@ -27,7 +28,7 @@ const Navbar = () => {
 				<div
 					className={styles.footerNavItem}
 					onClick={() => {
-						router.push('/coins')
+						router.push('/app/coins')
 					}}
 				>
 					<div className="translate-y-[1px]">
@@ -36,9 +37,9 @@ const Navbar = () => {
 				</div>
 				<div
 					className={styles.footerNavItem}
-					onClick={() => {
-						router.push('/collectibles')
-					}}
+					// onClick={() => {
+					// 	router.push('/collectibles')
+					// }}
 				>
 					<div className="translate-y-[2.5px]">
 						<Image
@@ -51,9 +52,9 @@ const Navbar = () => {
 				</div>
 				<div
 					className={styles.footerNavItem}
-					onClick={() => {
-						router.push('/userprofile')
-					}}
+					// onClick={() => {
+					// 	router.push('/userprofile')
+					// }}
 				>
 					<div className="translate-y-[1px]">
 						<Image alt="My stuff icon" src={require('../../../resources//images/mystuff.png')} width={50} height={35} />
@@ -61,9 +62,9 @@ const Navbar = () => {
 				</div>
 				<div
 					className={styles.footerNavItem}
-					onClick={() => {
-						router.push('/more')
-					}}
+					// onClick={() => {
+					// 	router.push('/more')
+					// }}
 				>
 					<div className="translate-y-[1px]">
 						<Image alt="More icon" src={require('../../../resources//images/more.png')} width={40} height={36} />

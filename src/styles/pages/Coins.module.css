@@ -1,0 +1,160 @@
+.search {
+	padding: 10px 5px;
+	border-radius: 10px;
+
+	border: 0;
+
+	width: 100%;
+}
+
+.title {
+	position: relative;
+	font-weight: bold;
+	font-size: 48px;
+
+	color: #a486fd;
+
+	text-align: center;
+
+	padding-top: 10px;
+	margin-bottom: -10px;
+}
+
+.content {
+	padding: 10px;
+}
+
+.scrollTitle {
+	color: #7de0b0;
+	font-weight: bold;
+	font-size: 18px;
+
+	margin-top: 10px;
+	margin-left: 14px;
+}
+
+.coinBanner {
+	display: inline-block;
+	background-image: url('/graph.png');
+	background-size: 100% 100%;
+
+	width: 250px;
+	height: 404px;
+
+	border: 1px solid #9355da;
+	border-radius: 10px;
+
+	margin-top: 0;
+	margin-right: 10px;
+
+	overflow: hidden;
+}
+
+.coinName {
+	font-size: 40px;
+	font-weight: bold;
+
+	text-align: center;
+
+	color: #9975ed;
+
+	margin-left: -30px;
+
+	padding-left: 30px;
+}
+
+.center {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+}
+
+.subtitle {
+	font-size: 12px;
+	font-weight: bold;
+
+	color: #9355da;
+
+	text-align: center;
+
+	margin-top: 30px;
+}
+
+.priceTitle {
+	font-size: 20px;
+	font-weight: bold;
+
+	color: #7de0b0;
+}
+
+.price {
+	font-size: 20px;
+	font-weight: bold;
+
+	color: #9355da;
+}
+
+.amount {
+	width: fit-content;
+	margin: 0 auto;
+}
+
+.coinBannerShade {
+	background-color: rgba(0, 0, 0, 0.4);
+	width: 250px;
+	height: 430px;
+}
+
+.wrapper {
+	padding: 10px;
+}
+
+.horizontalScroll {
+	margin-top: 10px;
+	display: flex;
+	flex-direction: row;
+	overflow-x: scroll;
+	white-space: nowrap;
+	scrollbar-width: none;
+	-ms-overflow-style: none;
+}
+
+.horizontalScroll::-webkit-scrollbar {
+	display: none;
+}
+
+.save {
+	position: sticky;
+	float: right;
+	bottom: 5px;
+}
+
+.scrollTitle {
+	padding-top: 10px;
+}
+
+.absolute {
+	position: absolute;
+	left: 13px;
+	opacity: 0.5;
+}
+
+.flex {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+
+	width: 90%;
+	margin: auto;
+	margin-top: 5px;
+}
+
+.white {
+	color: white;
+	font-size: 10px;
+}
+
+.offwhite {
+	color: #bababa;
+	font-size: 10px;
+}
