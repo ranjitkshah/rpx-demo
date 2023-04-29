@@ -26,6 +26,7 @@ import ThunderB0ltz from '../../resources/images/coins/ThunderB0ltz.png'
 import ThunderB0ltzText from '../../resources/images/coins/ThunderB0ltzText.png'
 import TitanWarrior188 from '../../resources/images/coins/TitanWarrior188.png'
 import TitanWarrior188Text from '../../resources/images/coins/TitanWarrior188Text.png'
+import ExploreMore from '@/components/sections/ExploreMore'
 
 // TODO: Wire up purchase routes based on which elemeent was clicked
 const CoinsPage = () => {
@@ -160,27 +161,7 @@ const CoinsPage = () => {
 			</div>
 
 			<Image className="mt-[30px]" alt="horizontal line" src={require('../../resources/images/horizontalline.png')} />
-			<div>
-				<h2 className={styles.scrollTitle}>Explore More</h2>
-
-				<div className="w-[90%] mx-auto">
-					<input
-						className="px-2 rounded-lg border-0 h-[24px] text-sm w-[100%] mt-4 mb-2"
-						type={'text'}
-						placeholder={'Search'}
-					/>
-				</div>
-				<div className={styles.flex}>
-					<div className={styles.offwhite}>Top Teams</div>
-					<div className={styles.white}>Top Gamers</div>
-					<div className={styles.offwhite}>Top New Gamer</div>
-					<div className={styles.offwhite}>Top Weekly Gamer</div>
-				</div>
-				<div className="mt-[-20px]">
-					{/* TODO: Wire up these components */}
-					<Image alt="Explore more image" src={require('../../resources/images/exploremore.png')} width={380} height={650} />
-				</div>
-			</div>
+			<ExploreMore />
 		</main>
 	)
 }
