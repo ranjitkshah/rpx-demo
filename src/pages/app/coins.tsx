@@ -1,13 +1,13 @@
 import styles from '../../styles/pages/Coins.module.css'
-import CoinBanner from '../../components/general/CoinBanner'
 import Image from 'next/image'
 import Link from 'next/link'
 import CollectableCard from '@/components/general/CollectableCard'
 import Layout from '@/components/Layout/mainLayout'
-// import * from '../../resources/images/ducoin.png`'
+// TODO: Absolutely want to revist just importing all these god damn assets but for now it's fine
 import Ch40sQueen from '../../resources/images/coins/Ch40sQueen.png'
 import Ch40sQueenText from '../../resources/images/coins/Ch40sQueenText.png'
 
+// TODO: Wire up purchase routes based on which elemeent was clicked
 const CoinsPage = () => {
 	return (
 		<main className="container mx-auto pb-[80px]">
