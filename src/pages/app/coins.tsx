@@ -46,25 +46,25 @@ const CoinsPage = () => {
 					<h2 className={styles.scrollTitle}>Top Trending</h2>
 					<div className={`${styles.horizontalScroll}`}>
 						<CollectableCard
-							linkLocation={`/app/collectables/Ch40sQueen`}
+							linkLocation={`/app/collectibles/buy/Ch40sQueen`}
 							collectibleNameSrc={Ch40sQueenText.src}
 							imgSrc={Ch40sQueen.src}
 							itemPrice={20.0}
 						/>
 						<CollectableCard
-							linkLocation={`/app/collectables/Cr1msonAvenger`}
+							linkLocation={`/app/collectibles/Cr1msonAvenger`}
 							collectibleNameSrc={Cr1msonAvengerText.src}
 							itemPrice={20.0}
 							imgSrc={Cr1msonAvenger.src}
 						/>
 						<CollectableCard
-							linkLocation={`/app/collectables/D3athBlow`}
+							linkLocation={`/app/collectibles/D3athBlow`}
 							collectibleNameSrc={D3athBlowText.src}
 							itemPrice={20.0}
 							imgSrc={D3athBlow.src}
 						/>
 						<CollectableCard
-							linkLocation={`/app/collectables/DarkNightm4re`}
+							linkLocation={`/app/collectibles/DarkNightm4re`}
 							collectibleNameSrc={DarkKnightm4reText.src}
 							itemPrice={20.0}
 							imgSrc={DarkNightm4re.src}
@@ -76,25 +76,25 @@ const CoinsPage = () => {
 				<h2 className={styles.scrollTitle}>Latest Drops</h2>
 				<div className={styles.horizontalScroll}>
 					<CollectableCard
-						linkLocation={`/app/collectables/FuryFight3r`}
+						linkLocation={`/app/collectibles/FuryFight3r`}
 						collectibleNameSrc={FuryFight3rText.src}
 						imgSrc={FuryFight3r.src}
 						itemPrice={20.0}
 					/>
 					<CollectableCard
-						linkLocation={`/app/collectables/Infern0Assassin`}
+						linkLocation={`/app/collectibles/Infern0Assassin`}
 						collectibleNameSrc={Infern0AssassinText.src}
 						itemPrice={20.0}
 						imgSrc={Infern0Assassin.src}
 					/>
 					<CollectableCard
-						linkLocation={`/app/collectables/D3athBlow`}
+						linkLocation={`/app/collectibles/D3athBlow`}
 						collectibleNameSrc={D3athBlowText.src}
 						itemPrice={20.0}
 						imgSrc={D3athBlow.src}
 					/>
 					<CollectableCard
-						linkLocation={`/app/collectables/NightHunter`}
+						linkLocation={`/app/collectibles/NightHunter`}
 						collectibleNameSrc={NightHunterText.src}
 						itemPrice={20.0}
 						imgSrc={NightHunter.src}
@@ -105,25 +105,25 @@ const CoinsPage = () => {
 				<h2 className={styles.scrollTitle}>Esports</h2>
 				<div className={styles.horizontalScroll}>
 					<CollectableCard
-						linkLocation={`/app/collectables/R0gueRider`}
+						linkLocation={`/app/collectibles/R0gueRider`}
 						collectibleNameSrc={R0gueRiderText.src}
 						imgSrc={R0gueRider.src}
 						itemPrice={20.0}
 					/>
 					<CollectableCard
-						linkLocation={`/app/collectables/StealthSniper`}
+						linkLocation={`/app/collectibles/StealthSniper`}
 						collectibleNameSrc={StealthSniperText.src}
 						itemPrice={20.0}
 						imgSrc={StealthSniper.src}
 					/>
 					<CollectableCard
-						linkLocation={`/app/collectables/ThunderB0ltz`}
+						linkLocation={`/app/collectibles/ThunderB0ltz`}
 						collectibleNameSrc={ThunderB0ltzText.src}
 						itemPrice={20.0}
 						imgSrc={ThunderB0ltz.src}
 					/>
 					<CollectableCard
-						linkLocation={`/app/collectables/TitanWarrior188`}
+						linkLocation={`/app/collectibles/TitanWarrior188`}
 						collectibleNameSrc={TitanWarrior188Text.src}
 						itemPrice={20.0}
 						imgSrc={TitanWarrior188.src}
@@ -134,25 +134,25 @@ const CoinsPage = () => {
 				<h2 className={styles.scrollTitle}>Creators</h2>
 				<div className={styles.horizontalScroll}>
 					<CollectableCard
-						linkLocation={`/app/collectables/Ch40sQueen`}
+						linkLocation={`/app/collectibles/Ch40sQueen`}
 						collectibleNameSrc={Ch40sQueenText.src}
 						imgSrc={Ch40sQueen.src}
 						itemPrice={20.0}
 					/>
 					<CollectableCard
-						linkLocation={`/app/collectables/Cr1msonAvenger`}
+						linkLocation={`/app/collectibles/Cr1msonAvenger`}
 						collectibleNameSrc={Cr1msonAvengerText.src}
 						itemPrice={20.0}
 						imgSrc={Cr1msonAvenger.src}
 					/>
 					<CollectableCard
-						linkLocation={`/app/collectables/D3athBlow`}
+						linkLocation={`/app/collectibles/D3athBlow`}
 						collectibleNameSrc={D3athBlowText.src}
 						itemPrice={20.0}
 						imgSrc={D3athBlow.src}
 					/>
 					<CollectableCard
-						linkLocation={`/app/collectables/DarkNightm4re`}
+						linkLocation={`/app/collectibles/DarkNightm4re`}
 						collectibleNameSrc={DarkKnightm4reText.src}
 						itemPrice={20.0}
 						imgSrc={DarkNightm4re.src}

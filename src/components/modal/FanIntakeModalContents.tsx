@@ -46,7 +46,7 @@ const FanIntakeModalContents = ({ handleIntakeUser, showLoadingSpinner }: Props)
 					/>
 					<Image
 						className="w-[63px] translate-y-[-12px]"
-						alt="RPX Collectables icon"
+						alt="RPX collectibles icon"
 						src={require('../../resources/images/Group 2.png')}
 					/>
 				</div>
