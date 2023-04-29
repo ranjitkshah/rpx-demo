@@ -29,9 +29,9 @@ import TitanWarrior188Text from '../../resources/images/coins/TitanWarrior188Tex
 import ExploreMore from '@/components/sections/ExploreMore'
 import { useCoinsForPurchase } from '@/components/hooks/useCoinsForPurchase'
 
-// TODO: Pull live coin prices and update here
+// TODO: Update live prices with coins map
 const CoinsPage = () => {
-	const { coins, isLoading, error } = useCoinsForPurchase()
+	const { coinsMap, isLoading, error } = useCoinsForPurchase()
 
 	return (
 		<main className="container mx-auto pb-[80px]">

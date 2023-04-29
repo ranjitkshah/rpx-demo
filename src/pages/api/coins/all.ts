@@ -21,7 +21,7 @@ const handler = withAuth(async (req: NextApiRequest, res: NextApiResponse) => {
 			res.status(200).json({
 				status: APIStatuses.SUCCESS,
 				type: DocumentResponses.DATA_FOUND,
-				data: { users: documents }
+				data: { coins: documents }
 			})
 		} else {
 			console.error('e', DocumentResponses.DATA_NOT_FOUND)

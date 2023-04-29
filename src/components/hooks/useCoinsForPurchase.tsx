@@ -3,20 +3,26 @@ import { GetStaticProps, GetStaticPropsContext } from 'next'
 import { Coin } from '@/shared/types'
 
 export const useCoinsForPurchase = () => {
-	const [coins, setCoins] = React.useState<Coin[]>()
+	const [coinsMap, setCoinsMap] = React.useState<Coin[]>()
 	const [isLoading, setIsLoading] = React.useState<boolean>(true)
 	const [error, setError] = React.useState<boolean>(false)
 
 	const fetchCoinData = async () => {
 		try {
-			const result = await fetch(`/api/coins/all`, {
+			const response = await fetch(`/api/coins/all`, {
 				method: 'GET',
 				headers: {
 					'Content-Type': 'application/json'
 				}
 			})
-			const foundCoins = await result.json()
-			setCoins(foundCoins)
+			const result = await response.json()
+			const { coins } = result.data
+			const coinsWithPriceMap = coins.reduce((acc: Record<string, number>, currentCoin: Coin) => {
+				const updatedAcc = { ...acc }
+				updatedAcc[currentCoin.creatorName] = currentCoin.currentPrice
+				return updatedAcc
+			}, {})
+			setCoinsMap(coinsWithPriceMap)
 		} catch (error) {
 			console.error(error)
 			setError(true)
@@ -29,5 +35,5 @@ export const useCoinsForPurchase = () => {
 		fetchCoinData()
 	}, [])
 
-	return { coins, isLoading, error }
+	return { coinsMap, isLoading, error }
 }
