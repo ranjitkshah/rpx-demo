@@ -9,6 +9,7 @@ export const useUserData = () => {
 	const { user: clerkUser } = useUser()
 
 	const fetchUserData = async (id: string) => {
+		setError(false)
 		try {
 			const response = await fetch(`/api/users/clerk/${id}`, {
 				method: 'GET',
@@ -17,8 +18,12 @@ export const useUserData = () => {
 				}
 			})
 			const result = await response.json()
-			const { user } = result.data
-			setFoundUser(user)
+			if (result.status === 'ERROR') {
+				throw new Error(result.data.error)
+			} else {
+				const { user } = result.data
+				setFoundUser(user)
+			}
 		} catch (error) {
 			console.error(error)
 			setError(true)

@@ -38,8 +38,9 @@ const InitialIntakePage = () => {
 			lastSignInAt: user!.lastSignInAt?.toISOString() ?? new Date().toISOString()
 		}
 
+		// TODO: We need better error handling here (and potentially everywhere)
 		try {
-			await fetch('/api/users/intake', {
+			const response = await fetch('/api/users/intake', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json'
@@ -47,23 +48,27 @@ const InitialIntakePage = () => {
 				body: JSON.stringify(newUser)
 			})
 
-			setShowLoadingSpinner(false)
+			const result = await response.json()
 
-			if (intakeType === UserTypes.FAN) {
-				router.push('/app/fan/congrats')
+			if (result.status === 'ERROR') {
+				throw new Error(result.data.error)
 			} else {
-				// TODO: Update with gamer path
-				router.push('/app/fan/congrats')
+				if (intakeType === UserTypes.FAN) {
+					router.push('/app/fan/congrats')
+				} else {
+					// TODO: Update with gamer path
+					router.push('/app/fan/congrats')
+				}
 			}
-			router
 		} catch (error) {
-			setShowLoadingSpinner(false)
 			console.error(error)
 			setShowToast(true)
 
 			setTimeout(() => {
 				setShowToast(false)
 			}, 10000)
+		} finally {
+			setShowLoadingSpinner(false)
 		}
 	}
 

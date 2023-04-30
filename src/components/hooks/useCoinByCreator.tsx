@@ -7,6 +7,7 @@ export const useCoinByCreator = (creator: string) => {
 	const [error, setError] = React.useState<boolean>(false)
 
 	const fetchCoinData = async (creator: string) => {
+		setError(false)
 		try {
 			const response = await fetch(`/api/coins/${creator}`, {
 				method: 'GET',
@@ -15,8 +16,13 @@ export const useCoinByCreator = (creator: string) => {
 				}
 			})
 			const result = await response.json()
-			const { coin } = result.data
-			setCoin(coin)
+
+			if (result.status === 'ERROR') {
+				throw new Error(result.data.error)
+			} else {
+				const { coin } = result.data
+				setCoin(coin)
+			}
 		} catch (error) {
 			console.error(error)
 			setError(true)

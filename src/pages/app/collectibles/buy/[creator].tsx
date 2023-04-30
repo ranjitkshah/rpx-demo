@@ -21,8 +21,18 @@ const BuyCoinPage = () => {
 	const [numberOfCoins, setNumberOfCoins] = React.useState<string>('')
 	const [imgSrc, setImgSrc] = React.useState<string>()
 	const [isModalOpen, setIsModalOpen] = React.useState<boolean>(false)
+	const [error, setError] = React.useState<boolean>(false)
+	const [showLoadingButtonSpinner, setShowLoadingButtonSpinner] = React.useState<boolean>(false)
 	const isLoading = isCoinLoading || isUserLoading
-	const error = coinError || userError
+
+	React.useEffect(() => {
+		if (coinError || userError) {
+			setError(true)
+			setTimeout(() => {
+				setError(false)
+			}, 10000)
+		}
+	}, [coinError, userError])
 
 	React.useEffect(() => {
 		if (coin) {
@@ -65,17 +75,39 @@ const BuyCoinPage = () => {
 		}
 	}
 
-	const handlePurchaseCoins = async (
-		userId: string,
-		creatorName: string,
-		purchasePrice: string,
-		numberOfCoins: string
-	) => {
-		console.log('farts')
-		console.log(userId)
-		console.log(creatorName)
-		console.log(purchasePrice)
-		console.log(numberOfCoins)
+	const handlePurchaseCoins = async (userId: string, creatorName: string, numberOfCoins: string) => {
+		setShowLoadingButtonSpinner(true)
+		setError(false)
+		try {
+			const response = await fetch('/api/coins/buy', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({
+					userId,
+					creatorName,
+					numberOfCoins
+				})
+			})
+
+			const result = await response.json()
+
+			if (result.status === 'ERROR') {
+				throw new Error(result.data.error)
+			} else {
+				// Do forward here now that we have a purchase!
+			}
+		} catch (error) {
+			console.error(error)
+			setError(true)
+
+			setTimeout(() => {
+				setError(false)
+			}, 10000)
+		} finally {
+			setShowLoadingButtonSpinner(false)
+		}
 	}
 
 	return (
@@ -270,13 +302,11 @@ const BuyCoinPage = () => {
 							handlePurchaseCoins(
 								foundUser!.clerkId,
 								creator as string,
-								// TODO: Make this a utility function for god sakes
-								(Number(numberOfCoins) * coin?.currentPrice!).toFixed(2),
 								// TODO: Make sure this accounts for fractional coin purchases (if we want that)
 								numberOfCoins
 							)
 						}
-						showLoadingSpinner={false}
+						showLoadingSpinner={showLoadingButtonSpinner}
 						imgSrc={imgSrc!}
 						numberOfCoins={numberOfCoins!}
 						purchasePrice={(Number(numberOfCoins) * coin?.currentPrice!).toFixed(2) ?? ''}
