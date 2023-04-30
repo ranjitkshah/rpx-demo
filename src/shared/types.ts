@@ -102,3 +102,7 @@ export type Coin = {
 	createdAt: Date | string
 	updatedAt: Date | string
 }
+
+// Utility types
+
+export type Maybe<T> = T | null
