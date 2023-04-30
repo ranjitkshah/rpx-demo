@@ -14,6 +14,11 @@
 	background-color: #99ffcc;
 }
 
+.button:disabled {
+	background-color: #c0c0c0;
+	color: white;
+}
+
 .coinAmount {
 	position: relative;
 	text-align: center;

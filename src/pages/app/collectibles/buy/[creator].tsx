@@ -6,19 +6,23 @@ import Layout from '@/components/Layout/secondaryLayout'
 import Image from 'next/image'
 import { useUserData } from '@/components/hooks/useUserData'
 import styles from '../../../../styles/pages/BuyCoin.module.css'
+import Modal from '@/components/modal'
+import FanIntakeModalContents from '@/components/modal/FanIntakeModalContents'
 
 // TODO: Fix the non-responsiveness on this page
 // TODO: Add better error handling here
 // TODO: Do better data fetching
+// TODO: Extract numpad into it's own component, because it deserves it
 const BuyCoinPage = () => {
 	const router = useRouter()
 	const { creator } = router.query
 	const { coin, isLoading: isCoinLoading, error: coinError } = useCoinByCreator(creator as string)
 	const { foundUser, isLoading: isUserLoading, error: userError } = useUserData()
 	const [numberOfCoins, setNumberOfCoins] = React.useState<string>('')
+	const [imgSrc, setImgSrc] = React.useState<string>()
+	const [isModalOpen, setIsModalOpen] = React.useState<boolean>(false)
 	const isLoading = isCoinLoading || isUserLoading
 	const error = coinError || userError
-	const [imgSrc, setImgSrc] = React.useState<string>()
 
 	React.useEffect(() => {
 		if (coin) {
@@ -51,7 +55,12 @@ const BuyCoinPage = () => {
 				break
 
 			default:
-				setNumberOfCoins((prev) => prev + num)
+				setNumberOfCoins((prev) => {
+					if (prev === '0') {
+						return num
+					}
+					return prev + num
+				})
 				break
 		}
 	}
@@ -96,7 +105,7 @@ const BuyCoinPage = () => {
 					/>
 					<div className="text-white mb-3">
 						<div className={styles.coinAmount}>
-							<h3 className="">{numberOfCoins} Coins</h3>
+							<h3 className="">{numberOfCoins.length ? numberOfCoins : '0'} Coins</h3>
 						</div>
 						<div className={styles.coinPrice}>
 							<p>= ${(Number(numberOfCoins) * coin.currentPrice).toFixed(2)} USD</p>
@@ -214,7 +223,13 @@ const BuyCoinPage = () => {
 								</div>
 							</div>
 						</div>
-						<button className={`${styles.button} btn btn-block normal-case text-black`}>Buy it!</button>
+						<button
+							disabled={Number(numberOfCoins) == 0}
+							onClick={() => setIsModalOpen(true)}
+							className={`${styles.button} btn btn-block normal-case text-black`}
+						>
+							Buy it!
+						</button>
 					</div>
 				</div>
 			)}
@@ -231,6 +246,12 @@ const BuyCoinPage = () => {
 					</div>
 				</div>
 			)}
+			<Modal
+				isOpen={isModalOpen}
+				handleClose={() => setIsModalOpen(false)}
+				onClick={() => console.log('also farts')}
+				content={<FanIntakeModalContents handleIntakeUser={() => 'farst'} showLoadingSpinner={false} />}
+			/>
 		</main>
 	)
 }
