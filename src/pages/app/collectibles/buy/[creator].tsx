@@ -8,6 +8,7 @@ import { useUserData } from '@/components/hooks/useUserData'
 import styles from '../../../../styles/pages/BuyCoin.module.css'
 import Modal from '@/components/modal'
 import FanIntakeModalContents from '@/components/modal/FanIntakeModalContents'
+import BuyCoinModalContents from '@/components/modal/BuyCoinModalContents'
 
 // TODO: Fix the non-responsiveness on this page
 // TODO: Add better error handling here
@@ -63,6 +64,13 @@ const BuyCoinPage = () => {
 				})
 				break
 		}
+	}
+
+	const handlePurchaseCoins = async (userId: string, creatorName: string, purchasePrice: number) => {
+		console.log('farts')
+		console.log(userId)
+		console.log(creatorName)
+		console.log(purchasePrice)
 	}
 
 	return (
@@ -250,7 +258,18 @@ const BuyCoinPage = () => {
 				isOpen={isModalOpen}
 				handleClose={() => setIsModalOpen(false)}
 				onClick={() => console.log('also farts')}
-				content={<FanIntakeModalContents handleIntakeUser={() => 'farst'} showLoadingSpinner={false} />}
+				content={
+					<BuyCoinModalContents
+						handlePurchaseCoins={() =>
+							handlePurchaseCoins(
+								foundUser!.clerkId,
+								creator as string,
+								Math.round(Number(numberOfCoins) * coin!.currentPrice * 100) / 100
+							)
+						}
+						showLoadingSpinner={false}
+					/>
+				}
 			/>
 		</main>
 	)
