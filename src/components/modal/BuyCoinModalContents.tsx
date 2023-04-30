@@ -44,7 +44,7 @@ const BuyCoinModalContents = ({
 							<LoadingSpinner fillColor="fill-black" />
 						</div>
 					) : (
-						'Claim Free Gamer Coin'
+						'Yes, Buy It!'
 					)}
 				</button>
 			</div>
