@@ -1,0 +1,70 @@
+.button {
+	background-color: #99ffcc;
+	border: none;
+	height: 55px;
+	padding: 15px 20px;
+	font-weight: 800;
+	font-size: 22px;
+	letter-spacing: 0.5px;
+	margin-top: 25px;
+}
+
+/* TODO Switch up hover colors for lighter shades of these */
+.button:hover {
+	background-color: #99ffcc;
+}
+
+.button:disabled {
+	background-color: #c0c0c0;
+	color: white;
+}
+
+.coinAmount {
+	position: relative;
+	text-align: center;
+	font-size: 48px;
+	font-weight: bold;
+	color: rgb(238, 238, 238);
+	width: fit-content;
+	margin: 0 auto;
+}
+
+.coinAmount::before {
+	content: '';
+	position: absolute;
+	bottom: 9px;
+	left: 0;
+	right: 0;
+	height: 2px;
+	length: 10px;
+	background-color: currentColor;
+	margin: 0 auto;
+	width: 100%;
+}
+
+.coinPrice {
+	color: rgb(230, 230, 230);
+	text-align: center;
+	font-size: 20px;
+}
+
+.numpadRow {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	margin-bottom: 20px;
+}
+
+.numPadButton {
+	width: 20px;
+	height: 20px;
+	text-align: center;
+	font-size: 30px;
+	font-weight: bold;
+	color: white;
+}
+
+.numpadContainer {
+	/* position: sticky; */
+	margin-top: 20px;
+}

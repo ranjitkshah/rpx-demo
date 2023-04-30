@@ -8,6 +8,7 @@ export const useCoinsForPurchase = () => {
 	const [error, setError] = React.useState<boolean>(false)
 
 	const fetchCoinData = async () => {
+		setError(false)
 		try {
 			const response = await fetch(`/api/coins/all`, {
 				method: 'GET',
@@ -16,13 +17,18 @@ export const useCoinsForPurchase = () => {
 				}
 			})
 			const result = await response.json()
-			const { coins } = result.data
-			const coinsWithPriceMap: Record<string, number> = coins.reduce((acc: Record<string, number>, currentCoin: Coin) => {
-				const updatedAcc = { ...acc }
-				updatedAcc[currentCoin.creatorName] = currentCoin.currentPrice
-				return updatedAcc
-			}, {})
-			setCoinsMap(coinsWithPriceMap)
+
+			if (result.status === 'ERROR') {
+				throw new Error(result.data.error)
+			} else {
+				const { coins } = result.data
+				const coinsWithPriceMap: Record<string, number> = coins.reduce((acc: Record<string, number>, currentCoin: Coin) => {
+					const updatedAcc = { ...acc }
+					updatedAcc[currentCoin.creatorName] = currentCoin.currentPrice
+					return updatedAcc
+				}, {})
+				setCoinsMap(coinsWithPriceMap)
+			}
 		} catch (error) {
 			console.error(error)
 			setError(true)

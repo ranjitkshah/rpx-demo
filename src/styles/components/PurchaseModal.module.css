@@ -1,0 +1,58 @@
+.heading1 {
+	color: #26175a;
+	font-size: 1.75rem;
+	font-weight: bold;
+	margin: 1rem;
+	text-align: center;
+	line-height: normal;
+}
+
+.coinAmount {
+	position: relative;
+	text-align: center;
+	font-size: 48px;
+	font-weight: bold;
+	color: #dd2a9d;
+	width: fit-content;
+	margin: 0 auto;
+}
+
+.coinAmount::before {
+	content: '';
+	position: absolute;
+	bottom: 9px;
+	left: 0;
+	right: 0;
+	height: 2px;
+	length: 10px;
+	background-color: #dd2a9d;
+	margin: 0 auto;
+	width: 100%;
+}
+
+.coinPrice {
+	color: black;
+	text-align: center;
+	font-size: 16px;
+	transform: translateY(-8px);
+}
+
+.button {
+	background-color: #99ffcc;
+	border: none;
+	height: 55px;
+	padding: 15px 20px;
+	font-weight: 800;
+	font-size: 22px;
+	letter-spacing: 0.5px;
+	margin-top: 25px;
+	position: absolute;
+	bottom: 16px;
+	width: 328px;
+	left: 12px;
+}
+
+/* TODO Switch up hover colors for lighter shades of these */
+.button:hover {
+	background-color: #99ffcc;
+}
