@@ -1,7 +1,6 @@
 import React from 'react'
 import styles from '../../styles/components/IntakeModal.module.css'
 import Image from 'next/image'
-import type { UserResource } from '@clerk/types'
 import LoadingSpinner from '../general/LoadingSpinner'
 import { UserTypes } from '@/shared/types'
 

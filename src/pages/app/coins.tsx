@@ -40,7 +40,7 @@ const CoinsPage = () => {
 			<div className={styles.title}>
 				<div className={styles.absolute}>
 					<Link href="/app/main">
-						<Image alt="Back button" src={'../../resources/images/back.png'} width={30} height={30} />
+						<Image alt="Back button" src={require('../../resources/images/back.png')} width={30} height={30} />
 					</Link>
 				</div>
 				Coins

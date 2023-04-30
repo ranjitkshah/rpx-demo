@@ -1,5 +1,4 @@
 import * as React from 'react'
-import { GetStaticProps, GetStaticPropsContext } from 'next'
 import { Coin } from '@/shared/types'
 
 export const useCoinByCreator = (creator: string) => {
