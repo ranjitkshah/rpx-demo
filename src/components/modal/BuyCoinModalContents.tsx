@@ -1,58 +1,42 @@
 import React from 'react'
-import styles from '../../styles/components/IntakeModal.module.css'
+import styles from '../../styles/components/PurchaseModal.module.css'
 import Image from 'next/image'
 import LoadingSpinner from '../general/LoadingSpinner'
-import { UserTypes } from '@/shared/types'
 
 type Props = {
 	handlePurchaseCoins: () => Promise<void>
 	showLoadingSpinner: boolean
+	imgSrc: string
+	numberOfCoins: string
+	purchasePrice: string
 }
 
-const BuyCoinModalContents = ({ handlePurchaseCoins, showLoadingSpinner }: Props) => {
+const BuyCoinModalContents = ({
+	handlePurchaseCoins,
+	showLoadingSpinner,
+	imgSrc,
+	numberOfCoins,
+	purchasePrice
+}: Props) => {
 	return (
 		<div>
-			<div className="mb-4">
-				<h1 className={styles.heading1}>
-					Hi Fan, welcome <br /> to Ready Player X!
-				</h1>
-				<p className="text-center text-md font-medium">
-					Own social tokens, exciting moments, and digital apparel from your favourite gamers and esports teams.
-				</p>
+			<div className="mb-2 mt-20 flex flex-col items-center">
+				<Image priority={true} src={imgSrc} alt={`The coin you're about to purchase`} width={150} height={120} />
+				<h2 className={`${styles.heading1} text-xl font-bold mb-4`}>
+					Let's confirm <br /> this purchase
+				</h2>
 			</div>
 			<hr />
-			<div className="mt-4">
-				<h2 className={`${styles.heading2} text-xl font-bold mb-4`}>
-					Things to know <br /> before getting started:
-				</h2>
-				<div>
-					<p>
-						1. You always need <b>Gamer Coins</b> to buy <b>Gamer Cards & Collectibles</b> (think of it like tokens to play an
-						arcade game)
-					</p>
+			<div className="mt-4 text-center">
+				<p>Are you sure you want to buy:</p>
+				<div className="text-white mb-3">
+					<div className={styles.coinAmount}>
+						<h3 className="">{numberOfCoins} Coins?</h3>
+					</div>
+					<div className={styles.coinPrice}>
+						<p>= ${purchasePrice} USD</p>
+					</div>
 				</div>
-				<div className="flex flex-row justify-center mt-4 mb-2">
-					<Image
-						className="w-[60px] h-[60px]"
-						alt="RPX Coin icon"
-						src={require('../../resources/images/rpx-browsericon.png')}
-					/>
-
-					<Image
-						className="w-[16px] h-[26px] mt-[16px] mx-2"
-						alt="A triangle icon"
-						src={require('../../resources/images/Triangle.png')}
-					/>
-					<Image
-						className="w-[63px] translate-y-[-12px]"
-						alt="RPX collectibles icon"
-						src={require('../../resources/images/Group 2.png')}
-					/>
-				</div>
-				<p>
-					2. We’re giving you a <b>free Coin right now</b> because you signed up. With it, you’ll be able to buy any card or
-					collectible!
-				</p>
 				<button className={`${styles.button} btn btn-block normal-case text-black`} onClick={handlePurchaseCoins}>
 					{showLoadingSpinner ? (
 						<div className="translate-y-[-3px]">

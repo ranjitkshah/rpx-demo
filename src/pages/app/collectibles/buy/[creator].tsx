@@ -7,7 +7,6 @@ import Image from 'next/image'
 import { useUserData } from '@/components/hooks/useUserData'
 import styles from '../../../../styles/pages/BuyCoin.module.css'
 import Modal from '@/components/modal'
-import FanIntakeModalContents from '@/components/modal/FanIntakeModalContents'
 import BuyCoinModalContents from '@/components/modal/BuyCoinModalContents'
 
 // TODO: Fix the non-responsiveness on this page
@@ -112,6 +111,7 @@ const BuyCoinPage = () => {
 						src={require('../../../../resources/images/horizontalline.png')}
 					/>
 					<div className="text-white mb-3">
+						{/* TODO: Make this a fucking component I suck at react */}
 						<div className={styles.coinAmount}>
 							<h3 className="">{numberOfCoins.length ? numberOfCoins : '0'} Coins</h3>
 						</div>
@@ -247,7 +247,7 @@ const BuyCoinPage = () => {
 					<div className="alert alert-error w-[300px]">
 						<div>
 							<span>
-								Error creating account, contact
+								Error buying token, contact
 								<br /> charlie@sparksfullstack.io for help.
 							</span>
 						</div>
@@ -264,10 +264,14 @@ const BuyCoinPage = () => {
 							handlePurchaseCoins(
 								foundUser!.clerkId,
 								creator as string,
+								// TODO: Make this a utility function for god sakes
 								Math.round(Number(numberOfCoins) * coin!.currentPrice * 100) / 100
 							)
 						}
 						showLoadingSpinner={false}
+						imgSrc={imgSrc!}
+						numberOfCoins={numberOfCoins!}
+						purchasePrice={(Number(numberOfCoins) * coin?.currentPrice!).toFixed(2) ?? ''}
 					/>
 				}
 			/>

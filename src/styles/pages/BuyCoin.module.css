@@ -25,6 +25,8 @@
 	font-size: 48px;
 	font-weight: bold;
 	color: rgb(238, 238, 238);
+	width: fit-content;
+	margin: 0 auto;
 }
 
 .coinAmount::before {
@@ -37,7 +39,7 @@
 	length: 10px;
 	background-color: currentColor;
 	margin: 0 auto;
-	width: 45%;
+	width: 100%;
 }
 
 .coinPrice {

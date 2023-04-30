@@ -17,7 +17,6 @@ export const useUserData = () => {
 				}
 			})
 			const result = await response.json()
-			console.log('result', result)
 			const { user } = result.data
 			setFoundUser(user)
 		} catch (error) {
