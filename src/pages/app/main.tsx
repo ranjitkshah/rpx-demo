@@ -6,7 +6,7 @@ const MainPage = () => {
 	return (
 		<main className="container mx-auto py-8">
 			<div className="flex flex-col justify-center items-center">
-				<Link href="/">
+				<Link href="/app/coins">
 					<Image
 						className="w-[90vw] max-w-[375px] h-auto"
 						alt="Buy gamer coins"
@@ -15,7 +15,7 @@ const MainPage = () => {
 				</Link>
 			</div>
 			<div className="flex flex-col justify-center items-center my-4">
-				<Link href="/">
+				<Link href="/app/coins">
 					<Image
 						className="w-[90vw] max-w-[375px] h-auto"
 						alt="Buy gamer coins"
@@ -24,7 +24,7 @@ const MainPage = () => {
 				</Link>
 			</div>
 			<div className="flex flex-col justify-center items-center">
-				<Link href="/">
+				<Link href="/app/coins">
 					<Image
 						className="w-[90vw] max-w-[375px] h-auto"
 						alt="Buy gamer coins"

@@ -3,7 +3,6 @@ import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import ErrorBoundary from '../components/ErrorBoundary'
 import { ClerkProvider } from '@clerk/nextjs'
-import Layout from '@/components/Layout'
 
 function MyApp({ Component, pageProps }: AppProps) {
 	// @ts-ignore

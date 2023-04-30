@@ -71,6 +71,7 @@ export type RPXUser = {
 	createdAt: Date | string
 	updatedAt: Date | string
 	ownedCoins: OwnedCoin[]
+	walletFunds: number
 	lastSignInAt: Date | string
 }
 
@@ -81,6 +82,7 @@ export type NewUser = {
 	lastName: string
 	signupMethod: OAuthProvider | string // TODO: Extend
 	userType: UserTypes
+	walletFunds: number
 	createdAt: Date | string
 	updatedAt: Date | string
 	lastSignInAt: Date | string
@@ -89,9 +91,10 @@ export type NewUser = {
 export type Coin = {
 	id?: string
 	name: string
-	creatorRef: Record<string, any>
-	description: string
-	imageUrl: string
+	creatorName: string
+	creatorRef?: Record<string, any>
+	description?: string
+	imageUrl?: string
 	currentPrice: number
 	previousPrice: number
 	amountMinted: number

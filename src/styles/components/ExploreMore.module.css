@@ -1,0 +1,18 @@
+.scrollTitle {
+	color: #7de0b0;
+	font-weight: bold;
+	font-size: 18px;
+
+	margin-top: 10px;
+	margin-left: 14px;
+}
+
+.white {
+	color: white;
+	font-size: 10px;
+}
+
+.offwhite {
+	color: #bababa;
+	font-size: 10px;
+}

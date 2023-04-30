@@ -51,6 +51,14 @@
 	letter-spacing: 0.5px;
 }
 
+@media (max-width: 640px) {
+	.signupText {
+		position: absolute;
+		bottom: 10px;
+		left: 20%;
+	}
+}
+
 .signupLink {
 	color: #78d4b4;
 }

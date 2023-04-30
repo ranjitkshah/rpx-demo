@@ -47,7 +47,7 @@ const GamerIntakeModalContents = ({ handleIntakeUser, showLoadingSpinner }: Prop
 					/>
 					<Image
 						className="w-[80px] translate-y-[-18px]"
-						alt="RPX Collectables icon"
+						alt="RPX collectibles icon"
 						src={require('../../resources/images/Group 2.png')}
 					/>
 				</div>

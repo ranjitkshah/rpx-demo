@@ -32,6 +32,7 @@ const InitialIntakePage = () => {
 			lastName: user!.lastName ?? 'DEFAULT',
 			signupMethod: user!.externalAccounts[0].provider ?? 'DEFAULT',
 			userType: intakeType,
+			walletFunds: 10000,
 			createdAt: user!.createdAt?.toISOString() ?? new Date().toISOString(),
 			updatedAt: user!.updatedAt?.toISOString() ?? new Date().toISOString(),
 			lastSignInAt: user!.lastSignInAt?.toISOString() ?? new Date().toISOString()

@@ -1,9 +1,9 @@
 import React from 'react'
 import { SignIn } from '@clerk/nextjs'
-import Layout from '@/components/Layout/authLayout'
+import Layout from '@/components/Layout/secondaryLayout'
 
 const SignInPage = () => (
-	<div className="h-[90vh] w-[100vw] flex justify-center items-center">
+	<div className="h-[85vh] w-[100vw] flex justify-center items-center">
 		<SignIn path="/auth/sign-in" routing="path" signUpUrl="/auth/sign-up" />
 	</div>
 )
