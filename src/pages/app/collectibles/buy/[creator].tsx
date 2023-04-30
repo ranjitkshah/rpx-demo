@@ -1,6 +1,5 @@
 import * as React from 'react'
 import { useRouter } from 'next/router'
-import { Coin } from '@/shared/types'
 import { useCoinByCreator } from '@/components/hooks/useCoinByCreator'
 import Loading from '@/components/general/Loading'
 import Layout from '@/components/Layout/secondaryLayout'
@@ -8,7 +7,7 @@ import Image from 'next/image'
 import { useUserData } from '@/components/hooks/useUserData'
 import styles from '../../../../styles/pages/BuyCoin.module.css'
 
-// TODO: Update all loading instances with actual loading component from designs
+// TODO: Fix the non-responsiveness on this page
 // TODO: Add better error handling here
 // TODO: Do better data fetching
 const BuyCoinPage = () => {
@@ -16,6 +15,7 @@ const BuyCoinPage = () => {
 	const { creator } = router.query
 	const { coin, isLoading: isCoinLoading, error: coinError } = useCoinByCreator(creator as string)
 	const { foundUser, isLoading: isUserLoading, error: userError } = useUserData()
+	const [numberOfCoins, setNumberOfCoins] = React.useState<string>('')
 	const isLoading = isCoinLoading || isUserLoading
 	const error = coinError || userError
 	const [imgSrc, setImgSrc] = React.useState<string>()
@@ -26,10 +26,40 @@ const BuyCoinPage = () => {
 		}
 	}, [coin])
 
+	const handleSetNumberOfCoins = (num: string) => {
+		switch (num) {
+			case '0':
+				if (numberOfCoins === '0') {
+					return
+				}
+				setNumberOfCoins((prev) => prev + num)
+				break
+
+			case 'X':
+				if (numberOfCoins.length <= 1) {
+					setNumberOfCoins('0')
+				} else {
+					setNumberOfCoins((prev) => prev.substring(0, prev.length - 1))
+				}
+				break
+
+			case '.':
+				if (numberOfCoins.includes('.')) {
+					return
+				}
+				setNumberOfCoins((prev) => prev + '.')
+				break
+
+			default:
+				setNumberOfCoins((prev) => prev + num)
+				break
+		}
+	}
+
 	return (
-		<main className="container mx-auto">
+		<main className="container mx-auto px-2 pb-4">
 			{coin && (
-				<div className="flex flex-col container">
+				<div className="flex flex-col container relative">
 					<div className="flex flex-col items-center justify-center mb-4">
 						{imgSrc && (
 							<Image priority={true} src={imgSrc ? imgSrc : ''} alt={`${creator}'s coin!`} width={120} height={120} />
@@ -41,14 +71,14 @@ const BuyCoinPage = () => {
 						alt="Horizontal Rule"
 						src={require('../../../../resources/images/horizontalline.png')}
 					/>
-					<div className="text-white flex flex-col">
+					<div className="flex flex-col text-[#99ffcc] my-3">
 						<div className="flex flex-row justify-between px-8">
 							<p>Price per Coin:</p>
-							<p>{coin.currentPrice}</p>
+							<p>${coin.currentPrice} USD</p>
 						</div>
-						<div className="flex flex-row justify-between px-8">
+						<div className="flex flex-row justify-between px-8 ml-2">
 							<p>&gt; Wallet Funds</p>
-							<p>{foundUser?.walletFunds}</p>
+							<p className="text-yellow-400">${foundUser?.walletFunds} USD</p>
 						</div>
 					</div>
 					<Image
@@ -64,14 +94,126 @@ const BuyCoinPage = () => {
 						alt="Horizontal Rule"
 						src={require('../../../../resources/images/horizontalline.png')}
 					/>
-					<div>Amount</div>
+					<div className="text-white mb-3">
+						<div className={styles.coinAmount}>
+							<h3 className="">{numberOfCoins} Coins</h3>
+						</div>
+						<div className={styles.coinPrice}>
+							<p>= ${(Number(numberOfCoins) * coin.currentPrice).toFixed(2)} USD</p>
+						</div>
+					</div>
 					<Image
 						className="mx-auto"
 						alt="Horizontal Rule"
 						src={require('../../../../resources/images/horizontalline.png')}
 					/>
-					<div>numpad</div>
-					<div>
+					<div className={styles.numpadContainer}>
+						<div className="flex flex-col align-center justify-center">
+							<div className={styles.numpadRow}>
+								<div
+									className={styles.numPadButton}
+									onClick={(e) => {
+										handleSetNumberOfCoins('1')
+									}}
+								>
+									1
+								</div>
+								<div
+									className={styles.numPadButton}
+									onClick={(e) => {
+										handleSetNumberOfCoins('2')
+									}}
+								>
+									2
+								</div>
+								<div
+									className={styles.numPadButton}
+									onClick={(e) => {
+										handleSetNumberOfCoins('3')
+									}}
+								>
+									3
+								</div>
+							</div>
+							<div className={styles.numpadRow}>
+								<div
+									className={styles.numPadButton}
+									onClick={(e) => {
+										handleSetNumberOfCoins('4')
+									}}
+								>
+									4
+								</div>
+								<div
+									className={styles.numPadButton}
+									onClick={(e) => {
+										handleSetNumberOfCoins('5')
+									}}
+								>
+									5
+								</div>
+								<div
+									className={styles.numPadButton}
+									onClick={(e) => {
+										handleSetNumberOfCoins('6')
+									}}
+								>
+									6
+								</div>
+							</div>
+							<div className={styles.numpadRow}>
+								<div
+									className={styles.numPadButton}
+									onClick={(e) => {
+										handleSetNumberOfCoins('7')
+									}}
+								>
+									7
+								</div>
+								<div
+									className={styles.numPadButton}
+									onClick={(e) => {
+										handleSetNumberOfCoins('8')
+									}}
+								>
+									8
+								</div>
+								<div
+									className={styles.numPadButton}
+									onClick={(e) => {
+										handleSetNumberOfCoins('9')
+									}}
+								>
+									9
+								</div>
+							</div>
+							<div className={styles.numpadRow}>
+								<div
+									className={styles.numPadButton}
+									onClick={(e) => {
+										handleSetNumberOfCoins('.')
+									}}
+								>
+									.
+								</div>
+								<div
+									className={styles.numPadButton}
+									onClick={(e) => {
+										handleSetNumberOfCoins('0')
+									}}
+								>
+									0
+								</div>
+								<div
+									className={styles.numPadButton}
+									onClick={(e) => {
+										handleSetNumberOfCoins('X')
+									}}
+								>
+									X
+								</div>
+							</div>
+						</div>
 						<button className={`${styles.button} btn btn-block normal-case text-black`}>Buy it!</button>
 					</div>
 				</div>
