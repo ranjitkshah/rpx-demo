@@ -20,13 +20,13 @@ const handler = withAuth(async (req, res) => {
 	if (method === APIMethods.GET) {
 		try {
 			const db = getFirestore(firebase_app)
-			const coinsCollectionRef = collection(db, CollectionNames.USERS)
-			const q = query(coinsCollectionRef, where('clerkId', '==', id))
+			const usersCollectionRef = collection(db, CollectionNames.USERS)
+			const q = query(usersCollectionRef, where('clerkId', '==', id))
 			const querySnapshot = await getDocs(q)
 
 			if (querySnapshot.empty) {
 				console.error('e', DocumentResponses.DATA_NOT_FOUND)
-				res.status(400).json({
+				res.status(404).json({
 					status: APIStatuses.ERROR,
 					type: DocumentResponses.DATA_NOT_FOUND,
 					data: { error: `Could not find the user with the clerk id of ${id}` }

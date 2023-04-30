@@ -65,11 +65,17 @@ const BuyCoinPage = () => {
 		}
 	}
 
-	const handlePurchaseCoins = async (userId: string, creatorName: string, purchasePrice: number) => {
+	const handlePurchaseCoins = async (
+		userId: string,
+		creatorName: string,
+		purchasePrice: string,
+		numberOfCoins: string
+	) => {
 		console.log('farts')
 		console.log(userId)
 		console.log(creatorName)
 		console.log(purchasePrice)
+		console.log(numberOfCoins)
 	}
 
 	return (
@@ -265,7 +271,9 @@ const BuyCoinPage = () => {
 								foundUser!.clerkId,
 								creator as string,
 								// TODO: Make this a utility function for god sakes
-								Math.round(Number(numberOfCoins) * coin!.currentPrice * 100) / 100
+								(Number(numberOfCoins) * coin?.currentPrice!).toFixed(2),
+								// TODO: Make sure this accounts for fractional coin purchases (if we want that)
+								numberOfCoins
 							)
 						}
 						showLoadingSpinner={false}
