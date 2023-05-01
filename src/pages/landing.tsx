@@ -7,7 +7,7 @@ import { useSignIn, useUser } from '@clerk/nextjs'
 import { useRouter } from 'next/router'
 import Loading from '@/components/general/Loading'
 
-// TODO: Fix twitter auth error
+// TODO: Handle Twitter auth after Varun decides what he wants to do
 
 // TODO: Add loading or something here
 const LandingPage = () => {
@@ -15,6 +15,7 @@ const LandingPage = () => {
 	const { signIn } = useSignIn()
 	const { isSignedIn, isLoaded } = useUser()
 	const [isLoading, setIsLoading] = React.useState<boolean>(true)
+	const [showToast, setShowToast] = React.useState<boolean>(false)
 
 	React.useEffect(() => {
 		if (isLoaded) {
@@ -25,6 +26,13 @@ const LandingPage = () => {
 			}
 		}
 	}, [isLoaded])
+
+	const handleShowToast = () => {
+		setShowToast(true)
+		setTimeout(() => {
+			setShowToast(false)
+		}, 10000)
+	}
 
 	const signInWith = (strategy: OAuthStrategy) => {
 		try {
@@ -58,7 +66,7 @@ const LandingPage = () => {
 						Twitch Login
 					</button>
 					<button
-						onClick={() => signInWith('oauth_twitter')}
+						onClick={handleShowToast}
 						className={`btn btn-block normal-case my-2 ${styles.loginButtons} ${styles.twitterButton}`}
 					>
 						Twitter Login
@@ -78,6 +86,15 @@ const LandingPage = () => {
 						</Link>
 					</p>
 				</div>
+			</div>
+			<div className="toast toast-center z-999">
+				{showToast && (
+					<div className="alert alert-info w-[300px]">
+						<div>
+							<span>Twitter integrations are currently disabled.</span>
+						</div>
+					</div>
+				)}
 			</div>
 		</main>
 	)
