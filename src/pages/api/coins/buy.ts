@@ -61,9 +61,13 @@ const handler = withAuth(async (req, res) => {
 				// TODO: We need to handle fractional amounts of both of these here
 				const formattedNumberOfCoins = Number(numberOfCoins)
 				foundCoin.amountPurchased += formattedNumberOfCoins
-				foundUser.walletFunds -= foundCoin.currentPrice
+				foundUser.walletFunds -= parseFloat((foundCoin.currentPrice * formattedNumberOfCoins).toFixed())
 				// TODO: Replace with actual doc references in the future
-				foundUser.ownedCoins = foundUser.ownedCoins?.length ? [...foundUser.ownedCoins, foundCoin.id] : [foundCoin.id]
+				foundUser.ownedCoins = foundUser.ownedCoins?.length ? [...foundUser.ownedCoins] : []
+
+				for (let i = 0; i < formattedNumberOfCoins; i++) {
+					foundUser.ownedCoins.push(foundCoin.id)
+				}
 
 				const coinDocumentRefToUpdate = doc(db, coinDocumentPath)
 				const userDocumentRefToUpdate = doc(db, userDocumentPath)
