@@ -108,7 +108,7 @@ const CoinsPage = () => {
 										linkLocation={`/app/coins/${coin.creatorName}/buy`}
 										collectibleNameSrc={coinsImageNameMap[coin.creatorName].src}
 										imgSrc={coinsImageMap[coin.creatorName].src}
-										itemPrice={coin?.Ch40sQueen}
+										itemPrice={coin?.currentPrice}
 									/>
 								)
 							})}
@@ -126,7 +126,7 @@ const CoinsPage = () => {
 									linkLocation={`/app/coins/${coin.creatorName}/buy`}
 									collectibleNameSrc={coinsImageNameMap[coin.creatorName].src}
 									imgSrc={coinsImageMap[coin.creatorName].src}
-									itemPrice={coin?.Ch40sQueen}
+									itemPrice={coin?.currentPrice}
 								/>
 							)
 						})}
@@ -143,7 +143,7 @@ const CoinsPage = () => {
 									linkLocation={`/app/coins/${coin.creatorName}/buy`}
 									collectibleNameSrc={coinsImageNameMap[coin.creatorName].src}
 									imgSrc={coinsImageMap[coin.creatorName].src}
-									itemPrice={coin?.Ch40sQueen}
+									itemPrice={coin?.currentPrice}
 								/>
 							)
 						})}
@@ -160,7 +160,7 @@ const CoinsPage = () => {
 									linkLocation={`/app/coins/${coin.creatorName}/buy`}
 									collectibleNameSrc={coinsImageNameMap[coin.creatorName].src}
 									imgSrc={coinsImageMap[coin.creatorName].src}
-									itemPrice={coin?.Ch40sQueen}
+									itemPrice={coin?.currentPrice}
 								/>
 							)
 						})}

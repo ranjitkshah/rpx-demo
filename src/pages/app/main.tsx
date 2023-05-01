@@ -2,12 +2,11 @@ import * as React from 'react'
 import Layout from '@/components/Layout/mainLayout'
 import Image from 'next/image'
 import Link from 'next/link'
-import styles from '../../styles/pages/Main.module.css'
 
 // TODO: update hrefs with more locations
 const MainPage = () => {
 	return (
-		<main className={`${styles.mainContainer} container mx-auto py-4 flex flex-col space-y-4`}>
+		<main className={`container mx-auto py-4 flex flex-col space-y-4`}>
 			<div className="flex-1 flex flex-col justify-center items-center">
 				<Link href="/app/coins">
 					<Image
