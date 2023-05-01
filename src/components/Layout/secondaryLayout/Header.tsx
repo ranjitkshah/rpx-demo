@@ -4,8 +4,8 @@ import { useRouter } from 'next/router'
 import React, { ReactElement } from 'react'
 
 export type HeaderProps = {
-	logo: ReactElement
-	title: ReactElement
+	logo?: ReactElement
+	title?: ReactElement
 }
 const Header = ({ logo, title }: HeaderProps) => {
 	const router = useRouter()
