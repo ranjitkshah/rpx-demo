@@ -35,10 +35,10 @@ const BuyCoinPage = () => {
 	}, [coinError, userError])
 
 	React.useEffect(() => {
-		if (coin) {
+		if (creator) {
 			setImgSrc(`/resources/images/coins/${creator}.png`)
 		}
-	}, [coin])
+	}, [creator])
 
 	const handleSetNumberOfCoins = (num: string) => {
 		switch (num) {
@@ -131,7 +131,7 @@ const BuyCoinPage = () => {
 							<p>${coin.currentPrice} USD</p>
 						</div>
 						<div className="flex flex-row justify-between px-8 ml-2">
-							<p>&gt; Wallet Funds</p>
+							<p>&gt; Wallet Funds:</p>
 							<p className="text-yellow-400">${foundUser?.walletFunds.toFixed(2)} USD</p>
 						</div>
 					</div>

@@ -32,3 +32,15 @@
 .congratsButton:hover {
 	background-color: #a275ff;
 }
+
+.secondaryCongratsButton {
+	height: 64px;
+	font-weight: 500;
+	font-size: 23px;
+	letter-spacing: 0.5px;
+	background-color: rgb(250 204 21);
+}
+
+.secondaryCongratsButton:hover {
+	background-color: rgb(250 204 21);
+}
