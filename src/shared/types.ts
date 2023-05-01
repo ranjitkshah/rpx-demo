@@ -7,6 +7,10 @@ export enum CollectionNames {
 	COINS = 'coins'
 }
 
+export enum StorageNames {
+	COINS = 'coins'
+}
+
 export enum APIStatuses {
 	SUCCESS = 'SUCCESS',
 	ERROR = 'ERROR'
@@ -102,3 +106,7 @@ export type Coin = {
 	createdAt: Date | string
 	updatedAt: Date | string
 }
+
+// Utility types
+
+export type Maybe<T> = T | null

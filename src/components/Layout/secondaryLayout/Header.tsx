@@ -1,9 +1,13 @@
-import Image from 'next/image'
+import Image, { ImageProps } from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import React from 'react'
+import React, { ReactElement } from 'react'
 
-const Header = () => {
+export type HeaderProps = {
+	logo?: ReactElement
+	title?: ReactElement
+}
+const Header = ({ logo, title }: HeaderProps) => {
 	const router = useRouter()
 
 	const handleBackButton = () => {
@@ -15,11 +19,15 @@ const Header = () => {
 		<header>
 			<nav id="topnav" className="mx-auto defaultscroll is-sticky nav-sticky animate-gradualLoad pt-6">
 				<Link className="cursor-pointer" href="/">
-					<Image
-						className="max-w-[200px] mx-auto translate-y-[10px]"
-						alt="RPX logo"
-						src={require('../../../resources/images/rpxlogo.png')}
-					/>
+					{logo ? (
+						logo
+					) : (
+						<Image
+							className="max-w-[200px] mx-auto translate-y-[10px]"
+							alt="RPX logo"
+							src={require('../../../resources/images/rpxlogo.png')}
+						/>
+					)}
 				</Link>
 				<div className="cursor-pointer inline-block ml-6 translate-y-[-35px]" onClick={handleBackButton}>
 					<Image
@@ -28,6 +36,8 @@ const Header = () => {
 						src={require('../../../resources/images/back.png')}
 					/>
 				</div>
+
+				{title}
 			</nav>
 		</header>
 	)
