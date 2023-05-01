@@ -16,7 +16,7 @@ const GamerIntakeModalContents = ({ handleIntakeUser, showLoadingSpinner }: Prop
 				<h1 className={styles.heading1}>
 					Hi Gamer, welcome <br /> to Ready Player X!
 				</h1>
-				<p className="text-center text-md font-medium">
+				<p className="text-center text-md font-medium text-black">
 					You'll be able to quickly create your own gamer coins and digital collectibles.
 				</p>
 			</div>
@@ -26,12 +26,14 @@ const GamerIntakeModalContents = ({ handleIntakeUser, showLoadingSpinner }: Prop
 					Things to know <br /> before getting started:
 				</h2>
 				<div className="text-center leading-snug">
-					<p>
+					<p className="text-black">
 						You need to create a <b>Gamer coin</b> first before making your <b>Collectibles</b>
 					</p>
 					<span className={styles.reasonText}>Reason being:</span>
-					<p>1 coin = 1 collectible</p>
-					<p>(i.e.: if they want to purchase 3 collectibles, then tehy will need to purchase 3 coins first, makes sense?)</p>
+					<p className="text-black">1 coin = 1 collectible</p>
+					<p className="text-black">
+						(i.e.: if they want to purchase 3 collectibles, then tehy will need to purchase 3 coins first, makes sense?)
+					</p>
 				</div>
 				<div className="flex flex-row justify-center mt-8">
 					<Image

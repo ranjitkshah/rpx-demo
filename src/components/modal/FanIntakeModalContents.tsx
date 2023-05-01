@@ -16,7 +16,7 @@ const FanIntakeModalContents = ({ handleIntakeUser, showLoadingSpinner }: Props)
 				<h1 className={styles.heading1}>
 					Hi Fan, welcome <br /> to Ready Player X!
 				</h1>
-				<p className="text-center text-md font-medium">
+				<p className="text-center text-md font-medium text-black">
 					Own social tokens, exciting moments, and digital apparel from your favourite gamers and esports teams.
 				</p>
 			</div>
@@ -26,7 +26,7 @@ const FanIntakeModalContents = ({ handleIntakeUser, showLoadingSpinner }: Props)
 					Things to know <br /> before getting started:
 				</h2>
 				<div>
-					<p>
+					<p className="text-black">
 						1. You always need <b>Gamer Coins</b> to buy <b>Gamer Cards & Collectibles</b> (think of it like tokens to play an
 						arcade game)
 					</p>
@@ -49,7 +49,7 @@ const FanIntakeModalContents = ({ handleIntakeUser, showLoadingSpinner }: Props)
 						src={require('../../resources/images/Group 2.png')}
 					/>
 				</div>
-				<p>
+				<p className="text-black">
 					2. We’re giving you a <b>free Coin right now</b> because you signed up. With it, you’ll be able to buy any card or
 					collectible!
 				</p>
