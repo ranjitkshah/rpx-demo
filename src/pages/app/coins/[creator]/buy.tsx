@@ -35,10 +35,10 @@ const BuyCoinPage = () => {
 	}, [coinError, userError])
 
 	React.useEffect(() => {
-		if (coin) {
-			setImgSrc('/resources/images/coins/Ch40sQueen.png')
+		if (creator) {
+			setImgSrc(`/resources/images/coins/${creator}.png`)
 		}
-	}, [coin])
+	}, [creator])
 
 	const handleSetNumberOfCoins = (num: string) => {
 		switch (num) {
@@ -111,7 +111,7 @@ const BuyCoinPage = () => {
 	}
 
 	return (
-		<main className="container mx-auto px-2 pb-4">
+		<main className="container mx-auto px-2 pb-4 max-w-[400px]">
 			{coin && (
 				<div className="flex flex-col container relative">
 					<div className="flex flex-col items-center justify-center mb-4">
@@ -131,8 +131,8 @@ const BuyCoinPage = () => {
 							<p>${coin.currentPrice} USD</p>
 						</div>
 						<div className="flex flex-row justify-between px-8 ml-2">
-							<p>&gt; Wallet Funds</p>
-							<p className="text-yellow-400">${foundUser?.walletFunds} USD</p>
+							<p>&gt; Wallet Funds:</p>
+							<p className="text-yellow-400">${foundUser?.walletFunds.toFixed(2)} USD</p>
 						</div>
 					</div>
 					<Image
@@ -164,9 +164,9 @@ const BuyCoinPage = () => {
 					/>
 					<div className={styles.numpadContainer}>
 						<div className="flex flex-col align-center justify-center">
-							<div className={styles.numpadRow}>
+							<div className={`${styles.numpadRow} w-full`}>
 								<div
-									className={styles.numPadButton}
+									className={`${styles.numPadButton} w-1/3 text-center`}
 									onClick={(e) => {
 										handleSetNumberOfCoins('1')
 									}}
@@ -174,7 +174,7 @@ const BuyCoinPage = () => {
 									1
 								</div>
 								<div
-									className={styles.numPadButton}
+									className={`${styles.numPadButton} w-1/3 text-center`}
 									onClick={(e) => {
 										handleSetNumberOfCoins('2')
 									}}
@@ -182,7 +182,7 @@ const BuyCoinPage = () => {
 									2
 								</div>
 								<div
-									className={styles.numPadButton}
+									className={`${styles.numPadButton} w-1/3 text-center`}
 									onClick={(e) => {
 										handleSetNumberOfCoins('3')
 									}}
@@ -190,9 +190,9 @@ const BuyCoinPage = () => {
 									3
 								</div>
 							</div>
-							<div className={styles.numpadRow}>
+							<div className={`${styles.numpadRow} w-full`}>
 								<div
-									className={styles.numPadButton}
+									className={`${styles.numPadButton} w-1/3 text-center`}
 									onClick={(e) => {
 										handleSetNumberOfCoins('4')
 									}}
@@ -200,7 +200,7 @@ const BuyCoinPage = () => {
 									4
 								</div>
 								<div
-									className={styles.numPadButton}
+									className={`${styles.numPadButton} w-1/3 text-center`}
 									onClick={(e) => {
 										handleSetNumberOfCoins('5')
 									}}
@@ -208,7 +208,7 @@ const BuyCoinPage = () => {
 									5
 								</div>
 								<div
-									className={styles.numPadButton}
+									className={`${styles.numPadButton} w-1/3 text-center`}
 									onClick={(e) => {
 										handleSetNumberOfCoins('6')
 									}}
@@ -216,9 +216,9 @@ const BuyCoinPage = () => {
 									6
 								</div>
 							</div>
-							<div className={styles.numpadRow}>
+							<div className={`${styles.numpadRow} w-full`}>
 								<div
-									className={styles.numPadButton}
+									className={`${styles.numPadButton} w-1/3 text-center`}
 									onClick={(e) => {
 										handleSetNumberOfCoins('7')
 									}}
@@ -226,7 +226,7 @@ const BuyCoinPage = () => {
 									7
 								</div>
 								<div
-									className={styles.numPadButton}
+									className={`${styles.numPadButton} w-1/3 text-center`}
 									onClick={(e) => {
 										handleSetNumberOfCoins('8')
 									}}
@@ -234,7 +234,7 @@ const BuyCoinPage = () => {
 									8
 								</div>
 								<div
-									className={styles.numPadButton}
+									className={`${styles.numPadButton} w-1/3 text-center`}
 									onClick={(e) => {
 										handleSetNumberOfCoins('9')
 									}}
@@ -242,9 +242,9 @@ const BuyCoinPage = () => {
 									9
 								</div>
 							</div>
-							<div className={styles.numpadRow}>
+							<div className={`${styles.numpadRow} w-full`}>
 								<div
-									className={styles.numPadButton}
+									className={`${styles.numPadButton} w-1/3 text-center`}
 									onClick={(e) => {
 										handleSetNumberOfCoins('.')
 									}}
@@ -252,7 +252,7 @@ const BuyCoinPage = () => {
 									.
 								</div>
 								<div
-									className={styles.numPadButton}
+									className={`${styles.numPadButton} w-1/3 text-center`}
 									onClick={(e) => {
 										handleSetNumberOfCoins('0')
 									}}
@@ -260,7 +260,7 @@ const BuyCoinPage = () => {
 									0
 								</div>
 								<div
-									className={styles.numPadButton}
+									className={`${styles.numPadButton} w-1/3 text-center`}
 									onClick={(e) => {
 										handleSetNumberOfCoins('X')
 									}}

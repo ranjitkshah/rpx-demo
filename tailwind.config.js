@@ -1,55 +1,54 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
-  ],
-  // TODO: Audit these values when the app is more complete
-  theme: {
-      screens: {
-        xs: "375px",
-        sm: '640px',
-        md: '768px',
-        lg: '1024px',
-        xl: '1280px',
-        '2xl': '1536px',
+	content: [
+		'./src/pages/**/*.{js,ts,jsx,tsx,mdx}',
+		'./src/components/**/*.{js,ts,jsx,tsx,mdx}',
+		'./src/app/**/*.{js,ts,jsx,tsx,mdx}'
+	],
+	// TODO: Audit these values when the app is more complete
+	theme: {
+		screens: {
+			xs: '375px',
+			sm: '640px',
+			md: '768px',
+			lg: '1024px',
+			xl: '1280px',
+			'2xl': '1536px'
+		},
+		fontFamily: {
+			nunito: ['"Nunito", sans-serif']
+		},
+		extend: {
+			backgroundImage: {
+				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+				'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))'
 			},
-			fontFamily: {
-					'nunito': ['"Nunito", sans-serif'],
+			// TODO: Update with their colors
+			colors: {
+				dark: '#3c4858',
+				black: '#161c2d',
+				'dark-footer': '#192132',
+				'sfs-blue': '#4F46E5',
+				brightRed: 'hsl(12, 88%, 59%)',
+				brightRedLight: 'hsl(12, 88%, 69%)',
+				brightRedSupLight: 'hsl(12, 88%, 95%)',
+				darkBlue: 'hsl(228, 39%, 23%)',
+				darkGrayishBlue: 'hsl(227, 12%, 61%)',
+				veryDarkBlue: 'hsl(233, 12%, 13%)',
+				veryPaleRed: 'hsl(13, 100%, 96%)',
+				veryLightGray: 'hsl(0, 0%, 98%)'
 			},
-    extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-      },
-      // TODO: Update with their colors
-      colors: {
-        'dark': '#3c4858',
-        'black': '#161c2d',
-        'dark-footer': '#192132',
-        'sfs-blue': '#4F46E5',
-        brightRed: 'hsl(12, 88%, 59%)',
-        brightRedLight: 'hsl(12, 88%, 69%)',
-        brightRedSupLight: 'hsl(12, 88%, 95%)',
-        darkBlue: 'hsl(228, 39%, 23%)',
-        darkGrayishBlue: 'hsl(227, 12%, 61%)',
-        veryDarkBlue: 'hsl(233, 12%, 13%)',
-        veryPaleRed: 'hsl(13, 100%, 96%)',
-        veryLightGray: 'hsl(0, 0%, 98%)' ,
-      },
-      zIndex: {
-        1: '1',
-        2: '2',
-        3: '3',
-        999: '999',
-      },
-    },
-  },
-  plugins: [require("daisyui")],
-  // TODO: renable if they want light mode and dark mode later
-  daisyui: {
-    themes: false
-  }
+			zIndex: {
+				1: '1',
+				2: '2',
+				3: '3',
+				999: '999'
+			}
+		}
+	},
+	plugins: [require('daisyui')],
+	// TODO: renable if they want light mode and dark mode later
+	daisyui: {
+		themes: false
+	}
 }

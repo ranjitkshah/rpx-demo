@@ -2,31 +2,34 @@ import * as React from 'react'
 import Layout from '@/components/Layout/mainLayout'
 import Image from 'next/image'
 import Link from 'next/link'
+import styles from '../../styles/pages/Main.module.css'
+
+// TODO: update hrefs with more locations
 const MainPage = () => {
 	return (
-		<main className="container mx-auto py-8">
-			<div className="flex flex-col justify-center items-center">
+		<main className={`${styles.mainContainer} container mx-auto py-4 flex flex-col space-y-4`}>
+			<div className="flex-1 flex flex-col justify-center items-center">
 				<Link href="/app/coins">
 					<Image
-						className="w-[90vw] max-w-[375px] h-auto"
+						className="w-[90vw] h-auto object-contain"
 						alt="Buy gamer coins"
 						src={require('../../resources/images/buygamercoins.png')}
 					/>
 				</Link>
 			</div>
-			<div className="flex flex-col justify-center items-center my-4">
+			<div className="flex-1 flex flex-col justify-center items-center">
 				<Link href="/app/coins">
 					<Image
-						className="w-[90vw] max-w-[375px] h-auto"
+						className="w-[90vw] h-auto object-contain"
 						alt="Buy gamer coins"
 						src={require('../../resources/images/buygamercoins.png')}
 					/>
 				</Link>
 			</div>
-			<div className="flex flex-col justify-center items-center">
+			<div className="flex-1 flex flex-col justify-center items-center">
 				<Link href="/app/coins">
 					<Image
-						className="w-[90vw] max-w-[375px] h-auto"
+						className="w-[90vw] h-auto object-contain"
 						alt="Buy gamer coins"
 						src={require('../../resources/images/buygamercoins.png')}
 					/>

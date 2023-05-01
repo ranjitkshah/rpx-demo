@@ -52,28 +52,28 @@ const CoinsPage = () => {
 					<div className={`${styles.horizontalScroll}`}>
 						<CollectableCard
 							isPriceLoading={isLoading}
-							linkLocation={`/app/collectibles/buy/Ch40sQueen`}
+							linkLocation={`/app/coins/Ch40sQueen/buy`}
 							collectibleNameSrc={Ch40sQueenText.src}
 							imgSrc={Ch40sQueen.src}
 							itemPrice={coinsMap?.Ch40sQueen}
 						/>
 						<CollectableCard
 							isPriceLoading={isLoading}
-							linkLocation={`/app/collectibles/Cr1msonAvenger`}
+							linkLocation={`/app/coins/Cr1msonAvenger/buy`}
 							collectibleNameSrc={Cr1msonAvengerText.src}
 							imgSrc={Cr1msonAvenger.src}
 							itemPrice={coinsMap?.Cr1msonAvenger}
 						/>
 						<CollectableCard
 							isPriceLoading={isLoading}
-							linkLocation={`/app/collectibles/D3athBlow`}
+							linkLocation={`/app/coins/D3athBlow/buy`}
 							collectibleNameSrc={D3athBlowText.src}
 							imgSrc={D3athBlow.src}
 							itemPrice={coinsMap?.Cr1msonAvenger}
 						/>
 						<CollectableCard
 							isPriceLoading={isLoading}
-							linkLocation={`/app/collectibles/DarkNightm4re`}
+							linkLocation={`/app/coins/DarkNightm4re/buy`}
 							collectibleNameSrc={DarkKnightm4reText.src}
 							imgSrc={DarkNightm4re.src}
 							itemPrice={coinsMap?.DarkNightm4re}
@@ -81,99 +81,99 @@ const CoinsPage = () => {
 					</div>
 				</div>
 			</div>
-			<div>
+			<div className={styles.content}>
 				<h2 className={styles.scrollTitle}>Latest Drops</h2>
 				<div className={styles.horizontalScroll}>
 					<CollectableCard
 						isPriceLoading={isLoading}
-						linkLocation={`/app/collectibles/FuryFight3r`}
+						linkLocation={`/app/coins/FuryFight3r/buy`}
 						collectibleNameSrc={FuryFight3rText.src}
 						imgSrc={FuryFight3r.src}
 						itemPrice={coinsMap?.FuryFight3r}
 					/>
 					<CollectableCard
 						isPriceLoading={isLoading}
-						linkLocation={`/app/collectibles/Infern0Assassin`}
+						linkLocation={`/app/coins/Infern0Assassin/buy`}
 						collectibleNameSrc={Infern0AssassinText.src}
 						imgSrc={Infern0Assassin.src}
 						itemPrice={coinsMap?.Infern0Assassin}
 					/>
 					<CollectableCard
 						isPriceLoading={isLoading}
-						linkLocation={`/app/collectibles/D3athBlow`}
+						linkLocation={`/app/coins/D3athBlow/buy`}
 						collectibleNameSrc={D3athBlowText.src}
 						imgSrc={D3athBlow.src}
 						itemPrice={coinsMap?.D3athBlow}
 					/>
 					<CollectableCard
 						isPriceLoading={isLoading}
-						linkLocation={`/app/collectibles/NightHunter`}
+						linkLocation={`/app/coins/NightHunter/buy`}
 						collectibleNameSrc={NightHunterText.src}
 						imgSrc={NightHunter.src}
 						itemPrice={coinsMap?.NightHunter}
 					/>
 				</div>
 			</div>
-			<div>
+			<div className={styles.content}>
 				<h2 className={styles.scrollTitle}>Esports</h2>
 				<div className={styles.horizontalScroll}>
 					<CollectableCard
 						isPriceLoading={isLoading}
-						linkLocation={`/app/collectibles/R0gueRider`}
+						linkLocation={`/app/coins/R0gueRider/buy`}
 						collectibleNameSrc={R0gueRiderText.src}
 						imgSrc={R0gueRider.src}
 						itemPrice={coinsMap?.R0gueRider}
 					/>
 					<CollectableCard
 						isPriceLoading={isLoading}
-						linkLocation={`/app/collectibles/StealthSniper`}
+						linkLocation={`/app/coins/StealthSniper/buy`}
 						collectibleNameSrc={StealthSniperText.src}
 						imgSrc={StealthSniper.src}
 						itemPrice={coinsMap?.StealthSniper}
 					/>
 					<CollectableCard
 						isPriceLoading={isLoading}
-						linkLocation={`/app/collectibles/ThunderB0ltz`}
+						linkLocation={`/app/coins/ThunderB0ltz/buy`}
 						collectibleNameSrc={ThunderB0ltzText.src}
 						imgSrc={ThunderB0ltz.src}
 						itemPrice={coinsMap?.ThunderB0ltz}
 					/>
 					<CollectableCard
 						isPriceLoading={isLoading}
-						linkLocation={`/app/collectibles/TitanWarrior188`}
+						linkLocation={`/app/coins/TitanWarrior188/buy`}
 						collectibleNameSrc={TitanWarrior188Text.src}
 						imgSrc={TitanWarrior188.src}
 						itemPrice={coinsMap?.TitanWarrior188}
 					/>
 				</div>
 			</div>
-			<div>
+			<div className={styles.content}>
 				<h2 className={styles.scrollTitle}>Creators</h2>
 				<div className={styles.horizontalScroll}>
 					<CollectableCard
 						isPriceLoading={isLoading}
-						linkLocation={`/app/collectibles/Ch40sQueen`}
+						linkLocation={`/app/coins/Ch40sQueen/buy`}
 						collectibleNameSrc={Ch40sQueenText.src}
 						imgSrc={Ch40sQueen.src}
 						itemPrice={coinsMap?.Ch40sQueen}
 					/>
 					<CollectableCard
 						isPriceLoading={isLoading}
-						linkLocation={`/app/collectibles/Cr1msonAvenger`}
+						linkLocation={`/app/coins/Cr1msonAvenger/buy`}
 						collectibleNameSrc={Cr1msonAvengerText.src}
 						imgSrc={Cr1msonAvenger.src}
 						itemPrice={coinsMap?.Cr1msonAvenger}
 					/>
 					<CollectableCard
 						isPriceLoading={isLoading}
-						linkLocation={`/app/collectibles/D3athBlow`}
+						linkLocation={`/app/coins/D3athBlow/buy`}
 						collectibleNameSrc={D3athBlowText.src}
 						imgSrc={D3athBlow.src}
 						itemPrice={coinsMap?.Cr1msonAvenger}
 					/>
 					<CollectableCard
 						isPriceLoading={isLoading}
-						linkLocation={`/app/collectibles/DarkNightm4re`}
+						linkLocation={`/app/coins/DarkNightm4re/buy`}
 						collectibleNameSrc={DarkKnightm4reText.src}
 						imgSrc={DarkNightm4re.src}
 						itemPrice={coinsMap?.DarkNightm4re}
