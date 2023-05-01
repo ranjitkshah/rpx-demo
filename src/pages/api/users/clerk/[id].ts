@@ -26,7 +26,7 @@ const handler = withAuth(async (req, res) => {
 
 			if (querySnapshot.empty) {
 				console.error('e', DocumentResponses.DATA_NOT_FOUND)
-				res.status(404).json({
+				return res.status(404).json({
 					status: APIStatuses.ERROR,
 					type: DocumentResponses.DATA_NOT_FOUND,
 					data: { error: `Could not find the user with the clerk id of ${id}` }

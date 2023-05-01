@@ -8,23 +8,35 @@ import { useUser } from '@clerk/nextjs'
 import { NewUser, UserTypes } from '@/shared/types'
 import type { UserResource } from '@clerk/types'
 import { useRouter } from 'next/router'
+import { useUserData } from '@/components/hooks/useUserData'
+import Loading from '@/components/general/Loading'
 
 // TODO: replace background here
 const InitialIntakePage = () => {
 	const router = useRouter()
-	const { user } = useUser()
+	const { foundUser, clerkUser: user } = useUserData()
 	const [isOpen, setIsOpen] = React.useState<boolean>(false)
 	const [modalType, setModalType] = React.useState<UserTypes>(UserTypes.GAMER)
 	const [showToast, setShowToast] = React.useState<boolean>(false)
-	const [showLoadingSpinner, setShowLoadingSpinner] = React.useState<boolean>(false)
+	const [showLoadingSpinner, setShowLoadingSpinner] = React.useState<boolean>(true)
+	const [showModalLoadingSpinner, setShowModalLoadingSpinner] = React.useState<boolean>(false)
 
 	React.useEffect(() => {
-		setShowLoadingSpinner(user ? false : true)
-	}, [user])
+		setShowModalLoadingSpinner(user ? false : true)
+		if (foundUser) {
+			router.push('/app/main')
+		} else if (!foundUser && user) {
+			setShowLoadingSpinner(false)
+		} else {
+			router.push('/')
+		}
+	}, [user, foundUser])
+
+	if (showLoadingSpinner) return <Loading />
 
 	// TODO: We should either only extend clerk data or rethink our nullish safety here in the future, but this is safe for now
 	const handleIntakeUser = async (intakeType: UserTypes) => {
-		setShowLoadingSpinner(true)
+		setShowModalLoadingSpinner(true)
 
 		const newUser: NewUser = {
 			clerkId: user!.id,
@@ -38,7 +50,6 @@ const InitialIntakePage = () => {
 			lastSignInAt: user!.lastSignInAt?.toISOString() ?? new Date().toISOString()
 		}
 
-		// TODO: We need better error handling here (and potentially everywhere)
 		try {
 			const response = await fetch('/api/users/intake', {
 				method: 'POST',
@@ -68,7 +79,7 @@ const InitialIntakePage = () => {
 				setShowToast(false)
 			}, 10000)
 		} finally {
-			setShowLoadingSpinner(false)
+			setShowModalLoadingSpinner(false)
 		}
 	}
 
@@ -115,10 +126,10 @@ const InitialIntakePage = () => {
 				content={
 					modalType === UserTypes.FAN ? (
 						// @ts-ignore
-						<FanIntakeModalContents showLoadingSpinner={showLoadingSpinner} handleIntakeUser={handleIntakeUser} />
+						<FanIntakeModalContents showLoadingSpinner={showModalLoadingSpinner} handleIntakeUser={handleIntakeUser} />
 					) : (
 						// @ts-ignore
-						<GamerIntakeModalContents showLoadingSpinner={showLoadingSpinner} handleIntakeUser={handleIntakeUser} />
+						<GamerIntakeModalContents showLoadingSpinner={showModalLoadingSpinner} handleIntakeUser={handleIntakeUser} />
 					)
 				}
 				handleClose={() => setIsOpen(false)}

@@ -3,13 +3,28 @@ import styles from '../styles/Landing.module.css'
 import Image from 'next/image'
 import Link from 'next/link'
 import { OAuthStrategy } from '@clerk/nextjs/dist/api'
-import { useSignIn } from '@clerk/nextjs'
+import { useSignIn, useUser } from '@clerk/nextjs'
+import { useRouter } from 'next/router'
+import Loading from '@/components/general/Loading'
 
 // TODO: Fix twitter auth error
 
-// TODO: Do an auth check and default here if the user isn't logged in
+// TODO: Add loading or something here
 const LandingPage = () => {
+	const router = useRouter()
 	const { signIn } = useSignIn()
+	const { isSignedIn, isLoaded } = useUser()
+	const [isLoading, setIsLoading] = React.useState<boolean>(true)
+
+	React.useEffect(() => {
+		if (isLoaded) {
+			if (isSignedIn) {
+				router.push('/app/main')
+			} else {
+				setIsLoading(false)
+			}
+		}
+	}, [isLoaded])
 
 	const signInWith = (strategy: OAuthStrategy) => {
 		try {
@@ -23,6 +38,8 @@ const LandingPage = () => {
 			console.log('clerk error', error)
 		}
 	}
+
+	if (isLoading) return <Loading />
 
 	return (
 		<main className={`h-[100vh] w-full`}>

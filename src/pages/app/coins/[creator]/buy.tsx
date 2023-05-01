@@ -96,7 +96,7 @@ const BuyCoinPage = () => {
 			if (result.status === 'ERROR') {
 				throw new Error(result.data.error)
 			} else {
-				// Do forward here now that we have a purchase!
+				router.push(`/app/coins/${creatorName}/${numberOfCoins}/congrats`)
 			}
 		} catch (error) {
 			console.error(error)
@@ -279,7 +279,7 @@ const BuyCoinPage = () => {
 					</div>
 				</div>
 			)}
-			{isLoading && <Loading />}
+			{!coin && isLoading && <Loading />}
 			{error && (
 				<div className="toast toast-center z-999">
 					<div className="alert alert-error w-[300px]">
@@ -295,7 +295,6 @@ const BuyCoinPage = () => {
 			<Modal
 				isOpen={isModalOpen}
 				handleClose={() => setIsModalOpen(false)}
-				onClick={() => console.log('also farts')}
 				content={
 					<BuyCoinModalContents
 						handlePurchaseCoins={() =>

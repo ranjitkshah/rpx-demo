@@ -1,9 +1,10 @@
 import * as React from 'react'
-import { Coin, RPXUser } from '@/shared/types'
+import { RPXUser } from '@/shared/types'
 import { useUser } from '@clerk/nextjs'
 
+// TODO: Figure out why this is initiating two calls
 export const useUserData = () => {
-	const [foundUser, setFoundUser] = React.useState<RPXUser>()
+	const [foundUser, setFoundUser] = React.useState<RPXUser | null>()
 	const [isLoading, setIsLoading] = React.useState<boolean>(true)
 	const [error, setError] = React.useState<boolean>(false)
 	const { user: clerkUser } = useUser()
@@ -11,7 +12,7 @@ export const useUserData = () => {
 	const fetchUserData = async (id: string) => {
 		setError(false)
 		try {
-			const response = await fetch(`/api/users/clerk/${id}`, {
+			const response = await fetch(`/api/users/clerk/${clerkUser!.id}`, {
 				method: 'GET',
 				headers: {
 					'Content-Type': 'application/json'
@@ -19,7 +20,7 @@ export const useUserData = () => {
 			})
 			const result = await response.json()
 			if (result.status === 'ERROR') {
-				throw new Error(result.data.error)
+				setFoundUser(null)
 			} else {
 				const { user } = result.data
 				setFoundUser(user)
@@ -38,5 +39,5 @@ export const useUserData = () => {
 		}
 	}, [clerkUser])
 
-	return { foundUser, isLoading, error }
+	return { foundUser, clerkUser, isLoading, error }
 }
