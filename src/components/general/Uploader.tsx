@@ -78,7 +78,7 @@ const Uploader: React.FC<UploaderProps> = ({ onUpload }) => {
 				<>
 					<span>or Select File to upload</span>
 					{selectedFile ? (
-						<button className="btn btn-sm btn-circle bg-red-400 text-black" onClick={handleClearClick}>
+						<button className="btn btn-sm btn-circle bg-red-400 text-black ml-2" onClick={handleClearClick}>
 							-
 						</button>
 					) : (

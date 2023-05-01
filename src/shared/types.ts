@@ -7,6 +7,10 @@ export enum CollectionNames {
 	COINS = 'coins'
 }
 
+export enum StorageNames {
+	COINS = 'coins'
+}
+
 export enum APIStatuses {
 	SUCCESS = 'SUCCESS',
 	ERROR = 'ERROR'
