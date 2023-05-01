@@ -6,10 +6,8 @@ import LandingPage from './landing'
 import Loading from '@/components/general/Loading'
 import { useRouter } from 'next/router'
 
-// TODO: Fix popin related to router push
-// TODO: Rethink this structure once we've got user data; redirect needs to be role based
 export default function Home() {
-	const { isLoaded, isSignedIn, signOut } = useAuth()
+	const { isSignedIn } = useAuth()
 	const router = useRouter()
 
 	React.useEffect(() => {
