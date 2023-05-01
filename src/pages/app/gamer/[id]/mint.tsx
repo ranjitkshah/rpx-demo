@@ -2,7 +2,7 @@ import Image from 'next/image'
 import React, { ChangeEventHandler, FormEventHandler, ReactElement, useRef, useState } from 'react'
 import Uploader from '@/components/general/Uploader'
 import { Maybe } from '@/shared/types'
-import Minting from '@/components/sections/Minting'
+// import Minting from '@/components/sections/Minting'
 import Layout from '@/components/Layout/secondaryLayout'
 import Divider from '@/components/general/Divider'
 import { useRouter } from 'next/router'
@@ -41,7 +41,7 @@ const MintCoinPage = () => {
 
 		const form = e.currentTarget
 		const formData = new FormData(form)
-		
+
 		formData.append('image', image as File)
 		formData.append('id', id as string)
 
@@ -57,9 +57,10 @@ const MintCoinPage = () => {
 		setSaving(false)
 	}
 
-	if (saving) {
-		return <Minting />
-	}
+	// *TODO: Add minting component
+	// if (saving) {
+	// 	return <Minting />
+	// }
 
 	return (
 		<Layout
