@@ -7,7 +7,7 @@ const Navbar = () => {
 
 	// TODO: Renable the links when the pages are created
 	return (
-		<footer>
+		<footer className="h-[7vh]">
 			<div className={styles.footerNav}>
 				<div
 					className={styles.footerNavItem}

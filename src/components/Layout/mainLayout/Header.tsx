@@ -8,7 +8,7 @@ const Header = () => {
 	const router = useRouter()
 
 	return (
-		<header>
+		<header className="h-[7vh]">
 			<nav>
 				{/* TODO: Reinstate this hella padding if Varun wants it, also have to redo calcs around main height if so */}
 				{/* <div className={`pt-14 flex justify-center w-[100vw] mb-4`}> */}

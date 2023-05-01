@@ -12,6 +12,8 @@ type Props = {
 	isPriceLoading: boolean
 }
 
+// TODO*: Add heart icon to collectable card
+// TODO*: Add other image outlines here
 const CollectableCard = ({ linkLocation, collectibleNameSrc, itemPrice, imgSrc, isPriceLoading }: Props) => {
 	return (
 		<Link className={`${styles.collectibleLinkBox}`} href={linkLocation}>

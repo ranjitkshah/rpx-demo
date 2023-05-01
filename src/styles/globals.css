@@ -19,5 +19,17 @@
 body {
 	color: rgb(var(--foreground-rgb));
 	background-image: url('../resources/images/purplerect.png');
-	min-height: 100vh;
+}
+
+html,
+body {
+	height: 100%;
+	margin: 0;
+	overflow: hidden;
+}
+
+main {
+	height: 500px;
+	overflow-y: auto;
+	min-height: calc(100vh - 14vh);
 }

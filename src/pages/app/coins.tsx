@@ -1,3 +1,4 @@
+import * as React from 'react'
 import styles from '../../styles/pages/Coins.module.css'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -6,6 +7,7 @@ import Layout from '@/components/Layout/mainLayout'
 
 // TODO: Refactor so there's a proper source of truth for coins instead of this, but for now it's fine
 // TODO: Absolutely want to revist just importing all these god damn assets but for now it's fine
+// TODO*: Refactor with live data
 import Ch40sQueen from '../../resources/images/coins/Ch40sQueen.png'
 import Ch40sQueenText from '../../resources/images/coins/Ch40sQueenText.png'
 import Cr1msonAvenger from '../../resources/images/coins/Cr1msonAvenger.png'
@@ -30,10 +32,24 @@ import TitanWarrior188 from '../../resources/images/coins/TitanWarrior188.png'
 import TitanWarrior188Text from '../../resources/images/coins/TitanWarrior188Text.png'
 import ExploreMore from '@/components/sections/ExploreMore'
 import { useCoinsForPurchase } from '@/components/hooks/useCoinsForPurchase'
+import { useAllCoins } from '@/components/hooks/useAllCoins'
+import Loading from '@/components/general/Loading'
 
-// TODO: Update live prices with coins map
+// TODO: At some point the coins should have categories and that determines their sort; but for now it's fine
 const CoinsPage = () => {
-	const { coinsMap, isLoading, error } = useCoinsForPurchase()
+	const { coins, isLoading, error } = useAllCoins()
+	const [showErrorToast, setShowErrorToast] = React.useState(false)
+
+	React.useEffect(() => {
+		if (error) {
+			setShowErrorToast(true)
+			setTimeout(() => {
+				setShowErrorToast(false)
+			}, 10000)
+		}
+	}, [error])
+
+	if (isLoading || error) return <Loading />
 
 	return (
 		<main className="container mx-auto pb-[80px]">
@@ -50,14 +66,14 @@ const CoinsPage = () => {
 				<div>
 					<h2 className={styles.scrollTitle}>Top Trending</h2>
 					<div className={`${styles.horizontalScroll}`}>
-						<CollectableCard
+						{/* <CollectableCard
 							isPriceLoading={isLoading}
 							linkLocation={`/app/coins/Ch40sQueen/buy`}
 							collectibleNameSrc={Ch40sQueenText.src}
 							imgSrc={Ch40sQueen.src}
 							itemPrice={coinsMap?.Ch40sQueen}
-						/>
-						<CollectableCard
+						/> */}
+						{/* <CollectableCard
 							isPriceLoading={isLoading}
 							linkLocation={`/app/coins/Cr1msonAvenger/buy`}
 							collectibleNameSrc={Cr1msonAvengerText.src}
@@ -77,14 +93,14 @@ const CoinsPage = () => {
 							collectibleNameSrc={DarkKnightm4reText.src}
 							imgSrc={DarkNightm4re.src}
 							itemPrice={coinsMap?.DarkNightm4re}
-						/>
+						/> */}
 					</div>
 				</div>
 			</div>
 			<div className={styles.content}>
 				<h2 className={styles.scrollTitle}>Latest Drops</h2>
 				<div className={styles.horizontalScroll}>
-					<CollectableCard
+					{/* <CollectableCard
 						isPriceLoading={isLoading}
 						linkLocation={`/app/coins/FuryFight3r/buy`}
 						collectibleNameSrc={FuryFight3rText.src}
@@ -111,13 +127,13 @@ const CoinsPage = () => {
 						collectibleNameSrc={NightHunterText.src}
 						imgSrc={NightHunter.src}
 						itemPrice={coinsMap?.NightHunter}
-					/>
+					/> */}
 				</div>
 			</div>
 			<div className={styles.content}>
 				<h2 className={styles.scrollTitle}>Esports</h2>
 				<div className={styles.horizontalScroll}>
-					<CollectableCard
+					{/* <CollectableCard
 						isPriceLoading={isLoading}
 						linkLocation={`/app/coins/R0gueRider/buy`}
 						collectibleNameSrc={R0gueRiderText.src}
@@ -144,20 +160,20 @@ const CoinsPage = () => {
 						collectibleNameSrc={TitanWarrior188Text.src}
 						imgSrc={TitanWarrior188.src}
 						itemPrice={coinsMap?.TitanWarrior188}
-					/>
+					/> */}
 				</div>
 			</div>
 			<div className={styles.content}>
 				<h2 className={styles.scrollTitle}>Creators</h2>
 				<div className={styles.horizontalScroll}>
-					<CollectableCard
+					{/* <CollectableCard
 						isPriceLoading={isLoading}
 						linkLocation={`/app/coins/Ch40sQueen/buy`}
 						collectibleNameSrc={Ch40sQueenText.src}
 						imgSrc={Ch40sQueen.src}
 						itemPrice={coinsMap?.Ch40sQueen}
-					/>
-					<CollectableCard
+					/> */}
+					{/* <CollectableCard
 						isPriceLoading={isLoading}
 						linkLocation={`/app/coins/Cr1msonAvenger/buy`}
 						collectibleNameSrc={Cr1msonAvengerText.src}
@@ -177,12 +193,24 @@ const CoinsPage = () => {
 						collectibleNameSrc={DarkKnightm4reText.src}
 						imgSrc={DarkNightm4re.src}
 						itemPrice={coinsMap?.DarkNightm4re}
-					/>
+					/> */}
 				</div>
 			</div>
 
 			<Image className="mt-[30px]" alt="horizontal line" src={require('../../resources/images/horizontalline.png')} />
 			<ExploreMore />
+			{error && (
+				<div className="toast toast-center z-999">
+					<div className="alert alert-error w-[300px]">
+						<div>
+							<span>
+								Error loading tokens, contact
+								<br /> charlie@sparksfullstack.io for help.
+							</span>
+						</div>
+					</div>
+				</div>
+			)}
 		</main>
 	)
 }
