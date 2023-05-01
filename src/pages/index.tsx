@@ -12,11 +12,11 @@ export default function Home() {
 	const { isLoaded, isSignedIn, signOut } = useAuth()
 	const router = useRouter()
 
-	// React.useEffect(() => {
-	// 	if (isSignedIn) {
-	// 		router.push('/app/initial-intake')
-	// 	}
-	// }, [isSignedIn])
+	React.useEffect(() => {
+		if (isSignedIn) {
+			router.push('/app/initial-intake')
+		}
+	}, [isSignedIn])
 
 	return (
 		<>

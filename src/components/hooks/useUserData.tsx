@@ -38,5 +38,5 @@ export const useUserData = () => {
 		}
 	}, [clerkUser])
 
-	return { foundUser, isLoading, error }
+	return { foundUser, clerkUser, isLoading, error }
 }
