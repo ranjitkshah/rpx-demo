@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 
 // CS NOTE: This applies for all API routes as well
-const publicPaths = ['/', '/auth/sign-in', '/auth/sign-up']
+const publicPaths = ['/', '/auth/sign-in', '/auth/sign-up', '/landing']
 
 const isPublic = (path: string) => {
 	return publicPaths.includes(path)
