@@ -35,6 +35,8 @@ import ExploreMore from '@/components/sections/ExploreMore'
 import { useAllCoins } from '@/components/hooks/useAllCoins'
 import Loading from '@/components/general/Loading'
 import { splitArrayIntoThree } from '@/shared/utils'
+import { useUser } from '@clerk/nextjs'
+import { useUserData } from '@/components/hooks/useUserData'
 
 const coinsImageMap = {
 	Cr1msonAvenger,
@@ -64,9 +66,11 @@ const coinsImageNameMap = {
 
 // TODO: At some point the coins should have categories and that determines their sort; but for now it's fine
 const CoinsPage = () => {
-	const { coins, isLoading, error } = useAllCoins()
+	const { coins, isLoading: areCoinsLoading, error } = useAllCoins()
+	const { foundUser, clerkUser: user, isLoading: isUserLoading } = useUserData()
 	const [showErrorToast, setShowErrorToast] = React.useState(false)
 	const [coinsMap, setCoinsMap] = React.useState<any[][]>()
+	const [isLoading, setIsLoading] = React.useState<boolean>(true)
 
 	React.useEffect(() => {
 		if (error) {
@@ -82,6 +86,10 @@ const CoinsPage = () => {
 			setCoinsMap(splitArrayIntoThree(coins))
 		}
 	}, [coins])
+
+	React.useEffect(() => {
+		if (!isUserLoading && !areCoinsLoading) setIsLoading(false)
+	}, [isUserLoading, areCoinsLoading])
 
 	if (isLoading || error) return <Loading />
 
@@ -104,6 +112,9 @@ const CoinsPage = () => {
 							coinsMap?.[0].map((coin) => {
 								return (
 									<CollectableCard
+										isLiked={foundUser?.likedCoins?.includes(coin.id) ?? false}
+										userId={user!.id}
+										coinId={coin.id}
 										isPriceLoading={false}
 										linkLocation={`/app/coins/${coin.creatorName}/buy`}
 										collectibleNameSrc={coinsImageNameMap[coin.creatorName].src}
@@ -122,6 +133,9 @@ const CoinsPage = () => {
 						coinsMap?.[1].map((coin) => {
 							return (
 								<CollectableCard
+									isLiked={foundUser?.likedCoins?.includes(coin.id) ?? false}
+									userId={user!.id}
+									coinId={coin.id}
 									isPriceLoading={false}
 									linkLocation={`/app/coins/${coin.creatorName}/buy`}
 									collectibleNameSrc={coinsImageNameMap[coin.creatorName].src}
@@ -139,6 +153,9 @@ const CoinsPage = () => {
 						coinsMap?.[2].map((coin) => {
 							return (
 								<CollectableCard
+									isLiked={foundUser?.likedCoins?.includes(coin.id) ?? false}
+									userId={user!.id}
+									coinId={coin.id}
 									isPriceLoading={false}
 									linkLocation={`/app/coins/${coin.creatorName}/buy`}
 									collectibleNameSrc={coinsImageNameMap[coin.creatorName].src}
@@ -156,6 +173,9 @@ const CoinsPage = () => {
 						coinsMap?.[0].map((coin) => {
 							return (
 								<CollectableCard
+									isLiked={foundUser?.likedCoins?.includes(coin.id) ?? false}
+									userId={user!.id}
+									coinId={coin.id}
 									isPriceLoading={false}
 									linkLocation={`/app/coins/${coin.creatorName}/buy`}
 									collectibleNameSrc={coinsImageNameMap[coin.creatorName].src}

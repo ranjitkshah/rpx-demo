@@ -75,6 +75,7 @@ export type RPXUser = {
 	createdAt: Date | string
 	updatedAt: Date | string
 	ownedCoins: OwnedCoin[]
+	likedCoins: string[]
 	walletFunds: number
 	lastSignInAt: Date | string
 }

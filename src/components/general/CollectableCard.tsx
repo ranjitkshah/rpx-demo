@@ -4,6 +4,7 @@ import styles from '../../styles/components/CollectableCard.module.css'
 import Image from 'next/image'
 import LoadingSpinner from './LoadingSpinner'
 import dynamic from 'next/dynamic'
+// @ts-ignore
 const Heart = dynamic(import('react-heart'), { ssr: false })
 
 type Props = {
@@ -12,16 +13,58 @@ type Props = {
 	imgSrc: string
 	itemPrice: number | undefined
 	isPriceLoading: boolean
+	userId: string
+	coinId: string
+	isLiked: boolean
 }
 
-// TODO*: Add heart icon to collectable card
 // TODO*: Add other image outlines here
-const CollectableCard = ({ linkLocation, collectibleNameSrc, itemPrice, imgSrc, isPriceLoading }: Props) => {
-	const [isHeartClicked, setIsHeartClicked] = React.useState<boolean>(false)
+// TODO: Come back and handle heart click errors if time allows
+const CollectableCard = ({
+	linkLocation,
+	collectibleNameSrc,
+	itemPrice,
+	imgSrc,
+	isPriceLoading,
+	userId,
+	coinId,
+	isLiked
+}: Props) => {
+	const [isHeartClicked, setIsHeartClicked] = React.useState<boolean>(isLiked)
+
+	const handleHeartClick = async () => {
+		setIsHeartClicked(!isHeartClicked)
+		await fetch('/api/coins/like', {
+			method: 'PATCH',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+				userId,
+				coinId
+			})
+		})
+		// try {
+
+		// 	const result = await response.json()
+
+		// 	if (result.status === 'ERROR') {
+		// 		throw new Error(result.data.error)
+		// 	}
+		// } catch (error) {
+		// 	console.error(error)
+		// 	setShowToast(true)
+
+		// 	setTimeout(() => {
+		// 		setShowToast(false)
+		// 	}, 10000)
+		// }
+	}
+
 	return (
 		<div className={`${styles.collectibleLinkBox}`}>
 			<div className={`${styles.collectibleContainer}`}>
-				<Link href="dicks">
+				<Link href={linkLocation}>
 					<div className="flex flex-col items-center mt-8 text-center">
 						<Image className="mb-6" alt={'A coin!'} src={imgSrc} width={150} height={149.07} />
 						<Image alt="Collectible Name" src={collectibleNameSrc} width={180} height={107} />
@@ -42,9 +85,8 @@ const CollectableCard = ({ linkLocation, collectibleNameSrc, itemPrice, imgSrc, 
 								</h4>
 								<div className={`${styles.heartContainer} absolute right-[11px] bg-grey`}>
 									<Heart
-										isActive={isHeartClicked}
-										// inactiveColor="black"
-										onClick={() => setIsHeartClicked(!isHeartClicked)}
+										// @ts-ignore
+										onClick={handleHeartClick}
 										className="w-[16px] h-[16px] mt-[1px]"
 										style={{ fill: isHeartClicked ? 'red' : 'black' }}
 									/>
