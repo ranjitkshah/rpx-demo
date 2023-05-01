@@ -7,6 +7,7 @@ import Layout from '@/components/Layout/mainLayout'
 
 // TODO: Refactor so there's a proper source of truth for coins instead of this, but for now it's fine
 // TODO: Absolutely want to revist just importing all these god damn assets but for now it's fine
+// TODO*: Figure out how we want to handle the images without the icon around them
 // TODO*: Refactor with live data
 import Ch40sQueen from '../../resources/images/coins/Ch40sQueen.png'
 import Ch40sQueenText from '../../resources/images/coins/Ch40sQueenText.png'
@@ -31,14 +32,41 @@ import ThunderB0ltzText from '../../resources/images/coins/ThunderB0ltzText.png'
 import TitanWarrior188 from '../../resources/images/coins/TitanWarrior188.png'
 import TitanWarrior188Text from '../../resources/images/coins/TitanWarrior188Text.png'
 import ExploreMore from '@/components/sections/ExploreMore'
-import { useCoinsForPurchase } from '@/components/hooks/useCoinsForPurchase'
 import { useAllCoins } from '@/components/hooks/useAllCoins'
 import Loading from '@/components/general/Loading'
+import { splitArrayIntoThree } from '@/shared/utils'
+
+const coinsImageMap = {
+	Cr1msonAvenger,
+	D3athBlow,
+	DarkNightm4re,
+	FuryFight3r,
+	Infern0Assassin,
+	NightHunter,
+	R0gueRider,
+	StealthSniper,
+	ThunderB0ltz,
+	TitanWarrior188
+}
+
+const coinsImageNameMap = {
+	Cr1msonAvenger: Cr1msonAvengerText,
+	D3athBlow: D3athBlowText,
+	DarkNightm4re: DarkKnightm4reText,
+	FuryFight3r: FuryFight3rText,
+	Infern0Assassin: Infern0AssassinText,
+	NightHunter: NightHunterText,
+	R0gueRider: R0gueRiderText,
+	StealthSniper: StealthSniperText,
+	ThunderB0ltz: ThunderB0ltzText,
+	TitanWarrior188: TitanWarrior188Text
+}
 
 // TODO: At some point the coins should have categories and that determines their sort; but for now it's fine
 const CoinsPage = () => {
 	const { coins, isLoading, error } = useAllCoins()
 	const [showErrorToast, setShowErrorToast] = React.useState(false)
+	const [coinsMap, setCoinsMap] = React.useState<any[][]>()
 
 	React.useEffect(() => {
 		if (error) {
@@ -48,6 +76,12 @@ const CoinsPage = () => {
 			}, 10000)
 		}
 	}, [error])
+
+	React.useEffect(() => {
+		if (coins) {
+			setCoinsMap(splitArrayIntoThree(coins))
+		}
+	}, [coins])
 
 	if (isLoading || error) return <Loading />
 
@@ -66,140 +100,76 @@ const CoinsPage = () => {
 				<div>
 					<h2 className={styles.scrollTitle}>Top Trending</h2>
 					<div className={`${styles.horizontalScroll}`}>
-						{/* <CollectableCard
-							isPriceLoading={isLoading}
-							linkLocation={`/app/coins/Ch40sQueen/buy`}
-							collectibleNameSrc={Ch40sQueenText.src}
-							imgSrc={Ch40sQueen.src}
-							itemPrice={coinsMap?.Ch40sQueen}
-						/> */}
-						{/* <CollectableCard
-							isPriceLoading={isLoading}
-							linkLocation={`/app/coins/Cr1msonAvenger/buy`}
-							collectibleNameSrc={Cr1msonAvengerText.src}
-							imgSrc={Cr1msonAvenger.src}
-							itemPrice={coinsMap?.Cr1msonAvenger}
-						/>
-						<CollectableCard
-							isPriceLoading={isLoading}
-							linkLocation={`/app/coins/D3athBlow/buy`}
-							collectibleNameSrc={D3athBlowText.src}
-							imgSrc={D3athBlow.src}
-							itemPrice={coinsMap?.Cr1msonAvenger}
-						/>
-						<CollectableCard
-							isPriceLoading={isLoading}
-							linkLocation={`/app/coins/DarkNightm4re/buy`}
-							collectibleNameSrc={DarkKnightm4reText.src}
-							imgSrc={DarkNightm4re.src}
-							itemPrice={coinsMap?.DarkNightm4re}
-						/> */}
+						{!isLoading &&
+							coinsMap?.[0].map((coin) => {
+								return (
+									<CollectableCard
+										isPriceLoading={false}
+										linkLocation={`/app/coins/${coin.creatorName}/buy`}
+										collectibleNameSrc={coinsImageNameMap[coin.creatorName].src}
+										imgSrc={coinsImageMap[coin.creatorName].src}
+										itemPrice={coin?.Ch40sQueen}
+									/>
+								)
+							})}
 					</div>
 				</div>
 			</div>
 			<div className={styles.content}>
 				<h2 className={styles.scrollTitle}>Latest Drops</h2>
 				<div className={styles.horizontalScroll}>
-					{/* <CollectableCard
-						isPriceLoading={isLoading}
-						linkLocation={`/app/coins/FuryFight3r/buy`}
-						collectibleNameSrc={FuryFight3rText.src}
-						imgSrc={FuryFight3r.src}
-						itemPrice={coinsMap?.FuryFight3r}
-					/>
-					<CollectableCard
-						isPriceLoading={isLoading}
-						linkLocation={`/app/coins/Infern0Assassin/buy`}
-						collectibleNameSrc={Infern0AssassinText.src}
-						imgSrc={Infern0Assassin.src}
-						itemPrice={coinsMap?.Infern0Assassin}
-					/>
-					<CollectableCard
-						isPriceLoading={isLoading}
-						linkLocation={`/app/coins/D3athBlow/buy`}
-						collectibleNameSrc={D3athBlowText.src}
-						imgSrc={D3athBlow.src}
-						itemPrice={coinsMap?.D3athBlow}
-					/>
-					<CollectableCard
-						isPriceLoading={isLoading}
-						linkLocation={`/app/coins/NightHunter/buy`}
-						collectibleNameSrc={NightHunterText.src}
-						imgSrc={NightHunter.src}
-						itemPrice={coinsMap?.NightHunter}
-					/> */}
+					{!isLoading &&
+						coinsMap?.[1].map((coin) => {
+							return (
+								<CollectableCard
+									isPriceLoading={false}
+									linkLocation={`/app/coins/${coin.creatorName}/buy`}
+									collectibleNameSrc={coinsImageNameMap[coin.creatorName].src}
+									imgSrc={coinsImageMap[coin.creatorName].src}
+									itemPrice={coin?.Ch40sQueen}
+								/>
+							)
+						})}
 				</div>
 			</div>
 			<div className={styles.content}>
 				<h2 className={styles.scrollTitle}>Esports</h2>
 				<div className={styles.horizontalScroll}>
-					{/* <CollectableCard
-						isPriceLoading={isLoading}
-						linkLocation={`/app/coins/R0gueRider/buy`}
-						collectibleNameSrc={R0gueRiderText.src}
-						imgSrc={R0gueRider.src}
-						itemPrice={coinsMap?.R0gueRider}
-					/>
-					<CollectableCard
-						isPriceLoading={isLoading}
-						linkLocation={`/app/coins/StealthSniper/buy`}
-						collectibleNameSrc={StealthSniperText.src}
-						imgSrc={StealthSniper.src}
-						itemPrice={coinsMap?.StealthSniper}
-					/>
-					<CollectableCard
-						isPriceLoading={isLoading}
-						linkLocation={`/app/coins/ThunderB0ltz/buy`}
-						collectibleNameSrc={ThunderB0ltzText.src}
-						imgSrc={ThunderB0ltz.src}
-						itemPrice={coinsMap?.ThunderB0ltz}
-					/>
-					<CollectableCard
-						isPriceLoading={isLoading}
-						linkLocation={`/app/coins/TitanWarrior188/buy`}
-						collectibleNameSrc={TitanWarrior188Text.src}
-						imgSrc={TitanWarrior188.src}
-						itemPrice={coinsMap?.TitanWarrior188}
-					/> */}
+					{!isLoading &&
+						coinsMap?.[2].map((coin) => {
+							return (
+								<CollectableCard
+									isPriceLoading={false}
+									linkLocation={`/app/coins/${coin.creatorName}/buy`}
+									collectibleNameSrc={coinsImageNameMap[coin.creatorName].src}
+									imgSrc={coinsImageMap[coin.creatorName].src}
+									itemPrice={coin?.Ch40sQueen}
+								/>
+							)
+						})}
 				</div>
 			</div>
 			<div className={styles.content}>
 				<h2 className={styles.scrollTitle}>Creators</h2>
 				<div className={styles.horizontalScroll}>
-					{/* <CollectableCard
-						isPriceLoading={isLoading}
-						linkLocation={`/app/coins/Ch40sQueen/buy`}
-						collectibleNameSrc={Ch40sQueenText.src}
-						imgSrc={Ch40sQueen.src}
-						itemPrice={coinsMap?.Ch40sQueen}
-					/> */}
-					{/* <CollectableCard
-						isPriceLoading={isLoading}
-						linkLocation={`/app/coins/Cr1msonAvenger/buy`}
-						collectibleNameSrc={Cr1msonAvengerText.src}
-						imgSrc={Cr1msonAvenger.src}
-						itemPrice={coinsMap?.Cr1msonAvenger}
-					/>
-					<CollectableCard
-						isPriceLoading={isLoading}
-						linkLocation={`/app/coins/D3athBlow/buy`}
-						collectibleNameSrc={D3athBlowText.src}
-						imgSrc={D3athBlow.src}
-						itemPrice={coinsMap?.Cr1msonAvenger}
-					/>
-					<CollectableCard
-						isPriceLoading={isLoading}
-						linkLocation={`/app/coins/DarkNightm4re/buy`}
-						collectibleNameSrc={DarkKnightm4reText.src}
-						imgSrc={DarkNightm4re.src}
-						itemPrice={coinsMap?.DarkNightm4re}
-					/> */}
+					{!isLoading &&
+						coinsMap?.[0].map((coin) => {
+							return (
+								<CollectableCard
+									isPriceLoading={false}
+									linkLocation={`/app/coins/${coin.creatorName}/buy`}
+									collectibleNameSrc={coinsImageNameMap[coin.creatorName].src}
+									imgSrc={coinsImageMap[coin.creatorName].src}
+									itemPrice={coin?.Ch40sQueen}
+								/>
+							)
+						})}
 				</div>
 			</div>
 
 			<Image className="mt-[30px]" alt="horizontal line" src={require('../../resources/images/horizontalline.png')} />
 			<ExploreMore />
-			{error && (
+			{showErrorToast && (
 				<div className="toast toast-center z-999">
 					<div className="alert alert-error w-[300px]">
 						<div>
