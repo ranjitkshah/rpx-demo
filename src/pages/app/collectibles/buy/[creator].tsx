@@ -111,7 +111,7 @@ const BuyCoinPage = () => {
 	}
 
 	return (
-		<main className="container mx-auto px-2 pb-4">
+		<main className="container mx-auto px-2 pb-4 max-w-[400px]">
 			{coin && (
 				<div className="flex flex-col container relative">
 					<div className="flex flex-col items-center justify-center mb-4">
