@@ -69,8 +69,8 @@ const InitialIntakePage = () => {
 				if (intakeType === UserTypes.FAN) {
 					router.push('/app/fan/congrats')
 				} else {
-					// TODO: Update with gamer path
-					router.push('/app/fan/congrats')
+					// TODO: Verify we want clerk id and not user id
+					router.push(`/app/gamer/${newUser.clerkId}/mint`)
 				}
 			}
 		} catch (error) {
