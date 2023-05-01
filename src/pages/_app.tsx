@@ -4,6 +4,7 @@ import type { AppProps } from 'next/app'
 import type { NextPage } from 'next'
 import ErrorBoundary from '../components/ErrorBoundary'
 import { ClerkProvider } from '@clerk/nextjs'
+import '../../public/registerServiceWorker'
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
 	getLayout?: (page: ReactElement) => ReactNode
