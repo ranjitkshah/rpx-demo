@@ -21,3 +21,7 @@ body {
 	background-image: url('../resources/images/purplerect.png');
 	min-height: 100vh;
 }
+
+p {
+	color: black;
+}

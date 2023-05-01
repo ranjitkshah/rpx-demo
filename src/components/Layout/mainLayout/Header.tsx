@@ -10,7 +10,9 @@ const Header = () => {
 	return (
 		<header>
 			<nav>
-				<div className={`pt-14 flex justify-center w-[100vw] mb-4`}>
+				{/* TODO: Reinstate this hella padding if Varun wants it, also have to redo calcs around main height if so */}
+				{/* <div className={`pt-14 flex justify-center w-[100vw] mb-4`}> */}
+				<div className={`pt-4 flex justify-center w-[100vw] mb-4`}>
 					<div className="flex flex-row items-center w-full justify-around">
 						<div
 							className="ml-2"
