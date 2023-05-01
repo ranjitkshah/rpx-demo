@@ -11,10 +11,10 @@ import { useRouter } from 'next/router'
 import { useUserData } from '@/components/hooks/useUserData'
 import Loading from '@/components/general/Loading'
 
-// TODO: replace background here
+// TODO: Fix popin here around routing when you're auth'd
 const InitialIntakePage = () => {
 	const router = useRouter()
-	const { foundUser, clerkUser: user } = useUserData()
+	const { foundUser, clerkUser: user, isLoading } = useUserData()
 	const [isOpen, setIsOpen] = React.useState<boolean>(false)
 	const [modalType, setModalType] = React.useState<UserTypes>(UserTypes.GAMER)
 	const [showToast, setShowToast] = React.useState<boolean>(false)
@@ -23,14 +23,16 @@ const InitialIntakePage = () => {
 
 	React.useEffect(() => {
 		setShowModalLoadingSpinner(user ? false : true)
-		if (foundUser) {
-			router.push('/app/main')
-		} else if (!foundUser && user) {
-			setShowLoadingSpinner(false)
-		} else {
-			router.push('/')
+		if (!isLoading) {
+			if (foundUser) {
+				router.push('/app/main')
+			} else if (!foundUser && user) {
+				setShowLoadingSpinner(false)
+			} else {
+				router.push('/')
+			}
 		}
-	}, [user, foundUser])
+	}, [isLoading])
 
 	if (showLoadingSpinner) return <Loading />
 
