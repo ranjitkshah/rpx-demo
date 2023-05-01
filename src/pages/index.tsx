@@ -27,22 +27,7 @@ export default function Home() {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<>
-				{!isLoaded ? (
-					<Loading />
-				) : !isSignedIn ? (
-					<LandingPage />
-				) : (
-					<>
-						<div>signed in</div>
-						<button
-							// @ts-ignore
-							onClick={signOut}
-							className="btn btn-primary mt-4"
-						>
-							Sign out
-						</button>
-					</>
-				)}
+				<Loading />
 			</>
 		</>
 	)

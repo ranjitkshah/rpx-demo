@@ -25,6 +25,10 @@ const InitialIntakePage = () => {
 		setShowModalLoadingSpinner(user ? false : true)
 		if (foundUser) {
 			router.push('/app/main')
+		} else if (!foundUser && user) {
+			setShowLoadingSpinner(false)
+		} else {
+			router.push('/')
 		}
 	}, [user, foundUser])
 
