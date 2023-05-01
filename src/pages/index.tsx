@@ -15,6 +15,8 @@ export default function Home() {
 	React.useEffect(() => {
 		if (isSignedIn) {
 			router.push('/app/initial-intake')
+		} else {
+			router.push('/landing')
 		}
 	}, [isSignedIn])
 
