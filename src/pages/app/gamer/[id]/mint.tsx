@@ -15,6 +15,17 @@ const MintCoinPage = () => {
 	const router = useRouter()
 	const { id } = router.query
 
+	React.useEffect(() => {
+		const nextDiv = document.getElementById('__next')
+		nextDiv!.style.maxHeight = '100vh'
+		nextDiv!.style.overflow = 'hidden'
+
+		return () => {
+			nextDiv!.style.maxHeight = 'none'
+			nextDiv!.style.overflow = 'visible'
+		}
+	}, [])
+
 	const [name, setName] = useState<string>('')
 	const [description, setDescription] = useState<string>('')
 	const [image, setImage] = useState<Maybe<File>>(null)
@@ -80,11 +91,11 @@ const MintCoinPage = () => {
 			}
 			title={<h1 className="text-center text-white text-3xl mb-2">Create a Coin</h1>}
 		>
-			<main className="h-full w-full flex flex-col text-center text-white px-5">
+			<main className="text-center text-white px-5">
 				<Divider />
 
 				<section id="upload">
-					<div className="flex items-center justify-center">
+					<div className="flex items-center justify-center max-w-[200px] mx-auto">
 						<Uploader onUpload={handleImageUpload} />
 					</div>
 				</section>
@@ -126,8 +137,6 @@ const MintCoinPage = () => {
 						</div>
 					</form>
 				</section>
-
-				<footer className="py-5 mt-auto"></footer>
 			</main>
 		</Layout>
 	)

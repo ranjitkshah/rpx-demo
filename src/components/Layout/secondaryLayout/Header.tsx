@@ -17,7 +17,7 @@ const Header = ({ logo, title }: HeaderProps) => {
 	// TODO: Also update once client application form flow is done
 	return (
 		<header>
-			<nav id="topnav" className="mx-auto defaultscroll is-sticky nav-sticky animate-gradualLoad pt-6">
+			<nav id="topnav" className="mx-auto defaultscroll is-sticky nav-sticky animate-gradualLoad pt-3">
 				<Link className="cursor-pointer" href="/">
 					{logo ? (
 						logo
