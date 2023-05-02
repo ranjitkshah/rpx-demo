@@ -23,12 +23,14 @@
     "firebase": "^9.20.0",
     "formidable": "^2.1.1",
     "next": "13.3.1",
+    "next-pwa": "^5.6.0",
     "postcss": "8.4.23",
     "prettier": "^2.8.7",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-heart": "^1.0.6",
     "tailwindcss": "3.3.1",
-    "typescript": "5.0.4"
+    "typescript": "5.0.4",
+    "use-sound": "^4.0.1"
   }
 }

@@ -15,27 +15,21 @@ const CustomHead = ({ title, metaContent }: Props) => (
 	<Head>
 		{/* TODO: Update all meta values */}
 		<title>{title}</title>
-		<meta
-			name="description"
-			content="RPX"
-		/>
+		<meta name="application-name" content="RPX Digital Collectibles" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+		<meta name="apple-mobile-web-app-title" content="PWA App" />
+		<link rel="manifest" href="/manifest.json" />
 		<link rel="canonical" href="https://sparksfullstack.io/" />
+		<meta name="description" content="Marketplace for PWA applications." />
+		<meta name="format-detection" content="telephone=no" />
 
 		{/* Open Graph */}
 		<meta property="og:url" content="https://sparksfullstack.io/" />
 		<meta property="og:type" content="website" />
-		<meta
-			property="og:title"
-			content="Sparks Full-Stack - Full-Stack Software Solutions"
-		/>
-		<meta
-			property="og:description"
-			content="RPX"
-		/>
-		<meta
-			property="og:image"
-			content="https://www.sparksfullstack.io/_next/static/media/sfs-logo.4fa0dd69.svg"
-		/>
+		<meta property="og:title" content="Sparks Full-Stack - Full-Stack Software Solutions" />
+		<meta property="og:description" content="RPX" />
+		<meta property="og:image" content="https://www.sparksfullstack.io/_next/static/media/sfs-logo.4fa0dd69.svg" />
 		<meta property="og:site_name" content="RPX" />
 
 		{/* Twitter */}

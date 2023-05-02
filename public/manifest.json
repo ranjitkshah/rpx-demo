@@ -1,9 +1,9 @@
 {
 	"name": "RPX",
-	"short_name": "RPX",
-	"description": "RPX - Digital Collectibles",
+	"short_name": "RPX Digital Collectibles",
+	"theme_color": "#FFFFFF",
+	"background_color": "#FFFFFF",
 	"start_url": "/",
-	"display": "standalone",
-	"background_color": "#ffffff",
-	"theme_color": "#000000"
+	"display": "fullscreen",
+	"orientation": "portrait"
 }
