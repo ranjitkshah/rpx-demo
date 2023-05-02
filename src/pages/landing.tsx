@@ -65,12 +65,12 @@ const LandingPage = () => {
 					>
 						Twitch Login
 					</button>
-					<button
+					{/* <button
 						onClick={handleShowToast}
 						className={`btn btn-block normal-case my-2 ${styles.loginButtons} ${styles.twitterButton}`}
 					>
 						Twitter Login
-					</button>
+					</button> */}
 					<button
 						onClick={() => signInWith('oauth_google')}
 						className={`btn btn-block normal-case my-2 ${styles.loginButtons} ${styles.googleButton}`}

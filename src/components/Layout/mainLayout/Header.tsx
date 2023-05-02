@@ -2,11 +2,13 @@ import Image from 'next/image'
 import { useRouter } from 'next/router'
 import React from 'react'
 import styles from '../../../styles/layout/mainLayout/HeaderAndFooter.module.css'
+import { useClerk } from '@clerk/nextjs'
 
 // TODO: add filter and plus icons if we have time
 // TODO: Wire up other icons (maybe to a coming soon page) if we have extra time
 const Header = () => {
 	const router = useRouter()
+	const { signOut } = useClerk()
 
 	return (
 		<header className={styles.header}>
@@ -27,7 +29,13 @@ const Header = () => {
 							<input className="px-2 rounded-lg border-0 w-[195px] h-[24px] text-sm" type={'text'} placeholder={'Search'} />
 						</div>
 						<div className="">
-							<Image alt="Notification bell icon" src={require('../../../resources/images/bell.png')} width={25} height={20} />
+							<Image
+								onClick={() => signOut()}
+								alt="Notification bell icon"
+								src={require('../../../resources/images/bell.png')}
+								width={25}
+								height={20}
+							/>
 						</div>
 						<div className="mr-2">
 							<Image alt="Cart icon" src={require('../../../resources/images/cart.png')} width={25} height={20} />
