@@ -83,7 +83,16 @@ const CoinsPage = () => {
 
 	React.useEffect(() => {
 		if (coins) {
-			setCoinsMap(splitArrayIntoThree(coins))
+			// @ts-ignore
+			const updatedCoins = []
+			coins.forEach((coin) => {
+				//@ts-ignore
+				if (coinsImageNameMap[coin.creatorName]) {
+					updatedCoins.push(coin)
+				}
+			})
+			// @ts-ignore
+			setCoinsMap(splitArrayIntoThree(updatedCoins))
 		}
 	}, [coins])
 
