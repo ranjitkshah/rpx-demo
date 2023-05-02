@@ -7,7 +7,6 @@
 	right: 0;
 	left: 0;
 	bottom: 0;
-	padding-bottom: calc(env(safe-area-inset-bottom));
 }
 
 .footerNav {
@@ -17,6 +16,7 @@
 	align-items: center;
 	background-color: rgb(19, 0, 54);
 	width: 100%;
+	padding: 0.5rem 0;
 }
 
 .footerNavItem {
