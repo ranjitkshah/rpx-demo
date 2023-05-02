@@ -21,3 +21,13 @@ export function splitArrayIntoThree(array: any[]) {
 
 	return [part1, part2, part3]
 }
+
+export const fillArrayToLength = (arr: any[], targetLength: number, defaultValue: any) => {
+	const newArr = [...arr]
+
+	while (newArr.length < targetLength) {
+		newArr.push(defaultValue)
+	}
+
+	return newArr
+}
