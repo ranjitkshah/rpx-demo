@@ -4,6 +4,8 @@ import styles from '../../../../styles/pages/MyStuff.module.css'
 import { useRouter } from 'next/router'
 import { RPXUser, Coin } from '@/shared/types'
 import Loading from '@/components/general/Loading'
+import MyStuff from '@/components/sections/MyStuff'
+import MyCoins from '@/components/sections/MyCoins'
 
 const MyStuffPage = () => {
 	const router = useRouter()
@@ -60,25 +62,20 @@ const MyStuffPage = () => {
 		}
 	}, [error])
 
-	if (isLoading || error) return <Loading />
-
+	// TODO: Add user icon
 	return (
-		<main className={`container mx-auto py-8 flex flex-col space-y-4`}>
-			<div>
-				<div>
-					<h1 className={styles.sectionTitle}>My Stuff</h1>
-				</div>
-				<div>
-					<p className={styles.body1}>XP status</p>
-					<p className={styles.body2}>Level 2</p>
-				</div>
-				<div>
-					<p className={styles.body1}>Current Wallet Funds</p>
-					<p className={styles.body2}>Level 2</p>
-				</div>
-			</div>
+		<main className={`${styles.container} mx-auto py-8 flex flex-col space-y-4`}>
+			{isLoading || error ? (
+				<Loading />
+			) : (
+				<>
+					<MyStuff />
+					<MyCoins />
+				</>
+			)}
+
 			<div className="toast toast-center z-999">
-				{!showToast && (
+				{showToast && (
 					<div className="alert alert-error w-[300px]">
 						<div>
 							<span>There was an error fetching your data.</span>
