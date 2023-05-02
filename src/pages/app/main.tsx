@@ -2,7 +2,6 @@ import * as React from 'react'
 import Layout from '@/components/Layout/mainLayout'
 import Image from 'next/image'
 import Link from 'next/link'
-import useSound from 'use-sound'
 // import electricity from '../../resources/sounds/electricity.mp3'
 
 // TODO: update hrefs with more locations
