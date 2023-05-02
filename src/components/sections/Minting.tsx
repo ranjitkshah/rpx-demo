@@ -1,7 +1,7 @@
 import Image from 'next/image'
 
 const Minting: React.FC = () => (
-	<main className="h-full w-full flex flex-col text-center text-white px-5">
+	<main className="h-full w-full flex flex-col text-center text-white px-5 mt-14">
 		<div className="bg-black rounded-full h-200 w-200 mx-auto">
 			<Image
 				className="p-8"

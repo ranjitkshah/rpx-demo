@@ -18,7 +18,7 @@ const InitialIntakePage = () => {
 	const [isOpen, setIsOpen] = React.useState<boolean>(false)
 	const [modalType, setModalType] = React.useState<UserTypes>(UserTypes.GAMER)
 	const [showToast, setShowToast] = React.useState<boolean>(false)
-	const [showLoadingSpinner, setShowLoadingSpinner] = React.useState<boolean>(true)
+	const [showLoadingSpinner, setShowLoadingSpinner] = React.useState<boolean>(false)
 	const [showModalLoadingSpinner, setShowModalLoadingSpinner] = React.useState<boolean>(false)
 
 	React.useEffect(() => {

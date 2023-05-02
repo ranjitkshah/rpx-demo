@@ -46,32 +46,39 @@ const MintCoinPage = () => {
 		formData.append('id', id as string)
 
 		try {
-			const result = await fetch(form.action, {
+			const response = await fetch(form.action, {
 				method: form.method,
 				body: formData
 			})
+			const result = await response.json()
 		} catch (e) {
 			console.error('bad coiin!', e)
 		}
-
-		setSaving(false)
+		setTimeout(() => {
+			router.push(`/app/gamer/${id}/minted/123`)
+		}, 5000)
+		// setSaving(false)
 	}
 
 	if (saving) {
-		return <Layout><Minting /></Layout>
+		return (
+			<Layout>
+				<Minting />
+			</Layout>
+		)
 	}
 
 	return (
 		<Layout
 			logo={
 				<Image
-					className="mx-auto max-w-[100px] mb-2"
+					className="mx-auto max-w-[100px] mb-2 translate-y-[28px]"
 					src={require('../../../../resources/images/coin-GREY.png')}
 					alt="Create a coin"
 					priority={true}
 				/>
 			}
-			title={<h1 className="text-center text-white text-2xl">Create a Coin</h1>}
+			title={<h1 className="text-center text-white text-3xl mb-2">Create a Coin</h1>}
 		>
 			<main className="h-full w-full flex flex-col text-center text-white px-5">
 				<Divider />
@@ -93,14 +100,14 @@ const MintCoinPage = () => {
 								placeholder="Name that coin"
 								value={name}
 								onChange={handleNameChange}
-								className="input input-md w-full rounded-lg text-black"
+								className="input input-md w-full rounded-lg text-black text-center"
 							/>
 							<textarea
 								name="description"
 								placeholder="Add a description"
 								value={description}
 								onChange={handleDescriptionChange}
-								className="textarea textarea-bordered w-full rounded-lg text-black"
+								className="textarea textarea-bordered w-full rounded-lg text-black text-center flex items-center justify-center"
 							></textarea>
 						</div>
 
