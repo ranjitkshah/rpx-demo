@@ -96,7 +96,7 @@ const BuyCoinPage = () => {
 			if (result.status === 'ERROR') {
 				throw new Error(result.data.error)
 			} else {
-				router.push(`/app/coins/${creatorName}/${numberOfCoins}/congrats`)
+				router.push(`/app/coins/${creatorName}/${numberOfCoins}/${foundUser!.id}/congrats`)
 			}
 		} catch (error) {
 			console.error(error)

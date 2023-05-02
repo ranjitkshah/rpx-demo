@@ -1,15 +1,15 @@
 import * as React from 'react'
-import styles from '../../../../../styles/pages/Congrats.module.css'
+import styles from '../../../../../../styles/pages/Congrats.module.css'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 
 const CongratsPage = () => {
 	const router = useRouter()
-	const { creator, purchaseAmount } = router.query
+	const { creator, purchaseAmount, userId } = router.query
 	const [imgSrc, setImgSrc] = React.useState<string>()
 
 	const handleChangeView = () => {
-		router.push('/app/main')
+		router.push(`/app/user/${userId}/my-stuff`)
 	}
 
 	React.useEffect(() => {

@@ -1,0 +1,17 @@
+.sectionTitle {
+	margin: 0;
+	color: #7fe5bb;
+}
+
+.body1 {
+	color: #ffb804;
+	margin-top: 0.5rem;
+	font-size: 13px;
+}
+
+.body2 {
+	color: #fff;
+	margin-top: 0.5rem;
+	font-size: 23px;
+	font-weight: bold;
+}
