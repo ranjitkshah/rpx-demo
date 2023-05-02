@@ -1,15 +1,13 @@
-/* .header {
-	position: fixed;
-	right: 0;
-	left: 0;
-	top: 0;
-} */
+.header {
+	padding-top: calc(env(safe-area-inset-top));
+}
 
 .footer {
 	position: fixed;
 	right: 0;
 	left: 0;
 	bottom: 0;
+	padding-bottom: calc(env(safe-area-inset-bottom));
 }
 
 .footerNav {
