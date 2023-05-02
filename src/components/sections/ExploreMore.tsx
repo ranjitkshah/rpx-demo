@@ -21,15 +21,80 @@ const ExploreMore = () => {
 				<p className={styles.offwhite}>Top New Gamer</p>
 				<p className={styles.offwhite}>Top Weekly Gamer</p>
 			</div>
-			<div className="mt-[-20px]">
+			<div className="">
 				{/* TODO: Wire up these components */}
-				<Image
-					className="mx-auto"
-					alt="Explore more image"
-					src={require('../../resources/images/exploremore.png')}
-					width={380}
-					height={650}
-				/>
+				<div className="flex w-full justify-between items-center bg-slate-800 rounded-lg p-3 my-4 shadow-md divide-x">
+					<div className="flex items-center w-1/2">
+						<Image src={require('../../resources/images/ducoin.png')} width={50} height={50} alt={''} />
+						<div className="ml-2">
+							<p className="text-teal-500 text-xs whitespace-normal">Gamer Name</p>
+							<p className="text-teal-500 text-xs whitespace-normal">Gamer Name</p>
+						</div>
+					</div>
+					<div className="flex justify-around items-center w-1/2">
+						<p className="text-center text-xs">$25.00 USD</p>
+						<button
+							className="button bg-emerald-400 rounded-md text-black text-lg font-semibold p-3"
+							onClick={() => console.log('will buy later')}
+						>
+							Buy
+						</button>
+					</div>
+				</div>
+				<div className="flex w-full justify-between items-center bg-slate-800 rounded-lg p-3 my-4 shadow-md divide-x">
+					<div className="flex items-center w-1/2">
+						<Image src={require('../../resources/images/ducoin.png')} width={50} height={50} alt={''} />
+						<div className="ml-2">
+							<p className="text-teal-500 text-xs whitespace-normal">Gamer Name</p>
+							<p className="text-teal-500 text-xs whitespace-normal">Gamer Name</p>
+						</div>
+					</div>
+					<div className="flex justify-around items-center w-1/2">
+						<p className="text-center text-xs">$25.00 USD</p>
+						<button
+							className="button bg-emerald-400 rounded-md text-black text-lg font-semibold p-3"
+							onClick={() => console.log('will buy later')}
+						>
+							Buy
+						</button>
+					</div>
+				</div>
+				<div className="flex w-full justify-between items-center bg-slate-800 rounded-lg p-3 my-4 shadow-md divide-x">
+					<div className="flex items-center">
+						<Image src={require('../../resources/images/ducoin.png')} width={50} height={50} alt={''} />
+						<div className="ml-2">
+							<p className="text-teal-500 text-xs whitespace-normal">Gamer Name</p>
+							<p className="text-teal-500 text-xs whitespace-normal">Gamer Name</p>
+						</div>
+					</div>
+					<div className="flex justify-around items-center w-1/2">
+						<p className="text-center text-xs">$25.00 USD</p>
+						<button
+							className="button bg-emerald-400 rounded-md text-black text-lg font-semibold p-3"
+							onClick={() => console.log('will buy later')}
+						>
+							Buy
+						</button>
+					</div>
+				</div>
+				<div className="flex w-full justify-between items-center bg-slate-800 rounded-lg p-3 my-4 shadow-md divide-x">
+					<div className="flex items-center">
+						<Image src={require('../../resources/images/ducoin.png')} width={50} height={50} alt={''} />
+						<div className="ml-2">
+							<p className="text-teal-500 text-xs whitespace-normal">Gamer Name</p>
+							<p className="text-teal-500 text-xs whitespace-normal">Gamer Name</p>
+						</div>
+					</div>
+					<div className="flex justify-around items-center w-1/2">
+						<p className="text-center text-xs">$25.00 USD</p>
+						<button
+							className="button bg-emerald-400 rounded-md text-black text-lg font-semibold p-3"
+							onClick={() => console.log('will buy later')}
+						>
+							Buy
+						</button>
+					</div>
+				</div>
 			</div>
 		</div>
 	)
