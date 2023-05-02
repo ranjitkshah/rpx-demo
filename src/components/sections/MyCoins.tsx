@@ -44,7 +44,6 @@ const MyCoins = ({ coins }: Props) => {
 			setMappedCoins(fullCoinsArray)
 		}
 	}, [coins])
-	console.log('fullCoinsArray', mappedCoins)
 	return (
 		<div>
 			<h2 className={`${styles.greenText} text-2xl mb-4 ml-4`}>My Coins</h2>

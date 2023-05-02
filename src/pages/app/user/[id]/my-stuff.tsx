@@ -31,6 +31,9 @@ import { useAllCoins } from '@/components/hooks/useAllCoins'
 import { splitArrayIntoThree } from '@/shared/utils'
 import { useUser } from '@clerk/nextjs'
 import { useUserData } from '@/components/hooks/useUserData'
+import MyCollectibles from '@/components/sections/MyCollectibles'
+import Image from 'next/image'
+import MyStats from '@/components/sections/MyStats'
 
 const coinsImageMap = {
 	Cr1msonAvenger,
@@ -130,6 +133,8 @@ const MyStuffPage = () => {
 				<>
 					<MyStuff />
 					<MyCoins coins={coins!} />
+					<MyCollectibles />
+					<MyStats />
 				</>
 			)}
 
