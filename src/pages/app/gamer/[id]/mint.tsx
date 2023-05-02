@@ -15,17 +15,6 @@ const MintCoinPage = () => {
 	const router = useRouter()
 	const { id } = router.query
 
-	React.useEffect(() => {
-		const nextDiv = document.getElementById('__next')
-		nextDiv!.style.maxHeight = '100vh'
-		nextDiv!.style.overflow = 'hidden'
-
-		return () => {
-			nextDiv!.style.maxHeight = 'none'
-			nextDiv!.style.overflow = 'visible'
-		}
-	}, [])
-
 	const [name, setName] = useState<string>('')
 	const [description, setDescription] = useState<string>('')
 	const [image, setImage] = useState<Maybe<File>>(null)
@@ -91,7 +80,7 @@ const MintCoinPage = () => {
 			}
 			title={<h1 className="text-center text-white text-3xl mb-2">Create a Coin</h1>}
 		>
-			<main className="text-center text-white px-5">
+			<main className="text-center text-white px-5 bg-[#26175a]">
 				<Divider />
 
 				<section id="upload">

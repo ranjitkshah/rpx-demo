@@ -30,9 +30,14 @@ body {
 main {
 	height: 500px;
 	overflow-y: auto;
+	background-color: #26175a;
 	min-height: calc(100vh - 14vh);
 	scrollbar-width: none;
 	-ms-overflow-style: none;
+}
+
+header {
+	background-color: #26175a;
 }
 
 main::-webkit-scrollbar {
