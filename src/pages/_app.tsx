@@ -17,16 +17,15 @@ type AppPropsWithLayout = AppProps & {
 
 function MyApp({ Component, pageProps }: AppPropsWithLayout) {
 	const router = useRouter()
-	const [audio, setAudio] = React.useState<HTMLAudioElement>()
-
-	console.log('router.location', router.pathname)
+	const [audioIsPlaying, setAudioIsPlaying] = React.useState<boolean>()
 
 	const startAudio = async () => {
 		if (router.pathname.includes('app')) {
-			const audio = new Audio('../../resources/sounds/theme.mp3')
-			audio.loop = true
-			setAudio(audio)
-			await audio.play()
+			const themeAudio = new Audio('../../resources/sounds/theme.mp3')
+			themeAudio.loop = true
+			setAudioIsPlaying(true)
+			await themeAudio.play()
+			window.removeEventListener('click', startAudio)
 		}
 	}
 
