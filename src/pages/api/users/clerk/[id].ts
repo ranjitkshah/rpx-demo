@@ -35,10 +35,10 @@ const handler = withAuth(async (req, res) => {
 
 			const user = querySnapshot.docs[0].data()
 
-			res.status(201).json({
+			res.status(200).json({
 				status: APIStatuses.SUCCESS,
 				type: DocumentResponses.DATA_FOUND,
-				data: { user }
+				data: { user: { ...user, id: querySnapshot.docs[0].id } }
 			})
 		} catch (e) {
 			console.error('e', e)
