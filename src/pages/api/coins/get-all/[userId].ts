@@ -6,7 +6,6 @@ import { getFirestore, collection, query, where, getDocs, doc, updateDoc, getDoc
 const handler = withAuth(async (req, res) => {
 	const { method, body } = req
 	const { userId } = req.query
-	console.log('userId', userId)
 
 	if (method === APIMethods.GET) {
 		if (!userId) {

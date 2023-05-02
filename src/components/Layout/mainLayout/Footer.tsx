@@ -4,19 +4,17 @@ import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
 import MoreOptionsModalContent from '@/components/modal/MoreOptionsModalContent'
+import { useUserData } from '@/components/hooks/useUserData'
 
 const Navbar = () => {
 	const router = useRouter()
 	const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
+	const { foundUser } = useUserData()
 
 	// TODO: Renable the links when the pages are created
 	return (
 		<>
-			<Modal
-				isOpen={isModalOpen}
-				content={<MoreOptionsModalContent />}
-				handleClose={() => setIsModalOpen(false)}
-			/>
+			<Modal isOpen={isModalOpen} content={<MoreOptionsModalContent />} handleClose={() => setIsModalOpen(false)} />
 			<footer className={styles.footer}>
 				<div className={styles.footerNav}>
 					<div
@@ -62,9 +60,9 @@ const Navbar = () => {
 					</div>
 					<div
 						className={styles.footerNavItem}
-						// onClick={() => {
-						// 	router.push('/userprofile')
-						// }}
+						onClick={() => {
+							router.push(`/app/user/${foundUser?.id}/my-stuff`)
+						}}
 					>
 						<div className="translate-y-[1px]">
 							<Image alt="My stuff icon" src={require('../../../resources//images/mystuff.png')} width={50} height={35} />
