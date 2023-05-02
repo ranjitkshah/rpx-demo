@@ -2,7 +2,7 @@ import Image from 'next/image'
 import React, { ChangeEventHandler, FormEventHandler, ReactElement, useRef, useState } from 'react'
 import Uploader from '@/components/general/Uploader'
 import { Maybe } from '@/shared/types'
-// import Minting from '@/components/sections/Minting'
+import Minting from '@/components/sections/Minting'
 import Layout from '@/components/Layout/secondaryLayout'
 import Divider from '@/components/general/Divider'
 import { useRouter } from 'next/router'
@@ -57,10 +57,9 @@ const MintCoinPage = () => {
 		setSaving(false)
 	}
 
-	// *TODO: Add minting component
-	// if (saving) {
-	// 	return <Minting />
-	// }
+	if (saving) {
+		return <Layout><Minting /></Layout>
+	}
 
 	return (
 		<Layout
@@ -87,7 +86,6 @@ const MintCoinPage = () => {
 
 				<section id="info" className="py-5">
 					<form action="/api/coins/mint" method="post" onSubmit={handleSubmit}>
-						{/* <input type="hidden" name="id" value={id} /> */}
 						<div className="flex flex-col items-center gap-5">
 							<input
 								type="text"
