@@ -14,25 +14,30 @@ import Loading from '@/components/general/Loading'
 // TODO: Fix popin here around routing when you're auth'd
 const InitialIntakePage = () => {
 	const router = useRouter()
-	const { foundUser, clerkUser: user, isLoading } = useUserData()
+	const { user, isLoaded } = useUser()
 	const [isOpen, setIsOpen] = React.useState<boolean>(false)
 	const [modalType, setModalType] = React.useState<UserTypes>(UserTypes.GAMER)
 	const [showToast, setShowToast] = React.useState<boolean>(false)
 	const [showLoadingSpinner, setShowLoadingSpinner] = React.useState<boolean>(false)
 	const [showModalLoadingSpinner, setShowModalLoadingSpinner] = React.useState<boolean>(false)
 
+	// TODO: Fix this
+	// React.useEffect(() => {
+	// 	setShowModalLoadingSpinner(user ? false : true)
+	// 	if (!isLoading) {
+	// 		if (foundUser) {
+	// 			router.push('/app/main')
+	// 		} else if (!foundUser && user) {
+	// 			setShowLoadingSpinner(false)
+	// 		} else {
+	// 			router.push('/')
+	// 		}
+	// 	}
+	// }, [isLoading])
+
 	React.useEffect(() => {
-		setShowModalLoadingSpinner(user ? false : true)
-		if (!isLoading) {
-			if (foundUser) {
-				router.push('/app/main')
-			} else if (!foundUser && user) {
-				setShowLoadingSpinner(false)
-			} else {
-				router.push('/')
-			}
-		}
-	}, [isLoading])
+		setShowLoadingSpinner(user ? false : true)
+	}, [isLoaded])
 
 	if (showLoadingSpinner) return <Loading />
 
