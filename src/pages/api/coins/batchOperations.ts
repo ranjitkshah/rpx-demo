@@ -27,14 +27,14 @@ const handler = withAuth(async (req: TypedRequest<NewUser>, res: NextApiResponse
 		try {
 			currentCoinCreatorNames.forEach((coinName) => {
 				const coinsRef = doc(coinCollectionRef)
-				const mintedAmount = getRandomInt(1, 20)
+				const mintedAmount = getRandomInt(1, 100)
 				const newCoin: Coin = {
 					name: `${coinName}'s Coin`,
 					creatorName: coinName,
 					currentPrice: getRandomPrice(1, 100),
 					previousPrice: getRandomPrice(1, 100),
 					amountMinted: mintedAmount,
-					amountPurchased: getRandomInt(1, mintedAmount),
+					amountPurchased: getRandomInt(1, 10),
 					createdAt: new Date().toISOString(),
 					updatedAt: new Date().toISOString()
 				}
