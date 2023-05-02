@@ -30,7 +30,7 @@ const MainPage = () => {
 	// 	}, 10000)
 	// }, [audio])
 	return (
-		<main className={`container mx-auto py-4 flex flex-col space-y-4`}>
+		<main className={`container mx-auto py-8 flex flex-col space-y-4`}>
 			<div className="flex-1 flex flex-col justify-center items-center">
 				<Link href="/app/coins">
 					<Image

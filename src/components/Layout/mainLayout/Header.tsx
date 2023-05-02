@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import React from 'react'
+import styles from '../../../styles/layout/mainLayout/HeaderAndFooter.module.css'
 
 // TODO: add filter and plus icons if we have time
 // TODO: Wire up other icons (maybe to a coming soon page) if we have extra time
@@ -8,7 +9,7 @@ const Header = () => {
 	const router = useRouter()
 
 	return (
-		<header className="h-[7.5vh]">
+		<header className={styles.header}>
 			<nav>
 				{/* TODO: Reinstate this hella padding if Varun wants it, also have to redo calcs around main height if so */}
 				{/* <div className={`pt-14 flex justify-center w-[100vw] mb-4`}> */}

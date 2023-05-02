@@ -19,6 +19,7 @@
 body {
 	color: rgb(var(--foreground-rgb));
 	background-image: url('../resources/images/purplerect.png');
+	height: 100vh;
 }
 
 html,

@@ -1,4 +1,4 @@
-import styles from '../../../styles/layout/mainLayout/Footer.module.css'
+import styles from '../../../styles/layout/mainLayout/HeaderAndFooter.module.css'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 
@@ -7,7 +7,7 @@ const Navbar = () => {
 
 	// TODO: Renable the links when the pages are created
 	return (
-		<footer className="h-[7vh]">
+		<footer className={styles.footer}>
 			<div className={styles.footerNav}>
 				<div
 					className={styles.footerNavItem}
