@@ -8,7 +8,7 @@ const MoreOptionsModalContent = () => {
 	const router = useRouter()
 	const { foundUser, clerkUser: user, isLoading } = useUserData()
 	return (
-		<div className="flex flex-col text-center justify-between">
+		<div className="flex flex-col text-center justify-between text-black">
 			<div className="flex-grow-1">
 				<div className="flex flex-col items-center">
 					<Image src={require('../../resources/images/ducoin.png')} width={70} height={70} alt={''} />
