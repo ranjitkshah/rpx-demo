@@ -1,34 +1,66 @@
 import styles from '../../styles/pages/MyStuff.module.css'
 import { ImageList, ImageListItem } from '@mui/material'
 import collectibleImage from '../../resources/images/coins/collectible.png'
+import blackSquareImage from '../../resources/images/coins/black-square.png'
+import Image from 'next/image'
 
 const DUMMY_COLLECTIBLES = [
 	{
-		id: 'c1'
+		id: 'c1',
+		isFiller: false,
+		src: collectibleImage.src
 	},
 	{
-		id: 'c2'
+		id: 'c2',
+		isFiller: false,
+		src: collectibleImage.src
 	},
 	{
-		id: 'c3'
+		id: 'c3',
+		isFiller: false,
+		src: collectibleImage.src
 	},
 	{
-		id: 'c4'
+		id: 'c4',
+		isFiller: false,
+		src: collectibleImage.src
 	},
 	{
-		id: 'c5'
+		id: 'c5',
+		isFiller: false,
+		src: collectibleImage.src
 	},
 	{
-		id: 'c6'
+		id: 'c6',
+		isFiller: false,
+		src: collectibleImage.src
 	},
 	{
-		id: 'c7'
+		id: 'c7',
+		isFiller: false,
+		src: collectibleImage.src
 	},
 	{
-		id: 'c8'
+		id: 'c8',
+		isFiller: false,
+		src: collectibleImage.src
 	},
 	{
-		id: 'c9'
+		id: 'c9',
+		isFiller: false,
+		src: collectibleImage.src
+	},
+	{
+		isFiller: true,
+		src: blackSquareImage.src
+	},
+	{
+		isFiller: true,
+		src: blackSquareImage.src
+	},
+	{
+		isFiller: true,
+		src: blackSquareImage.src
 	}
 ]
 
@@ -53,7 +85,14 @@ const MyCollectibles = () => {
 			>
 				{DUMMY_COLLECTIBLES.map((item) => (
 					<ImageListItem key={item.id}>
-						<img src={collectibleImage.src} alt={item.id} loading="lazy" />
+						<Image
+							width={82}
+							height={117}
+							style={{ width: '82px', height: '117px' }}
+							src={item.src}
+							alt={'A collectible'}
+							loading="lazy"
+						/>
 					</ImageListItem>
 				))}
 			</ImageList>
