@@ -3,7 +3,11 @@ import CircleOutlinedIcon from '@mui/icons-material/CircleOutlined'
 import PersonIcon from '@mui/icons-material/Person'
 import { LinearProgress } from '@mui/material'
 
-const MyStuff = () => {
+type Props = {
+	walletFunds: string
+}
+
+const MyStuff = ({ walletFunds }: Props) => {
 	return (
 		<div className={`${styles.section}`}>
 			<CircleOutlinedIcon className={styles.circleIcon} />
@@ -29,7 +33,7 @@ const MyStuff = () => {
 				/>
 			</div>
 			<p className={styles.body1}>Current Wallet Funds</p>
-			<p className={styles.body2}>$20.00</p>
+			<p className={styles.body2}>${walletFunds}</p>
 		</div>
 	)
 }

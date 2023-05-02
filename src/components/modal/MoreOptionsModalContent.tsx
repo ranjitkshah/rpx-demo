@@ -26,7 +26,7 @@ const MoreOptionsModalContent = () => {
 					</ul>
 				</div>
 			</div>
-			<div className="mt-auto">
+			<div className="mt-auto mx-auto max-w-[90%] fixed bottom-[7%] left-4">
 				<Divider />
 				<p>Legal</p>
 			</div>

@@ -69,14 +69,6 @@ const MyStuffPage = () => {
 	const [isLoading, setIsLoading] = React.useState<boolean>(true)
 	const [error, setError] = React.useState<boolean>(false)
 	const [showToast, setShowToast] = React.useState<boolean>(false)
-	// const [coinsMap, setCoinsMap] = React.useState<any[][]>()
-	// console.log('coinsMap', coinsMap)
-
-	// React.useEffect(() => {
-	// 	if (coins) {
-	// 		setCoinsMap(splitArrayIntoThree(coins))
-	// 	}
-	// }, [coins])
 
 	const fetchUserData = async (id: string) => {
 		setError(false)
@@ -131,7 +123,7 @@ const MyStuffPage = () => {
 				<Loading />
 			) : (
 				<>
-					<MyStuff />
+					<MyStuff walletFunds={user?.walletFunds.toFixed(2) ?? '$10000'} />
 					<MyCoins coins={coins!} />
 					<MyCollectibles />
 					<MyStats />
