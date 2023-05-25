@@ -21,7 +21,7 @@ const handler = withAuth(async (req: TypedRequest<NewUser>, res: NextApiResponse
 
 	try {
 		const db = getFirestore(firebase_app)
-		const userCollectionRef = collection(db, CollectionNames.USERS)
+		const userCollectionRef = collection(db, CollectionNames.USERS) 
 		const q = query(userCollectionRef, where('clerkId', '==', body.clerkId))
 		const querySnapshot = await getDocs(q)
 		const userDocumentRef = querySnapshot.docs.length ? querySnapshot.docs[0] : null

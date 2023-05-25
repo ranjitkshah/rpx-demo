@@ -41,13 +41,8 @@ const MintCoinPage = () => {
 
 		const form = e.currentTarget
 		const formData = new FormData(form)
-		console.log("Form Element:", form);
-		console.log({name, id, image, description})
 		formData.append('id', id as string)
-		formData.append('image',image as File)
-		formData.append('name', name as string)
-		formData.append('description', description as string)
-		console.log("line 47", formData)
+		formData.append('image',image as File)	
 		try {
 			const response = await fetch(form.action, {
 				method: form.method,
@@ -58,7 +53,7 @@ const MintCoinPage = () => {
 			console.error('bad coiin!', e)
 		}
 		setTimeout(() => {
-			router.push(`/app/gamer/${id}/minted/123`)
+			router.push(`/app/gamer/${id}/minted/${name}`)
 		}, 5000)
 		// setSaving(false)
 	}

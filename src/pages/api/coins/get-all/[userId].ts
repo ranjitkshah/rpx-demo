@@ -28,6 +28,7 @@ const handler = withAuth(async (req, res) => {
 
 			const user = userDocSnapshot.data()
 			const ownedCoins = user.ownedCoins
+			console.log({user, ownedCoins})
 
 			if (!Array.isArray(ownedCoins)) {
 				return res.status(400).json({ error: 'ownedCoins property is missing or not an array' })

@@ -10,7 +10,7 @@ import Loading from '@/components/general/Loading'
 const CoinCreated = () => {
 	const router = useRouter()
 	const { name } = router.query
-	// const { coin, isLoading: isCoinLoading, error: coinError } = useCoinByCreator(creator as string)
+	const { coin, isLoading: isCoinLoading, error: coinError } = useCoinByCreator(name as string)
 
 	// const handleBuyClick: MouseEventHandler = () => {
 	// 	router.push(`/app/coins/${creator}/buy`)

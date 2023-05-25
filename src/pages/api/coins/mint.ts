@@ -12,6 +12,8 @@ import { getStorage, ref as getStorageRef, uploadBytes, deleteObject } from 'fir
 import firebase_app from '@/lib/firebase'
 import { withAuth } from '@clerk/nextjs/dist/api'
 import formidable, { Fields, Files } from 'formidable'
+const fs = require('fs');
+
 
 // Disable NextJS body parsing for multipart form
 export const config = {
@@ -46,31 +48,32 @@ const handler = withAuth(async (req: NextApiRequest, res: NextApiResponse) => {
 
 	try {
 		const { fields, files } = await parseForm(req)
+		console.log({fields,files});
 		const { id, name, description } = fields
-
+		console.log({id, name, description});
 		const userRef = doc(db, CollectionNames.USERS, id as string)
 
-		const image = files['image'] as unknown as File
+		const image = files['image'] as PersistentFile;
+		const imageBuffer = await fs.promises.readFile(image.filepath);
 
-		const imageBuffer = await image.arrayBuffer()
 
 		// Log the buffer object to the console
 		console.log(imageBuffer)
 
 		// Check if the buffer object has a non-zero length
-		if (imageBuffer.byteLength > 0) {
-			console.log('Image parsed successfully!')
-		} else {
-			console.log('Error parsing image!')
+		if (imageBuffer && imageBuffer.length > 0) {
+			console.log('Image parsed successfully!');
+		  } else {
+			console.log('Error parsing image!');
 		}
-
-		const uploadedImage = await uploadBytes(storageRef, image)
-
+		
+		const uploadedImage = await uploadBytes(storageRef, new Uint8Array(imageBuffer))
+		console.log({uploadedImage})
 		try {
 			const mintedCoinRef = await addDoc(coinsRef, {
 				name,
 				description,
-				image: uploadedImage.ref,
+				imageUrl: uploadedImage.ref.fullPath,
 				creatorRef: userRef
 			})
 
