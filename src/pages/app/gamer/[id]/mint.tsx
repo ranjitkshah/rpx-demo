@@ -41,10 +41,13 @@ const MintCoinPage = () => {
 
 		const form = e.currentTarget
 		const formData = new FormData(form)
-
-		formData.append('image', image as File)
+		console.log("Form Element:", form);
+		console.log({name, id, image, description})
 		formData.append('id', id as string)
-
+		formData.append('image',image as File)
+		formData.append('name', name as string)
+		formData.append('description', description as string)
+		console.log("line 47", formData)
 		try {
 			const response = await fetch(form.action, {
 				method: form.method,

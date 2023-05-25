@@ -28,18 +28,6 @@ const Header = () => {
 						<div className="">
 							<input className="px-2 rounded-lg border-0 w-[195px] h-[24px] text-sm" type={'text'} placeholder={'Search'} />
 						</div>
-						<div className="">
-							<Image
-								onClick={() => signOut()}
-								alt="Notification bell icon"
-								src={require('../../../resources/images/bell.png')}
-								width={25}
-								height={20}
-							/>
-						</div>
-						<div className="mr-2">
-							<Image alt="Cart icon" src={require('../../../resources/images/cart.png')} width={25} height={20} />
-						</div>
 					</div>
 				</div>
 				<div style={{ width: '100%%', margin: 'auto' }}>

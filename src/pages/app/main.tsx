@@ -40,22 +40,6 @@ const MainPage = () => {
 					</div>
 				</Link>
 			</div>
-			<div className="flex-1 flex flex-col justify-center items-center">
-				<Link href="/app/coins">
-					<div className="relative">
-						<Image
-							className="w-[90vw] h-auto object-contain"
-							alt="Buy gamer coins"
-							src={require('../../resources/images/mainBoxes/Asset 3.png')}
-						/>
-						<Image
-							className="w-[53vw] h-auto object-contain absolute top-[50%] left-[22%]"
-							alt="Buy gamer coins"
-							src={require('../../resources/images/mainBoxes/Asset 3-TEXT.png')}
-						/>
-					</div>
-				</Link>
-			</div>
 		</main>
 	)
 }
