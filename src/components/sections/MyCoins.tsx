@@ -71,7 +71,7 @@ const MyCoins = ({ coins }: Props) => {
 									// @ts-ignore
 									src={item.src}
 									// @ts-ignore
-									srcSet={`${item.src} 2x`}
+									srcSet={`${item?.src} 2x`}
 									// alt={item.id}
 									loading="lazy"
 									className="max-w-[66px]"
@@ -83,9 +83,9 @@ const MyCoins = ({ coins }: Props) => {
 							<ImageListItem>
 								<img
 									// @ts-ignore
-									src={coinsImageMap[item.creatorName].src}
+									src={coinsImageMap[item.creatorName]?.src}
 									// @ts-ignore
-									srcSet={`${coinsImageMap[item.creatorName].src} 2x`}
+									srcSet={`${coinsImageMap[item.creatorName]?.src} 2x`}
 									// alt={item.id}
 									loading="lazy"
 									className="max-w-[66px]"

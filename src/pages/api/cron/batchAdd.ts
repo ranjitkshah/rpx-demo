@@ -9,10 +9,11 @@ export default async function handler(req: NextRequest) {
 	const db = getFirestore(firebase_app)
 	const batch = writeBatch(db)
 	const coinCollectionRef = collection(db, CollectionNames.COINS)
-
+	console.log({coinCollectionRef})
 	try {
 		currentCoinCreatorNames.forEach((coinName) => {
 			const coinsRef = doc(coinCollectionRef)
+			console.log({coinsRef})
 			const mintedAmount = getRandomInt(1, 100)
 			const newCoin: Coin = {
 				name: `${coinName}'s Coin`,
