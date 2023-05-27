@@ -5,6 +5,7 @@ import { useAuth } from '@clerk/nextjs'
 import LandingPage from './landing'
 import Loading from '@/components/general/Loading'
 import { useRouter } from 'next/router'
+import AudioFile from '@/components/general/AudioFile'
 
 export default function Home() {
 	const { isSignedIn } = useAuth()
@@ -27,6 +28,7 @@ export default function Home() {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<>
+				<AudioFile audioFile="/resources/sounds/Theme.mp3" />
 				<Loading />
 			</>
 		</>

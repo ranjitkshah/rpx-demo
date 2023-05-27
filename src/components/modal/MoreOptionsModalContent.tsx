@@ -7,6 +7,10 @@ import { useUserData } from '../hooks/useUserData'
 const MoreOptionsModalContent = () => {
 	const router = useRouter()
 	const { foundUser, clerkUser: user, isLoading } = useUserData()
+	console.log('==', { foundUser, user })
+	if (!foundUser) {
+		return <></>
+	}
 	return (
 		<div className="flex flex-col text-center justify-between text-black">
 			<div className="flex-grow-1">
@@ -19,7 +23,7 @@ const MoreOptionsModalContent = () => {
 					<ul className="flex flex-col items-center text-lg font-medium">
 						<li>Profile</li>
 						<li>Settings</li>
-						<li onClick={() => router.push(`/app/gamer/xa6aPg6VZ8au6jsGn3No/mint`)}>Create a Coin</li>
+						<li onClick={() => router.push(`/app/gamer/${foundUser.id}/mint`)}>Create a Coin</li>
 						<li>Create a Collectible</li>
 						<li>Explore RPX</li>
 						<li>Help / Contact</li>

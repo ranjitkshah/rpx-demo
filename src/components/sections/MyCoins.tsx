@@ -14,6 +14,7 @@ import TitanWarrior188 from '../../resources/images/coins/TitanWarrior188.png'
 import blackCircle from '../../resources/images/coins/black-circle.png'
 import { fillArrayToLength } from '@/shared/utils'
 import React from 'react'
+import Image from 'next/image'
 
 type Props = {
 	coins: Coin[]
@@ -36,7 +37,7 @@ const MyCoins = ({ coins }: Props) => {
 	const [mappedCoins, setMappedCoins] = React.useState<any[]>([])
 
 	React.useEffect(() => {
-		if (coins.length) {
+		if (coins?.length) {
 			const fullCoinsArray = fillArrayToLength(coins, 16, {
 				isFiller: true,
 				src: blackCircle.src
@@ -44,6 +45,7 @@ const MyCoins = ({ coins }: Props) => {
 			setMappedCoins(fullCoinsArray)
 		}
 	}, [coins])
+
 	return (
 		<div>
 			<h2 className={`${styles.greenText} text-2xl mb-4 ml-4`}>My Coins</h2>
@@ -64,7 +66,6 @@ const MyCoins = ({ coins }: Props) => {
 				{mappedCoins.map((item) => {
 					// @ts-ignore
 					if (item.isFiller) {
-						console.log('isFiller', item)
 						return (
 							<ImageListItem>
 								<img
@@ -79,17 +80,28 @@ const MyCoins = ({ coins }: Props) => {
 							</ImageListItem>
 						)
 					} else {
+						console.log('==', { coinsImageMap, item })
 						return (
 							<ImageListItem>
-								<img
+								<Image
+									src={item?.creatorName in coinsImageMap ? coinsImageMap[item.creatorName]?.src : item?.imageUrl}
+									alt={'sdfsfs'}
+									width={50}
+									height={50}
+									// quality={100}
+									// unoptimized
+									className="max-w-[50px] max-h-[50px] rounded-full"
+									objectFit="cover"
+								/>
+								{/* <img
 									// @ts-ignore
-									src={coinsImageMap[item.creatorName]?.src}
+									src={item?.creatorName in coinsImageMap ? coinsImageMap[item.creatorName]?.src : item?.imageUrl}
 									// @ts-ignore
-									srcSet={`${coinsImageMap[item.creatorName]?.src} 2x`}
+									srcSet={`${item?.creatorName in coinsImageMap ? coinsImageMap[item.creatorName]?.src : item?.imageUrl} 2x`}
 									// alt={item.id}
 									loading="lazy"
 									className="max-w-[66px]"
-								/>
+								/> */}
 							</ImageListItem>
 						)
 					}

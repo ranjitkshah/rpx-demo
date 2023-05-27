@@ -8,7 +8,7 @@ import {
 } from '@/shared/types'
 import { NextApiRequest, NextApiResponse } from 'next'
 import { addDoc, collection, doc, getFirestore } from 'firebase/firestore'
-import { getStorage, ref as getStorageRef, uploadBytes, deleteObject } from 'firebase/storage'
+import { getStorage, ref as getStorageRef, uploadBytes, deleteObject, getDownloadURL, updateMetadata } from 'firebase/storage'
 import firebase_app from '@/lib/firebase'
 import { withAuth } from '@clerk/nextjs/dist/api'
 import formidable, { Fields, Files } from 'formidable'
@@ -24,7 +24,6 @@ export const config = {
 
 const db = getFirestore(firebase_app)
 const coinsRef = collection(db, CollectionNames.COINS)
-const storageRef = getStorageRef(getStorage(), StorageNames.COINS)
 
 const form = formidable({
 	multiples: true,
@@ -58,7 +57,7 @@ const handler = withAuth(async (req: NextApiRequest, res: NextApiResponse) => {
 
 
 		// Log the buffer object to the console
-		console.log(imageBuffer)
+		console.log(image)
 
 		// Check if the buffer object has a non-zero length
 		if (imageBuffer && imageBuffer.length > 0) {
@@ -66,14 +65,25 @@ const handler = withAuth(async (req: NextApiRequest, res: NextApiResponse) => {
 		  } else {
 			console.log('Error parsing image!');
 		}
-		
-		const uploadedImage = await uploadBytes(storageRef, new Uint8Array(imageBuffer))
-		console.log({uploadedImage})
+		const imageName = new Date().getTime() + image.originalFilename;
+
+		const storageRef = getStorageRef(getStorage(), `${StorageNames.COINS}/${imageName}`)
+
+
 		try {
-			const mintedCoinRef = await addDoc(coinsRef, {
+
+			const uploadedImage = await uploadBytes(storageRef, new Uint8Array(imageBuffer))
+						const newMetadata = {
+				contentType: image.mimetype
+			  };
+			await updateMetadata(storageRef, newMetadata);
+	
+			const downloadURL = await getDownloadURL(storageRef);
+	
+				const mintedCoinRef = await addDoc(coinsRef, {
 				name,
 				description,
-				imageUrl: uploadedImage.ref.fullPath,
+				imageUrl:downloadURL,
 				creatorRef: userRef
 			})
 
@@ -83,7 +93,7 @@ const handler = withAuth(async (req: NextApiRequest, res: NextApiResponse) => {
 				data: { user: { id: mintedCoinRef.id } }
 			})
 		} catch (e) {
-			deleteObject(uploadedImage.ref)
+			// deleteObject(uploadedImage.ref)
 			throw e
 		}
 	} catch (e) {

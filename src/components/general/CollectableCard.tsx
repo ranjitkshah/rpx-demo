@@ -61,6 +61,8 @@ const CollectableCard = ({
 		// }
 	}
 
+	console.log('==col', { collectibleNameSrc, imgSrc })
+
 	return (
 		<div className={`${styles.collectibleLinkBox}`}>
 			<div className={`${styles.collectibleContainer}`}>

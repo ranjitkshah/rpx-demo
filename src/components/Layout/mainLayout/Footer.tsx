@@ -11,18 +11,19 @@ const Navbar = () => {
 	const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
 	const { foundUser } = useUserData()
 
+	const onRoute = (routeLink: string) => {
+		const audio = new Audio('/resources/sounds/swoosh.mpeg')
+		audio.play()
+		router.push(routeLink)
+	}
+
 	// TODO: Renable the links when the pages are created
 	return (
 		<>
 			<Modal isOpen={isModalOpen} content={<MoreOptionsModalContent />} handleClose={() => setIsModalOpen(false)} />
 			<footer className={styles.footer}>
 				<div className={styles.footerNav}>
-					<div
-						className={styles.footerNavItem}
-						onClick={() => {
-							router.push('/app/main')
-						}}
-					>
+					<div className={styles.footerNavItem} onClick={() => onRoute('/app/main')}>
 						<div>
 							<Image
 								alt="Home Icon"
@@ -33,18 +34,14 @@ const Navbar = () => {
 							/>
 						</div>
 					</div>
-					<div
-						className={styles.footerNavItem}
-						onClick={() => {
-							router.push('/app/coins')
-						}}
-					>
+					<div className={styles.footerNavItem} onClick={() => onRoute('/app/coins')}>
 						<div className="translate-y-[1px]">
 							<Image alt="Coins Icon" src={require('../../../resources//images/coin.png')} width={40} height={36} />
 						</div>
 					</div>
 					<div
 						className={styles.footerNavItem}
+						// onClick={() => onRoute('/app/collectibles')}
 						// onClick={() => {
 						// 	router.push('/collectibles')
 						// }}
@@ -58,12 +55,7 @@ const Navbar = () => {
 							/>
 						</div>
 					</div>
-					<div
-						className={styles.footerNavItem}
-						onClick={() => {
-							router.push(`/app/user/${foundUser?.id}/my-stuff`)
-						}}
-					>
+					<div className={styles.footerNavItem} onClick={() => onRoute(`/app/user/${foundUser?.id}/my-stuff`)}>
 						<div className="translate-y-[1px]">
 							<Image alt="My stuff icon" src={require('../../../resources//images/mystuff.png')} width={50} height={35} />
 						</div>
@@ -71,6 +63,8 @@ const Navbar = () => {
 					<div
 						className={styles.footerNavItem}
 						onClick={() => {
+							const audio = new Audio('/resources/sounds/swoosh.mpeg')
+							audio.play()
 							setIsModalOpen(true)
 						}}
 					>

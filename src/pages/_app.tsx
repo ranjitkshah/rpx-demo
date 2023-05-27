@@ -16,22 +16,27 @@ type AppPropsWithLayout = AppProps & {
 }
 
 function MyApp({ Component, pageProps }: AppPropsWithLayout) {
-	const router = useRouter()
-	const [audioIsPlaying, setAudioIsPlaying] = React.useState<boolean>()
+	// const router = useRouter()
+	// const [audioIsPlaying, setAudioIsPlaying] = React.useState<boolean>()
 
-	const startAudio = async () => {
-		if (router.pathname.includes('app')) {
-			const themeAudio = new Audio('../../resources/sounds/theme.mp3')
-			themeAudio.loop = true
-			setAudioIsPlaying(true)
-			await themeAudio.play()
-			window.removeEventListener('click', startAudio)
-		}
-	}
+	// const startAudio = async () => {
+	// 	if (router.pathname.includes('app')) {
+	// 		const themeAudio = new Audio('../../resources/sounds/theme.mp3')
+	// 		themeAudio.loop = true
+	// 		setAudioIsPlaying(true)
+	// 		themeAudio.play()
+	// 		window.removeEventListener('click', startAudio)
+	// 	}
+	// }
 
-	React.useEffect(() => {
-		window.addEventListener('click', startAudio)
-	}, [])
+	// setTimeout(() => {
+	// 	console.log('window', { audioIsPlaying })
+	// 	startAudio()
+	// }, 5000)
+
+	// React.useEffect(() => {
+	// 	window.addEventListener('click', startAudio)
+	// }, [])
 
 	const renderWithLayout = Component.getLayout || ((page) => <>{page}</>)
 

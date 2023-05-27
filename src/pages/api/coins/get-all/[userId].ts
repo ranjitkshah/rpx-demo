@@ -27,7 +27,7 @@ const handler = withAuth(async (req, res) => {
 			}
 
 			const user = userDocSnapshot.data()
-			const ownedCoins = user.ownedCoins
+			const ownedCoins = user?.ownedCoins
 			console.log({user, ownedCoins})
 
 			if (!Array.isArray(ownedCoins)) {

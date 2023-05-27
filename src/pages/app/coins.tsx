@@ -85,16 +85,16 @@ const CoinsPage = () => {
 		if (coins) {
 			// @ts-ignore
 			const updatedCoins = []
-			console.log({coins})
+			console.log({ coins })
 			coins.forEach((coin) => {
 				//@ts-ignore
-				if (coinsImageNameMap[coin.creatorName]) {
-					updatedCoins.push(coin)
-				}
+				// if (coinsImageNameMap[coin.creatorName]) {
+				updatedCoins.push(coin)
+				// }
 			})
 			// @ts-ignore
 			setCoinsMap(splitArrayIntoThree(updatedCoins))
-			console.log({coinsMap,updatedCoins})
+			console.log({ coinsMap, updatedCoins })
 		}
 	}, [coins])
 
@@ -129,9 +129,13 @@ const CoinsPage = () => {
 										isPriceLoading={false}
 										linkLocation={`/app/coins/${coin.creatorName}/buy`}
 										// @ts-ignore
-										collectibleNameSrc={coinsImageNameMap[coin.creatorName].src}
+										// item?.creatorName in coinsImageMap ? coinsImageMap[item.creatorName]?.src : item?.imageUrl
+										// collectibleNameSrc={coinsImageNameMap[coin.creatorName]?.src}
+										collectibleNameSrc={
+											coin?.creatorName in coinsImageNameMap ? coinsImageNameMap[coin.creatorName]?.src : coin?.imageUrl
+										}
 										// @ts-ignore
-										imgSrc={coinsImageMap[coin.creatorName].src}
+										imgSrc={coin?.creatorName in coinsImageMap ? coinsImageMap[coin.creatorName]?.src : coin?.imageUrl}
 										itemPrice={coin?.currentPrice}
 									/>
 								)
@@ -152,9 +156,11 @@ const CoinsPage = () => {
 									isPriceLoading={false}
 									linkLocation={`/app/coins/${coin.creatorName}/buy`}
 									// @ts-ignore
-									collectibleNameSrc={coinsImageNameMap[coin.creatorName].src}
+									collectibleNameSrc={
+										coin?.creatorName in coinsImageNameMap ? coinsImageNameMap[coin.creatorName]?.src : coin?.imageUrl
+									}
 									// @ts-ignore
-									imgSrc={coinsImageMap[coin.creatorName].src}
+									imgSrc={coin?.creatorName in coinsImageNameMap ? coinsImageNameMap[coin.creatorName]?.src : coin?.imageUrl}
 									itemPrice={coin?.currentPrice}
 								/>
 							)
@@ -174,9 +180,11 @@ const CoinsPage = () => {
 									isPriceLoading={false}
 									linkLocation={`/app/coins/${coin.creatorName}/buy`}
 									// @ts-ignore
-									collectibleNameSrc={coinsImageNameMap[coin.creatorName].src}
+									collectibleNameSrc={
+										coin?.creatorName in coinsImageNameMap ? coinsImageNameMap[coin.creatorName]?.src : coin?.imageUrl
+									}
 									// @ts-ignore
-									imgSrc={coinsImageMap[coin.creatorName].src}
+									imgSrc={coin?.creatorName in coinsImageNameMap ? coinsImageNameMap[coin.creatorName]?.src : coin?.imageUrl}
 									itemPrice={coin?.currentPrice}
 								/>
 							)
@@ -196,9 +204,11 @@ const CoinsPage = () => {
 									isPriceLoading={false}
 									linkLocation={`/app/coins/${coin.creatorName}/buy`}
 									// @ts-ignore
-									collectibleNameSrc={coinsImageNameMap[coin.creatorName].src}
+									collectibleNameSrc={
+										coin?.creatorName in coinsImageNameMap ? coinsImageNameMap[coin.creatorName]?.src : coin?.imageUrl
+									}
 									// @ts-ignore
-									imgSrc={coinsImageMap[coin.creatorName].src}
+									imgSrc={coin?.creatorName in coinsImageNameMap ? coinsImageNameMap[coin.creatorName]?.src : coin?.imageUrl}
 									itemPrice={coin?.currentPrice}
 								/>
 							)
