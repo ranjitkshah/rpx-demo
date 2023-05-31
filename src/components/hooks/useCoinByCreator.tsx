@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Coin } from '@/shared/types'
 
-export const useCoinByCreator = (creator: string) => {
+export const useCoinByCreator = (creator: string, isCreatorId: boolean) => {
 	const [coin, setCoin] = React.useState<Coin>()
 	const [isLoading, setIsLoading] = React.useState<boolean>(true)
 	const [error, setError] = React.useState<boolean>(false)
@@ -9,7 +9,7 @@ export const useCoinByCreator = (creator: string) => {
 	const fetchCoinData = async (creator: string) => {
 		setError(false)
 		try {
-			const response = await fetch(`/api/coins/${creator}`, {
+			const response = await fetch(`/api/coins/${creator}?isCreatorId=${isCreatorId}`, {
 				method: 'GET',
 				headers: {
 					'Content-Type': 'application/json'

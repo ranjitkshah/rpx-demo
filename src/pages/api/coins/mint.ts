@@ -7,8 +7,9 @@ import {
 	StorageNames
 } from '@/shared/types'
 import { NextApiRequest, NextApiResponse } from 'next'
-import { addDoc, collection, doc, getFirestore } from 'firebase/firestore'
+import { addDoc, collection, doc, getDoc, getFirestore } from 'firebase/firestore'
 import { getStorage, ref as getStorageRef, uploadBytes, deleteObject, getDownloadURL, updateMetadata } from 'firebase/storage'
+import { getRandomPrice } from '@/shared/utils'
 import firebase_app from '@/lib/firebase'
 import { withAuth } from '@clerk/nextjs/dist/api'
 import formidable, { Fields, Files } from 'formidable'
@@ -51,6 +52,12 @@ const handler = withAuth(async (req: NextApiRequest, res: NextApiResponse) => {
 		const { id, name, description } = fields
 		console.log({id, name, description});
 		const userRef = doc(db, CollectionNames.USERS, id as string)
+		const userDocSnapshot = await getDoc(userRef)
+
+		if (!userDocSnapshot.exists()) {
+			return res.status(404).json({ error: 'User not found' })
+		}
+		const user = userDocSnapshot.data()
 
 		const image = files['image'] as PersistentFile;
 		const imageBuffer = await fs.promises.readFile(image.filepath);
@@ -84,7 +91,11 @@ const handler = withAuth(async (req: NextApiRequest, res: NextApiResponse) => {
 				name,
 				description,
 				imageUrl:downloadURL,
-				creatorRef: userRef
+				creatorId: user.id,
+				creatorName: user.firstName,
+				currentPrice: getRandomPrice(1, 100),
+				previousPrice: getRandomPrice(1, 100),
+				amountMinted: getRandomPrice(1, 100),
 			})
 
 			res.status(201).json({

@@ -97,7 +97,7 @@ export type Coin = {
 	id?: string
 	name: string
 	creatorName: string
-	creatorRef?: Record<string, any>
+	creatorId?: string
 	description?: string
 	imageUrl?: string
 	currentPrice: number

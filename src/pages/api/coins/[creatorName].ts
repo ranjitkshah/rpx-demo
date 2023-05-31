@@ -5,7 +5,7 @@ import { collection, doc, getDoc, getDocs, getFirestore, query, where } from 'fi
 
 const handler = withAuth(async (req, res) => {
 	const { method } = req
-	const { creatorName } = req.query
+	const { creatorName, isCreatorId } = req.query
 
 	if (!creatorName) {
 		console.error('e', DocumentResponses.DATA_NOT_FOUND)
@@ -20,7 +20,10 @@ const handler = withAuth(async (req, res) => {
 		try {
 			const db = getFirestore(firebase_app)
 			const coinsCollectionRef = collection(db, CollectionNames.COINS)
-			const q = query(coinsCollectionRef, where('creatorName', '==', creatorName))
+			let q = query(coinsCollectionRef, where('creatorName', '==', creatorName))
+			if(isCreatorId) {
+				q = query(coinsCollectionRef, where('creatorId', '==', creatorName))
+			} 
 			const querySnapshot = await getDocs(q)
 
 			if (querySnapshot.empty) {

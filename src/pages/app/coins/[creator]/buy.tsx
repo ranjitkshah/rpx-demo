@@ -16,7 +16,8 @@ import BuyCoinModalContents from '@/components/modal/BuyCoinModalContents'
 const BuyCoinPage = () => {
 	const router = useRouter()
 	const { creator } = router.query
-	const { coin, isLoading: isCoinLoading, error: coinError } = useCoinByCreator(creator as string)
+	const isCreatorId = false
+	const { coin, isLoading: isCoinLoading, error: coinError } = useCoinByCreator(creator as string, isCreatorId)
 	const { foundUser, isLoading: isUserLoading, error: userError } = useUserData()
 	const [numberOfCoins, setNumberOfCoins] = React.useState<string>('')
 	const [imgSrc, setImgSrc] = React.useState<string>()
