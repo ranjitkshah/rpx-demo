@@ -12,7 +12,7 @@ const MoreOptionsModalContent = () => {
 	const router = useRouter()
 	const { foundUser, clerkUser: user, isLoading } = useUserData()
 	const isCreatorId = true
-	const { coin, isLoading: isCoinLoading, error: coinError } = useCoinByCreator(foundUser?.id as string, isCreatorId)
+	const { coin, isLoading: isCoinLoading, error: coinError } = useCoinByCreator(foundUser?.clerkId as string, isCreatorId)
 	const { signOut } = useClerk()
 
 

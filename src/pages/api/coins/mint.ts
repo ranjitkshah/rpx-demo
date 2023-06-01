@@ -7,7 +7,7 @@ import {
 	StorageNames
 } from '@/shared/types'
 import { NextApiRequest, NextApiResponse } from 'next'
-import { addDoc, collection, doc, getDoc, getFirestore } from 'firebase/firestore'
+import { addDoc, collection, doc, getDoc, getDocs, getFirestore, query, where } from 'firebase/firestore'
 import { getStorage, ref as getStorageRef, uploadBytes, deleteObject, getDownloadURL, updateMetadata } from 'firebase/storage'
 import { getRandomPrice } from '@/shared/utils'
 import firebase_app from '@/lib/firebase'
@@ -51,14 +51,21 @@ const handler = withAuth(async (req: NextApiRequest, res: NextApiResponse) => {
 		console.log({fields,files});
 		const { id, name, description } = fields
 		console.log({id, name, description});
-		const userRef = doc(db, CollectionNames.USERS, id as string)
-		const userDocSnapshot = await getDoc(userRef)
+		const usersCollectionRef = collection(db, CollectionNames.USERS)
+		const q = query(usersCollectionRef, where('clerkId', '==', id))
+		const querySnapshot = await getDocs(q)
 
-		if (!userDocSnapshot.exists()) {
-			return res.status(404).json({ error: 'User not found' })
+		if (querySnapshot.empty) {
+			console.error('e', DocumentResponses.DATA_NOT_FOUND)
+			return res.status(400).json({
+				status: APIStatuses.ERROR,
+				type: DocumentResponses.DATA_NOT_FOUND,
+				data: { error: `Could not find the user with clerk id ${id}` }
+			})
 		}
-		const user = userDocSnapshot.data()
 
+		const user = Object.assign(querySnapshot.docs[0].data(), {})
+		console.log({user})
 		const image = files['image'] as PersistentFile;
 		const imageBuffer = await fs.promises.readFile(image.filepath);
 
@@ -91,7 +98,7 @@ const handler = withAuth(async (req: NextApiRequest, res: NextApiResponse) => {
 				name,
 				description,
 				imageUrl:downloadURL,
-				creatorId: user.id,
+				creatorId: user.clerkId,
 				creatorName: user.firstName,
 				currentPrice: getRandomPrice(1, 100),
 				previousPrice: getRandomPrice(1, 100),
