@@ -85,7 +85,8 @@ const MyStuffPage = () => {
 				setCoins(null)
 				setError(true)
 			} else {
-				const { user, coins } = result.data
+				const user = result?.data
+				const coins = result?.data
 				setUser(user)
 				setCoins(coins)
 			}
@@ -124,7 +125,7 @@ const MyStuffPage = () => {
 			) : (
 				<>
 					<MyStuff walletFunds={user?.walletFunds.toFixed(2) ?? '$10000'} />
-					<MyCoins coins={coins!} />
+					<MyCoins coins={coins || []} />
 					<MyCollectibles />
 					<MyStats />
 				</>

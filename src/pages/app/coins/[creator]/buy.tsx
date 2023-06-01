@@ -20,7 +20,6 @@ const BuyCoinPage = () => {
 	const { coin, isLoading: isCoinLoading, error: coinError } = useCoinByCreator(creator as string, isCreatorId)
 	const { foundUser, isLoading: isUserLoading, error: userError } = useUserData()
 	const [numberOfCoins, setNumberOfCoins] = React.useState<string>('')
-	const [imgSrc, setImgSrc] = React.useState<string>()
 	const [isModalOpen, setIsModalOpen] = React.useState<boolean>(false)
 	const [error, setError] = React.useState<boolean>(false)
 	const [showLoadingButtonSpinner, setShowLoadingButtonSpinner] = React.useState<boolean>(false)
@@ -34,12 +33,6 @@ const BuyCoinPage = () => {
 			}, 10000)
 		}
 	}, [coinError, userError])
-
-	React.useEffect(() => {
-		if (creator) {
-			setImgSrc(`/resources/images/coins/${creator}.png`)
-		}
-	}, [creator])
 
 	const handleSetNumberOfCoins = (num: string) => {
 		switch (num) {
@@ -77,6 +70,8 @@ const BuyCoinPage = () => {
 	}
 
 	const handlePurchaseCoins = async (userId: string, creatorName: string, numberOfCoins: string) => {
+		const audio = new Audio('/resources/sounds/buy.mpeg')
+		audio.play()
 		setShowLoadingButtonSpinner(true)
 		setError(false)
 		try {
@@ -116,8 +111,8 @@ const BuyCoinPage = () => {
 			{coin && (
 				<div className="flex flex-col container relative">
 					<div className="flex flex-col items-center justify-center mb-4">
-						{imgSrc && (
-							<Image priority={true} src={imgSrc ? imgSrc : ''} alt={`${creator}'s coin!`} width={120} height={120} />
+						{coin?.imageUrl && (
+							<Image priority={true} src={coin?.imageUrl} alt={`${creator}'s coin!`} width={120} height={120} />
 						)}
 						<h1 className="text-3xl font-bold text-white tracking-widest mt-4">{coin.creatorName}</h1>
 					</div>
@@ -272,7 +267,11 @@ const BuyCoinPage = () => {
 						</div>
 						<button
 							disabled={Number(numberOfCoins) == 0}
-							onClick={() => setIsModalOpen(true)}
+							onClick={() => {
+								const audio = new Audio('/resources/sounds/buy.mpeg')
+								audio.play()
+								setIsModalOpen(true)
+							}}
 							className={`${styles.button} btn btn-block normal-case text-black`}
 						>
 							Buy it!
@@ -307,7 +306,7 @@ const BuyCoinPage = () => {
 							)
 						}
 						showLoadingSpinner={showLoadingButtonSpinner}
-						imgSrc={imgSrc!}
+						imgSrc={coin?.imageUrl || ''}
 						numberOfCoins={numberOfCoins!}
 						purchasePrice={(Number(numberOfCoins) * coin?.currentPrice!).toFixed(2) ?? ''}
 					/>

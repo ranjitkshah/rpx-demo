@@ -1,68 +1,13 @@
 import styles from '../../styles/pages/MyStuff.module.css'
 import { ImageList, ImageListItem } from '@mui/material'
-import collectibleImage from '../../resources/images/coins/collectible.png'
 import blackSquareImage from '../../resources/images/coins/black-square.png'
 import Image from 'next/image'
 
-const DUMMY_COLLECTIBLES = [
-	{
-		id: 'c1',
-		isFiller: false,
-		src: collectibleImage.src
-	},
-	{
-		id: 'c2',
-		isFiller: false,
-		src: collectibleImage.src
-	},
-	{
-		id: 'c3',
-		isFiller: false,
-		src: collectibleImage.src
-	},
-	{
-		id: 'c4',
-		isFiller: false,
-		src: collectibleImage.src
-	},
-	{
-		id: 'c5',
-		isFiller: false,
-		src: collectibleImage.src
-	},
-	{
-		id: 'c6',
-		isFiller: false,
-		src: collectibleImage.src
-	},
-	{
-		id: 'c7',
-		isFiller: false,
-		src: collectibleImage.src
-	},
-	{
-		id: 'c8',
-		isFiller: false,
-		src: collectibleImage.src
-	},
-	{
-		id: 'c9',
-		isFiller: false,
-		src: collectibleImage.src
-	},
-	{
-		isFiller: true,
-		src: blackSquareImage.src
-	},
-	{
-		isFiller: true,
-		src: blackSquareImage.src
-	},
-	{
-		isFiller: true,
-		src: blackSquareImage.src
-	}
-]
+const DUMMY_COLLECTIBLES = Array.from({ length: 12 }, (_, index) => ({
+	id: index + 1,
+	isFiller: true,
+	src: blackSquareImage.src
+}))
 
 const MyCollectibles = () => {
 	return (
@@ -84,7 +29,7 @@ const MyCollectibles = () => {
 				rowHeight={30}
 			>
 				{DUMMY_COLLECTIBLES.map((item) => (
-					<ImageListItem key={item.id}>
+					<ImageListItem key={item?.id}>
 						<Image
 							width={82}
 							height={117}

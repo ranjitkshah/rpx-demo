@@ -9,6 +9,7 @@ import { useUserData } from '@/components/hooks/useUserData'
 const Navbar = () => {
 	const router = useRouter()
 	const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
+	const [isCollectibleModalOpen, setIsCollectibleModalOpen] = useState<boolean>(false)
 	const { foundUser } = useUserData()
 
 	const onRoute = (routeLink: string) => {
@@ -21,6 +22,15 @@ const Navbar = () => {
 	return (
 		<>
 			<Modal isOpen={isModalOpen} content={<MoreOptionsModalContent />} handleClose={() => setIsModalOpen(false)} />
+			<Modal
+				isOpen={isCollectibleModalOpen}
+				content={
+					<div className="flex flex-col text-center justify-between text-black mt-40">
+						This feature is still in development, stay tuned!
+					</div>
+				}
+				handleClose={() => setIsCollectibleModalOpen(false)}
+			/>
 			<footer className={styles.footer}>
 				<div className={styles.footerNav}>
 					<div className={styles.footerNavItem} onClick={() => onRoute('/app/main')}>
@@ -45,6 +55,12 @@ const Navbar = () => {
 						// onClick={() => {
 						// 	router.push('/collectibles')
 						// }}
+
+						onClick={() => {
+							const audio = new Audio('/resources/sounds/swoosh.mpeg')
+							audio.play()
+							setIsCollectibleModalOpen(true)
+						}}
 					>
 						<div className="translate-y-[2.5px]">
 							<Image
@@ -53,6 +69,23 @@ const Navbar = () => {
 								width={60}
 								height={36}
 							/>
+							<div
+								style={{
+									position: 'absolute',
+									top: '-19px',
+									right: '-5px',
+									backgroundColor: 'white',
+									padding: '5px',
+									opacity: '0.7',
+									borderRadius: '5px',
+									maxHeight: '20px',
+									color: 'black',
+									fontSize: '8px',
+									minWidth: '64px'
+								}}
+							>
+								Coming Soon
+							</div>
 						</div>
 					</div>
 					<div className={styles.footerNavItem} onClick={() => onRoute(`/app/user/${foundUser?.id}/my-stuff`)}>

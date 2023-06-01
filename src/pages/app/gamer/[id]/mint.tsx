@@ -38,11 +38,12 @@ const MintCoinPage = () => {
 	const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
 		e.preventDefault()
 		setSaving(true)
-
+		const audio = new Audio('/resources/sounds/mint.mpeg')
+		audio.play()
 		const form = e.currentTarget
 		const formData = new FormData(form)
 		formData.append('id', id as string)
-		formData.append('image',image as File)	
+		formData.append('image', image as File)
 		try {
 			const response = await fetch(form.action, {
 				method: form.method,
