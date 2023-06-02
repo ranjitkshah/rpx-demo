@@ -103,6 +103,7 @@ const handler = withAuth(async (req: NextApiRequest, res: NextApiResponse) => {
 				currentPrice: getRandomPrice(1, 100),
 				previousPrice: getRandomPrice(1, 100),
 				amountMinted: getRandomPrice(1, 100),
+				amountPurchased: getRandomInt(1, 10),
 			})
 
 			res.status(201).json({

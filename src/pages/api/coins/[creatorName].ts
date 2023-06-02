@@ -18,16 +18,15 @@ const handler = withAuth(async (req, res) => {
 
 	if (method === APIMethods.GET) {
 		try {
-			console.log("==",{isCreatorId});
 			
 			const db = getFirestore(firebase_app)
 			const coinsCollectionRef = collection(db, CollectionNames.COINS)
 			let q = query(coinsCollectionRef, where('creatorName', '==', creatorName))
-			// if(isCreatorId) {
-			// 	q = query(coinsCollectionRef, where('creatorId', '==', creatorName))
-			// } 
+			if(isCreatorId === 'true') {
+				q = query(coinsCollectionRef, where('creatorId', '==', creatorName))
+			} 
 			const querySnapshot = await getDocs(q)
-
+			
 			if (querySnapshot.empty) {
 				console.error('e', DocumentResponses.DATA_NOT_FOUND)
 				res.status(400).json({
