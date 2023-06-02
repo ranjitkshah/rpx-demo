@@ -6,8 +6,6 @@ import Link from 'next/link'
 import dynamic from 'next/dynamic'
 import Modal from '@/components/modal'
 
-const AudioFile = dynamic(() => import('@/components/general/AudioFile'), { ssr: false })
-
 // TODO: update hrefs with more locations
 const MainPage = () => {
 	const [isModalOpen, setIsModalOpen] = React.useState<boolean>(false)
@@ -23,7 +21,6 @@ const MainPage = () => {
 				}
 				handleClose={() => setIsModalOpen(false)}
 			/>
-			<AudioFile audioFile="/resources/sounds/Theme.mp3" />
 			<main className={`container mx-auto py-8 flex flex-col space-y-4`}>
 				<div className="flex-1 flex flex-col justify-center items-center">
 					<Link href="/app/coins">

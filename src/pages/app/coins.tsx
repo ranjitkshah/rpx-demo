@@ -85,7 +85,6 @@ const CoinsPage = () => {
 		if (coins) {
 			// @ts-ignore
 			const updatedCoins = []
-			console.log({ coins })
 			coins.forEach((coin) => {
 				//@ts-ignore
 				// if (coinsImageNameMap[coin.creatorName]) {
@@ -94,7 +93,6 @@ const CoinsPage = () => {
 			})
 			// @ts-ignore
 			setCoinsMap(splitArrayIntoThree(updatedCoins))
-			console.log({ coinsMap, updatedCoins })
 		}
 	}, [coins])
 
