@@ -9,7 +9,7 @@ import {
 import { NextApiRequest, NextApiResponse } from 'next'
 import { addDoc, collection, doc, getDoc, getDocs, getFirestore, query, where } from 'firebase/firestore'
 import { getStorage, ref as getStorageRef, uploadBytes, deleteObject, getDownloadURL, updateMetadata } from 'firebase/storage'
-import { getRandomPrice } from '@/shared/utils'
+import { getRandomInt, getRandomPrice } from '@/shared/utils'
 import firebase_app from '@/lib/firebase'
 import { withAuth } from '@clerk/nextjs/dist/api'
 import formidable, { Fields, Files } from 'formidable'

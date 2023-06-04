@@ -124,7 +124,7 @@ const MyStuffPage = () => {
 				<Loading />
 			) : (
 				<>
-					<MyStuff walletFunds={user?.walletFunds.toFixed(2) ?? '$10000'} />
+					<MyStuff walletFunds={user?.walletFunds?.toFixed(2) ?? '$10000'} />
 					<MyCoins coins={coins || []} />
 					<MyCollectibles />
 					<MyStats />
