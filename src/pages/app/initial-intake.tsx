@@ -14,7 +14,7 @@ import Loading from '@/components/general/Loading'
 // TODO: Fix popin here around routing when you're auth'd
 const InitialIntakePage = () => {
 	const router = useRouter()
-	const { user, isLoaded } = useUser()
+	const { user, isLoaded, isSignedIn } = useUser()
 	const [isOpen, setIsOpen] = React.useState<boolean>(false)
 	const [modalType, setModalType] = React.useState<UserTypes>(UserTypes.GAMER)
 	const [showToast, setShowToast] = React.useState<boolean>(false)
@@ -37,6 +37,15 @@ const InitialIntakePage = () => {
 
 	React.useEffect(() => {
 		setShowLoadingSpinner(user ? false : true)
+			if (!isLoaded) {
+			if (isSignedIn) {
+				router.push('/app/main')
+			} else if (!isSignedIn && user) {
+				setShowLoadingSpinner(false)
+			} else {
+				router.push('/')
+			}
+		}
 	}, [isLoaded])
 
 	if (showLoadingSpinner) return <Loading />

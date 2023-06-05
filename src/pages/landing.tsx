@@ -17,6 +17,8 @@ const LandingPage = () => {
 	const [isLoading, setIsLoading] = React.useState<boolean>(true)
 	const [showToast, setShowToast] = React.useState<boolean>(false)
 
+	console.log({isLoaded, isSignedIn})
+
 	React.useEffect(() => {
 		if (isLoaded) {
 			if (isSignedIn) {
