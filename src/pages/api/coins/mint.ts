@@ -48,9 +48,7 @@ const handler = withAuth(async (req: NextApiRequest, res: NextApiResponse) => {
 
 	try {
 		const { fields, files } = await parseForm(req)
-		console.log({fields,files});
 		const { id, name, description } = fields
-		console.log({id, name, description});
 		const usersCollectionRef = collection(db, CollectionNames.USERS)
 		const q = query(usersCollectionRef, where('clerkId', '==', id))
 		const querySnapshot = await getDocs(q)
@@ -65,13 +63,11 @@ const handler = withAuth(async (req: NextApiRequest, res: NextApiResponse) => {
 		}
 
 		const user = Object.assign(querySnapshot.docs[0].data(), {})
-		console.log({user})
 		const image = files['image'] as PersistentFile;
 		const imageBuffer = await fs.promises.readFile(image.filepath);
 
 
 		// Log the buffer object to the console
-		console.log(image)
 
 		// Check if the buffer object has a non-zero length
 		if (imageBuffer && imageBuffer.length > 0) {

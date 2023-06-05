@@ -91,6 +91,7 @@ export type NewUser = {
 	createdAt: Date | string
 	updatedAt: Date | string
 	lastSignInAt: Date | string
+	ownedCoins: OwnedCoin[];
 }
 
 export type Coin = {

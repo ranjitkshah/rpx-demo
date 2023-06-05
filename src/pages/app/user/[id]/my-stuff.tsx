@@ -85,8 +85,9 @@ const MyStuffPage = () => {
 				setCoins(null)
 				setError(true)
 			} else {
-				const user = result?.data
-				const coins = result?.data
+				const user = result?.data?.user
+				const coins = result?.data?.coins
+				// console.log('==', { result })
 				setUser(user)
 				setCoins(coins)
 			}
@@ -116,6 +117,8 @@ const MyStuffPage = () => {
 			handleShowToast()
 		}
 	}, [error])
+
+	// console.log('==', { id, coins, user })
 
 	// TODO: Add user icon
 	return (

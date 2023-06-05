@@ -6,27 +6,27 @@ import { useUserData } from '../hooks/useUserData'
 import { useCoinByCreator } from '@/components/hooks/useCoinByCreator'
 import { useClerk } from '@clerk/nextjs'
 
-
-
 const MoreOptionsModalContent = () => {
 	const router = useRouter()
 	const { foundUser, clerkUser: user, isLoading } = useUserData()
 	const isCreatorId = true
-	const { coin, isLoading: isCoinLoading, error: coinError } = useCoinByCreator(foundUser?.clerkId as string, isCreatorId)
+	const {
+		coin,
+		isLoading: isCoinLoading,
+		error: coinError
+	} = useCoinByCreator(foundUser?.clerkId as string, isCreatorId)
 	const { signOut } = useClerk()
-
 
 	const handleSignOut = async () => {
 		try {
-		  await signOut();
-		  // Optional: Perform any additional actions after sign out
-		  router.push("/landing")
+			await signOut()
+			// Optional: Perform any additional actions after sign out
+			router.push('/landing')
 		} catch (error) {
-		  console.error('Sign out error:', error);
+			console.error('Sign out error:', error)
 		}
-	  };
+	}
 
-	console.log('==', { foundUser, user, coin })
 	if (!foundUser) {
 		return <></>
 	}

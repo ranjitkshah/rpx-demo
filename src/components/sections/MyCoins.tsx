@@ -33,6 +33,12 @@ const coinsImageMap = {
 	TitanWarrior188
 }
 
+const DUMMY_COLLECTIBLES = Array.from({ length: 12 }, (_, index) => ({
+	id: index + 1,
+	isFiller: true,
+	src: blackCircle.src
+}))
+
 const MyCoins = ({ coins }: Props) => {
 	const [mappedCoins, setMappedCoins] = React.useState<any[]>([])
 
@@ -43,8 +49,12 @@ const MyCoins = ({ coins }: Props) => {
 				src: blackCircle.src
 			})
 			setMappedCoins(fullCoinsArray)
+		} else {
+			setMappedCoins(DUMMY_COLLECTIBLES)
 		}
 	}, [coins])
+
+	console.log('==', { mappedCoins })
 
 	return (
 		<div>
@@ -80,7 +90,6 @@ const MyCoins = ({ coins }: Props) => {
 							</ImageListItem>
 						)
 					} else {
-						console.log('==', { coinsImageMap, item })
 						return (
 							<ImageListItem>
 								<Image

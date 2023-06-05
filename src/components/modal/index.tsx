@@ -13,7 +13,6 @@ const Modal = ({ isOpen, content, handleClose, onClick }: Props) => {
 	const modalRef = React.useRef(null)
 
 	const handleBlur = (event: any) => {
-		console.log('=', { event })
 		// Check if the blurred element is the backdrop
 		if (event.currentTarget === event.target) {
 			// Perform actions when the modal loses focus
