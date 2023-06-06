@@ -37,15 +37,15 @@ const InitialIntakePage = () => {
 
 	React.useEffect(() => {
 		setShowLoadingSpinner(user ? false : true)
-			if (!isLoaded) {
-			if (isSignedIn) {
-				router.push('/app/main')
-			} else if (!isSignedIn && user) {
-				setShowLoadingSpinner(false)
-			} else {
-				router.push('/')
-			}
-		}
+		// 	if (!isLoaded) {
+		// 	if (isSignedIn) {
+		// 		router.push('/app/main')
+		// 	} else if (!isSignedIn && user) {
+		// 		setShowLoadingSpinner(false)
+		// 	} else {
+		// 		router.push('/')
+		// 	}
+		// }
 	}, [isLoaded])
 
 	if (showLoadingSpinner) return <Loading />
