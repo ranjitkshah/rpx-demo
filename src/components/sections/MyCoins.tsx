@@ -93,6 +93,7 @@ const MyCoins = ({ coins }: Props) => {
 						return (
 							<ImageListItem>
 								<Image
+								 // @ts-ignore
 									src={item?.creatorName in coinsImageMap ? coinsImageMap[item.creatorName]?.src : item?.imageUrl}
 									alt={'sdfsfs'}
 									width={50}
@@ -101,6 +102,7 @@ const MyCoins = ({ coins }: Props) => {
 									// unoptimized
 									className="max-w-[50px] max-h-[50px] rounded-full"
 									objectFit="cover"
+									 // @ts-ignore
 								/>
 								{/* <img
 									// @ts-ignore

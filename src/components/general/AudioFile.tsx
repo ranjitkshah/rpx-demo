@@ -50,7 +50,9 @@ const AudioFile: FC<Props> = ({ audioFile }) => {
 	return (
 		<div>
 			{' '}
-			<audio ref={soundRef} autoPlay />
+			<audio
+			// @ts-ignore
+			 ref={soundRef} autoPlay />
 		</div>
 	)
 }

@@ -5,6 +5,8 @@ import { useRouter } from 'next/router'
 import { useUserData } from '../hooks/useUserData'
 import { useCoinByCreator } from '@/components/hooks/useCoinByCreator'
 import { useClerk } from '@clerk/nextjs'
+import blackCircle from '../../resources/images/coins/black-circle.png'
+
 
 const MoreOptionsModalContent = () => {
 	const router = useRouter()
@@ -34,7 +36,7 @@ const MoreOptionsModalContent = () => {
 		<div className="flex flex-col text-center justify-between text-black">
 			<div className="flex-grow-1">
 				<div className="flex flex-col items-center">
-					<Image src={coin?.imageUrl} width={70} height={70} alt={''} />
+					<Image src={coin?.imageUrl || blackCircle} width={70} height={70} alt={''} />
 					<p className="text-purple-900 text-2xl font-extrabold">{coin?.name}</p>
 				</div>
 				<Divider />

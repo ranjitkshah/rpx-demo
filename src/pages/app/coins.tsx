@@ -121,6 +121,7 @@ const CoinsPage = () => {
 							coinsMap?.[0].map((coin) => {
 								return (
 									<CollectableCard
+
 										isLiked={foundUser?.likedCoins?.includes(coin.id) ?? false}
 										userId={user!.id}
 										coinId={coin.id}
@@ -130,6 +131,7 @@ const CoinsPage = () => {
 										// item?.creatorName in coinsImageMap ? coinsImageMap[item.creatorName]?.src : item?.imageUrl
 										// collectibleNameSrc={coinsImageNameMap[coin.creatorName]?.src}
 										collectibleNameSrc={
+											// @ts-ignore
 											coin?.creatorName in coinsImageNameMap ? coinsImageNameMap[coin.creatorName]?.src : coin?.imageUrl
 										}
 										// @ts-ignore
@@ -153,8 +155,8 @@ const CoinsPage = () => {
 									coinId={coin.id}
 									isPriceLoading={false}
 									linkLocation={`/app/coins/${coin.creatorName}/buy`}
-									// @ts-ignore
 									collectibleNameSrc={
+										// @ts-ignore
 										coin?.creatorName in coinsImageNameMap ? coinsImageNameMap[coin.creatorName]?.src : coin?.imageUrl
 									}
 									// @ts-ignore
@@ -179,6 +181,7 @@ const CoinsPage = () => {
 									linkLocation={`/app/coins/${coin.creatorName}/buy`}
 									// @ts-ignore
 									collectibleNameSrc={
+										 // @ts-ignore
 										coin?.creatorName in coinsImageNameMap ? coinsImageNameMap[coin.creatorName]?.src : coin?.imageUrl
 									}
 									// @ts-ignore
@@ -203,6 +206,8 @@ const CoinsPage = () => {
 									linkLocation={`/app/coins/${coin.creatorName}/buy`}
 									// @ts-ignore
 									collectibleNameSrc={
+												 // @ts-ignore
+
 										coin?.creatorName in coinsImageNameMap ? coinsImageNameMap[coin.creatorName]?.src : coin?.imageUrl
 									}
 									// @ts-ignore

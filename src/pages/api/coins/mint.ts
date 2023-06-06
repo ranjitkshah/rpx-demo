@@ -63,9 +63,9 @@ const handler = withAuth(async (req: NextApiRequest, res: NextApiResponse) => {
 		}
 
 		const user = Object.assign(querySnapshot.docs[0].data(), {})
+		// @ts-ignore
 		const image = files['image'] as PersistentFile;
 		const imageBuffer = await fs.promises.readFile(image.filepath);
-
 
 		// Log the buffer object to the console
 
