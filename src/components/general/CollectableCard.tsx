@@ -16,6 +16,7 @@ type Props = {
 	userId: string
 	coinId: string
 	isLiked: boolean
+	creatorName: string
 }
 
 // TODO*: Add other image outlines here
@@ -28,7 +29,8 @@ const CollectableCard = ({
 	isPriceLoading,
 	userId,
 	coinId,
-	isLiked
+	isLiked,
+	creatorName
 }: Props) => {
 	const [isHeartClicked, setIsHeartClicked] = React.useState<boolean>(isLiked)
 
@@ -67,7 +69,7 @@ const CollectableCard = ({
 				<Link href={linkLocation}>
 					<div className="flex flex-col items-center mt-8 text-center">
 						<Image className="mb-6" alt={'A coin!'} src={imgSrc} width={150} height={149.07} />
-						<Image alt="Collectible Name" src={collectibleNameSrc} width={180} height={107} />
+						<h4 className={styles.collectibleCoinName} >{creatorName}</h4>
 					</div>
 				</Link>
 				<div className="absolute text-center bottom-2">

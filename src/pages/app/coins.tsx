@@ -134,6 +134,7 @@ const CoinsPage = () => {
 											// @ts-ignore
 											coin?.creatorName in coinsImageNameMap ? coinsImageNameMap[coin.creatorName]?.src : coin?.imageUrl
 										}
+										creatorName={coin?.creatorName}
 										// @ts-ignore
 										imgSrc={coin?.creatorName in coinsImageMap ? coinsImageMap[coin.creatorName]?.src : coin?.imageUrl}
 										itemPrice={coin?.currentPrice}
@@ -161,6 +162,7 @@ const CoinsPage = () => {
 									}
 									// @ts-ignore
 									imgSrc={coin?.creatorName in coinsImageNameMap ? coinsImageNameMap[coin.creatorName]?.src : coin?.imageUrl}
+									creatorName={coin?.creatorName}
 									itemPrice={coin?.currentPrice}
 								/>
 							)
@@ -211,6 +213,7 @@ const CoinsPage = () => {
 										coin?.creatorName in coinsImageNameMap ? coinsImageNameMap[coin.creatorName]?.src : coin?.imageUrl
 									}
 									// @ts-ignore
+									creatorName={coin?.creatorName}
 									imgSrc={coin?.creatorName in coinsImageNameMap ? coinsImageNameMap[coin.creatorName]?.src : coin?.imageUrl}
 									itemPrice={coin?.currentPrice}
 								/>
