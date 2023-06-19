@@ -6,47 +6,40 @@ import FanIntakeModalContents from '@/components/modal/FanIntakeModalContents'
 import GamerIntakeModalContents from '@/components/modal/GameIntakeModalContents'
 import { useUser } from '@clerk/nextjs'
 import { NewUser, UserTypes } from '@/shared/types'
-import type { UserResource } from '@clerk/types'
 import { useRouter } from 'next/router'
-import { useUserData } from '@/components/hooks/useUserData'
+import { useUserData } from '@/components//hooks/useUserData'
 import Loading from '@/components/general/Loading'
+import { useCoinByCreator } from '@/components/hooks/useCoinByCreator'
+
 
 // TODO: Fix popin here around routing when you're auth'd
 const InitialIntakePage = () => {
 	const router = useRouter()
 	const { user, isLoaded, isSignedIn } = useUser()
+	const { foundUser,isLoading } = useUserData()
 	const [isOpen, setIsOpen] = React.useState<boolean>(false)
 	const [modalType, setModalType] = React.useState<UserTypes>(UserTypes.GAMER)
 	const [showToast, setShowToast] = React.useState<boolean>(false)
 	const [showLoadingSpinner, setShowLoadingSpinner] = React.useState<boolean>(false)
 	const [showModalLoadingSpinner, setShowModalLoadingSpinner] = React.useState<boolean>(false)
+	const isCreatorId = true
+	const {
+		coin,error: coinError
+	} = useCoinByCreator(user?.id as string, isCreatorId)
 
 	// TODO: Fix this
 	// React.useEffect(() => {
+	// 	console.log("line 32", {coin})
 	// 	setShowModalLoadingSpinner(user ? false : true)
-	// 	if (!isLoading) {
-	// 		if (foundUser) {
-	// 			router.push('/app/main')
-	// 		} else if (!foundUser && user) {
-	// 			setShowLoadingSpinner(false)
-	// 		} else {
-	// 			router.push('/')
-	// 		}
-	// 	}
 	// }, [isLoading])
 
 	React.useEffect(() => {
 		setShowLoadingSpinner(user ? false : true)
-		// 	if (!isLoaded) {
-		// 	if (isSignedIn) {
-		// 		router.push('/app/main')
-		// 	} else if (!isSignedIn && user) {
-		// 		setShowLoadingSpinner(false)
-		// 	} else {
-		// 		router.push('/')
-		// 	}
-		// }
-	}, [isLoaded])
+		console.log({coin, foundUser, user})
+			if (user && coin) {
+				router.push('/app/main')
+			}
+	}, [isLoaded, coin])
 
 	if (showLoadingSpinner) return <Loading />
 
