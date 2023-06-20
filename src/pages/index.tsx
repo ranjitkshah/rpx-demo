@@ -1,24 +1,8 @@
-import * as React from 'react'
-import Head from 'next/head'
-import { Inter } from 'next/font/google'
-import { useAuth } from '@clerk/nextjs'
-import LandingPage from './landing'
-import Loading from '@/components/general/Loading'
-import { useRouter } from 'next/router'
 import AudioFile from '@/components/general/AudioFile'
+import Loading from '@/components/general/Loading'
+import Head from 'next/head'
 
 export default function Home() {
-	const { isSignedIn } = useAuth()
-	const router = useRouter()
-
-	React.useEffect(() => {
-		if (isSignedIn) {
-			router.push('/app/initial-intake')
-		} else {
-			router.push('/landing')
-		}
-	}, [isSignedIn])
-
 	return (
 		<>
 			<Head>
