@@ -5,6 +5,7 @@ import { useRouter } from 'next/router'
 import { useCoinByCreator } from '@/components/hooks/useCoinByCreator'
 import { useUserData } from '@/components/hooks/useUserData'
 import Modal from '@/components/modal'
+import { coinsImageMap } from '@/shared/constants'
 
 const CongratsPage = () => {
 	const router = useRouter()
@@ -15,9 +16,7 @@ const CongratsPage = () => {
 		router.push(`/app/user/${foundUser?.id}/my-stuff`)
 	}
 
-	const { coin, isLoading: isCoinLoading, error: coinError } = useCoinByCreator(foundUser?.clerkId as string, true)
-
-	console.log('==', { coin })
+	const { coin, isLoading: isCoinLoading, error: coinError } = useCoinByCreator(creator as string, false)
 
 	return (
 		<>
@@ -34,7 +33,17 @@ const CongratsPage = () => {
 				<div className={`h-[100%]`}>
 					<div className="container mx-auto w-[90vw] max-w-[400px] pt-32 flex flex-col items-center">
 						<div className="mb-4">
-							<Image src={coin?.imageUrl ?? ''} alt="Your first coin!" priority={true} width={180} height={120} />
+							<Image
+								src={
+									coin?.creatorName && coin.creatorName in coinsImageMap
+										? coinsImageMap[coin.creatorName]?.src
+										: coin?.imageUrl || ''
+								}
+								alt="Your first coin!"
+								priority={true}
+								width={180}
+								height={120}
+							/>
 						</div>
 						<div>
 							<h1 className="text-4xl text-white text-center mx-auto font-bold mb-3">Congrats!</h1>

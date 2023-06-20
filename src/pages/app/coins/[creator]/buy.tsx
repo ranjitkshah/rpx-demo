@@ -8,6 +8,7 @@ import { useUserData } from '@/components/hooks/useUserData'
 import styles from '../../../../styles/pages/BuyCoin.module.css'
 import Modal from '@/components/modal'
 import BuyCoinModalContents from '@/components/modal/BuyCoinModalContents'
+import { coinsImageMap } from '@/shared/constants'
 
 // TODO: Fix the non-responsiveness on this page
 // TODO: Add better error handling here
@@ -111,8 +112,18 @@ const BuyCoinPage = () => {
 			{coin && (
 				<div className="flex flex-col container relative">
 					<div className="flex flex-col items-center justify-center mb-4">
-						{coin?.imageUrl && (
-							<Image priority={true} src={coin?.imageUrl} alt={`${creator}'s coin!`} width={120} height={120} />
+						{(coin?.imageUrl || coin?.creatorName in coinsImageMap) && (
+							<Image
+								priority={true}
+								src={
+									coin?.creatorName && coin.creatorName in coinsImageMap
+										? coinsImageMap[coin.creatorName]?.src
+										: coin?.imageUrl || ''
+								}
+								alt={`${creator}'s coin!`}
+								width={120}
+								height={120}
+							/>
 						)}
 						<h1 className="text-3xl font-bold text-white tracking-widest mt-4">{coin.creatorName}</h1>
 					</div>
@@ -306,7 +317,11 @@ const BuyCoinPage = () => {
 							)
 						}
 						showLoadingSpinner={showLoadingButtonSpinner}
-						imgSrc={coin?.imageUrl || ''}
+						imgSrc={
+							coin?.creatorName && coin.creatorName in coinsImageMap
+								? coinsImageMap[coin.creatorName]?.src
+								: coin?.imageUrl || ''
+						}
 						numberOfCoins={numberOfCoins!}
 						purchasePrice={(Number(numberOfCoins) * coin?.currentPrice!).toFixed(2) ?? ''}
 					/>
