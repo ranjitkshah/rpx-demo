@@ -127,11 +127,7 @@ const BuyCoinPage = () => {
 						)}
 						<h1 className="text-3xl font-bold text-white tracking-widest mt-4">{coin.creatorName}</h1>
 					</div>
-					<Image
-						className="mx-auto"
-						alt="Horizontal Rule"
-						src={require('../../../../resources/images/horizontalline.png')}
-					/>
+
 					<div className="flex flex-col text-[#99ffcc] my-3">
 						<div className="flex flex-row justify-between px-8">
 							<p>Price per Coin:</p>
@@ -142,19 +138,19 @@ const BuyCoinPage = () => {
 							<p className="text-yellow-400">${foundUser?.walletFunds.toFixed(2)} USD</p>
 						</div>
 					</div>
-					<Image
+					{/* <Image
 						className="mx-auto"
 						alt="Horizontal Rule"
 						src={require('../../../../resources/images/horizontalline.png')}
-					/>
+					/> */}
 					<div className="py-2">
 						<p className="text-white text-center">How many coins do you want to buy?</p>
 					</div>
-					<Image
+					{/* <Image
 						className="mx-auto"
 						alt="Horizontal Rule"
 						src={require('../../../../resources/images/horizontalline.png')}
-					/>
+					/> */}
 					<div className="text-white mb-3">
 						{/* TODO: Make this a fucking component I suck at react */}
 						<div className={styles.coinAmount}>
@@ -164,11 +160,11 @@ const BuyCoinPage = () => {
 							<p>= ${(Number(numberOfCoins) * coin.currentPrice).toFixed(2)} USD</p>
 						</div>
 					</div>
-					<Image
+					{/* <Image
 						className="mx-auto"
 						alt="Horizontal Rule"
 						src={require('../../../../resources/images/horizontalline.png')}
-					/>
+					/> */}
 					<div className={styles.numpadContainer}>
 						<div className="flex flex-col align-center justify-center">
 							<div className={`${styles.numpadRow} w-full`}>

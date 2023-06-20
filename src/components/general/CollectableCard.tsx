@@ -69,14 +69,14 @@ const CollectableCard = ({
 				<Link href={linkLocation}>
 					<div className="flex flex-col items-center mt-8 text-center">
 						<Image className="mb-6" alt={'A coin!'} src={imgSrc} width={150} height={149.07} />
-						<h4 className={styles.collectibleCoinName} >{creatorName}</h4>
+						<h4 className={styles.collectibleCoinName}>{creatorName}</h4>
 					</div>
 				</Link>
 				<div className="absolute text-center bottom-2">
 					<p className={`${styles.collectibleText} translate-y-[-4px] font-light text-[12px]`}>
 						Required to buy collectibles
 					</p>
-					<Image alt="Horizontal Line" src={require('../../resources/images/horizontalline.png')} />
+					{/* <Image alt="Horizontal Line" src={require('../../resources/images/horizontalline.png')} /> */}
 					<div className="w-full mx-auto text-center max-h-[28px] flex justify-center items-center mt-[7px] relative">
 						{isPriceLoading ? (
 							<LoadingSpinner />

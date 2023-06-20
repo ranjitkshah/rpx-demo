@@ -121,7 +121,6 @@ const CoinsPage = () => {
 							coinsMap?.[0].map((coin) => {
 								return (
 									<CollectableCard
-
 										isLiked={foundUser?.likedCoins?.includes(coin.id) ?? false}
 										userId={user!.id}
 										coinId={coin.id}
@@ -183,7 +182,7 @@ const CoinsPage = () => {
 									linkLocation={`/app/coins/${coin.creatorName}/buy`}
 									// @ts-ignore
 									collectibleNameSrc={
-										 // @ts-ignore
+										// @ts-ignore
 										coin?.creatorName in coinsImageNameMap ? coinsImageNameMap[coin.creatorName]?.src : coin?.imageUrl
 									}
 									creatorName={coin?.creatorName}
@@ -209,7 +208,7 @@ const CoinsPage = () => {
 									linkLocation={`/app/coins/${coin.creatorName}/buy`}
 									// @ts-ignore
 									collectibleNameSrc={
-												 // @ts-ignore
+										// @ts-ignore
 
 										coin?.creatorName in coinsImageNameMap ? coinsImageNameMap[coin.creatorName]?.src : coin?.imageUrl
 									}
@@ -223,7 +222,7 @@ const CoinsPage = () => {
 				</div>
 			</div>
 
-			<Image className="mt-[30px]" alt="horizontal line" src={require('../../resources/images/horizontalline.png')} />
+			{/* <Image className="mt-[30px]" alt="horizontal line" src={require('../../resources/images/horizontalline.png')} /> */}
 			<ExploreMore />
 			{showErrorToast && (
 				<div className="toast toast-center z-999">

@@ -61,12 +61,12 @@ const Header = () => {
 				</div>
 				<div style={{ width: '100%%', margin: 'auto' }}>
 					{/* TODO Fix the navbar not going the full distance on desktop */}
-					<Image
+					{/* <Image
 						alt="Horizontal line icon"
 						src={require('../../../resources/images/horizontalline.png')}
 						width={1380}
 						height={3}
-					/>
+					/> */}
 				</div>
 			</nav>
 		</header>
