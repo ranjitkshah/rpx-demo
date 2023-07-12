@@ -1,6 +1,6 @@
 import firebase_app from '@/lib/firebase'
 import { APIMethods, Coin, APIStatuses, DocumentResponses, GeneralAPIResponses, CollectionNames } from '@/shared/types'
-import { withAuth } from '@clerk/nextjs/dist/api'
+import { withAuth } from '@clerk/nextjs/api'
 import { collection, doc, getDoc, getDocs, getFirestore, query, where } from 'firebase/firestore'
 
 // TODO: Consolidate this with the other ID query route

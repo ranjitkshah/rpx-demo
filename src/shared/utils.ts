@@ -23,7 +23,21 @@ export function splitArrayIntoThree(array: any[]) {
 }
 
 export const fillArrayToLength = (arr: any[], targetLength: number, defaultValue: any) => {
-	const newArr = [...arr]
+	const newArray = arr.map((element) => ({ ...element, num: 1 }))
+
+	const object = newArray.reduce((acc, element) => {
+		const { id } = element
+		if (!acc[id]) {
+			acc[id] = element
+		} else {
+			acc[id].num += 1
+		}
+		return acc
+	}, {})
+
+	console.log('==', { object, arr: Object.values(object) })
+
+	const newArr = Object.values(object)
 
 	while (newArr.length < targetLength) {
 		newArr.push(defaultValue)

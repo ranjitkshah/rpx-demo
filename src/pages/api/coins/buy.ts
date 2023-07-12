@@ -1,6 +1,6 @@
 import firebase_app from '@/lib/firebase'
 import { APIMethods, APIStatuses, CollectionNames, DocumentResponses, GeneralAPIResponses } from '@/shared/types'
-import { withAuth } from '@clerk/nextjs/dist/api'
+import { withAuth } from '@clerk/nextjs/api'
 import { getFirestore, collection, query, where, getDocs, doc, updateDoc } from 'firebase/firestore'
 
 const handler = withAuth(async (req, res) => {

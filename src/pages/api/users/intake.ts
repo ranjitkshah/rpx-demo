@@ -10,7 +10,7 @@ import {
 import { NextApiResponse } from 'next'
 import { addDoc, collection, doc, getDoc, getDocs, getFirestore, query, updateDoc, where } from 'firebase/firestore'
 import firebase_app from '@/lib/firebase'
-import { withAuth } from '@clerk/nextjs/dist/api'
+import { withAuth } from '@clerk/nextjs/api'
 
 const handler = withAuth(async (req: TypedRequest<NewUser>, res: NextApiResponse) => {
 	const { method, body } = req
@@ -21,7 +21,7 @@ const handler = withAuth(async (req: TypedRequest<NewUser>, res: NextApiResponse
 
 	try {
 		const db = getFirestore(firebase_app)
-		const userCollectionRef = collection(db, CollectionNames.USERS) 
+		const userCollectionRef = collection(db, CollectionNames.USERS)
 		const q = query(userCollectionRef, where('clerkId', '==', body.clerkId))
 		const querySnapshot = await getDocs(q)
 		const userDocumentRef = querySnapshot.docs.length ? querySnapshot.docs[0] : null

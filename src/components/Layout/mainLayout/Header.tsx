@@ -6,7 +6,7 @@ import { useClerk } from '@clerk/nextjs'
 import dynamic from 'next/dynamic'
 import Head from 'next/head'
 
-const AudioFile = dynamic(() => import('../../general/AudioFile'), { ssr: false })
+// const AudioFile = dynamic(() => import('../../general/AudioFile'), { ssr: false })
 
 // TODO: add filter and plus icons if we have time
 // TODO: Wire up other icons (maybe to a coming soon page) if we have extra time
@@ -40,7 +40,7 @@ const Header = () => {
 					crossOrigin="anonymous"
 				/>
 			</Head>
-			<AudioFile audioFile="/resources/sounds/Theme.mp3" />
+			{/* <AudioFile audioFile="/resources/sounds/Theme.mp3" /> */}
 			<nav ref={buttonRef} onClick={handleClick}>
 				{/* TODO: Reinstate this hella padding if Varun wants it, also have to redo calcs around main height if so */}
 				{/* <div className={`pt-14 flex justify-center w-[100vw] mb-4`}> */}

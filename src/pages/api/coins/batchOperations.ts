@@ -11,7 +11,7 @@ import {
 import { NextApiResponse } from 'next'
 import { collection, doc, getDocs, getFirestore, writeBatch } from 'firebase/firestore'
 import firebase_app from '@/lib/firebase'
-import { withAuth } from '@clerk/nextjs/dist/api'
+import { withAuth } from '@clerk/nextjs/api'
 import { getRandomInt, getRandomPrice } from '@/shared/utils'
 import { currentCoinCreatorNames } from '@/shared/constants'
 

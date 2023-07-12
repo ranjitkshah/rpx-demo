@@ -91,28 +91,21 @@ const MyCoins = ({ coins }: Props) => {
 						)
 					} else {
 						return (
-							<ImageListItem>
+							<ImageListItem sx={{ textAlign: 'center' }}>
 								<Image
-								 // @ts-ignore
+									// @ts-ignore
 									src={item?.creatorName in coinsImageMap ? coinsImageMap[item.creatorName]?.src : item?.imageUrl}
 									alt={'sdfsfs'}
 									width={50}
 									height={50}
 									// quality={100}
 									// unoptimized
-									className="max-w-[50px] max-h-[50px] rounded-full"
+									className="max-w-[50px] max-h-[50px] rounded-full mt-1 mr-1 mb-1 ml-3"
 									objectFit="cover"
-									 // @ts-ignore
+
+									// @ts-ignore
 								/>
-								{/* <img
-									// @ts-ignore
-									src={item?.creatorName in coinsImageMap ? coinsImageMap[item.creatorName]?.src : item?.imageUrl}
-									// @ts-ignore
-									srcSet={`${item?.creatorName in coinsImageMap ? coinsImageMap[item.creatorName]?.src : item?.imageUrl} 2x`}
-									// alt={item.id}
-									loading="lazy"
-									className="max-w-[66px]"
-								/> */}
+								<div style={{ color: 'white' }}>{item?.num}</div>
 							</ImageListItem>
 						)
 					}

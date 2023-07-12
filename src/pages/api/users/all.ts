@@ -2,7 +2,7 @@ import { APIMethods, APIStatuses, CollectionNames, DocumentResponses, GeneralAPI
 import { NextApiRequest, NextApiResponse } from 'next'
 import { collection, getDocs, getFirestore } from 'firebase/firestore'
 import firebase_app from '@/lib/firebase'
-import { withAuth } from '@clerk/nextjs/dist/api'
+import { withAuth } from '@clerk/nextjs/api'
 
 const handler = withAuth(async (req: NextApiRequest, res: NextApiResponse) => {
 	const { method } = req

@@ -10,7 +10,7 @@ import {
 import { NextApiResponse } from 'next'
 import { addDoc, collection, getFirestore } from 'firebase/firestore'
 import firebase_app from '@/lib/firebase'
-import { withAuth } from '@clerk/nextjs/dist/api'
+import { withAuth } from '@clerk/nextjs/api'
 
 // TODO: Add shape validation here?
 const handler = withAuth(async (req: TypedRequest<RPXUser>, res: NextApiResponse) => {

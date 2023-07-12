@@ -1,6 +1,6 @@
 import firebase_app from '@/lib/firebase'
 import { APIMethods, Coin, APIStatuses, DocumentResponses, GeneralAPIResponses, CollectionNames } from '@/shared/types'
-import { withAuth } from '@clerk/nextjs/dist/api'
+import { withAuth } from '@clerk/nextjs/api'
 import { collection, doc, getDoc, getDocs, getFirestore, query, where } from 'firebase/firestore'
 
 const handler = withAuth(async (req, res) => {
@@ -18,15 +18,14 @@ const handler = withAuth(async (req, res) => {
 
 	if (method === APIMethods.GET) {
 		try {
-			
 			const db = getFirestore(firebase_app)
 			const coinsCollectionRef = collection(db, CollectionNames.COINS)
 			let q = query(coinsCollectionRef, where('creatorName', '==', creatorName))
-			if(isCreatorId === 'true') {
+			if (isCreatorId === 'true') {
 				q = query(coinsCollectionRef, where('creatorId', '==', creatorName))
-			} 
+			}
 			const querySnapshot = await getDocs(q)
-			
+
 			if (querySnapshot.empty) {
 				console.error('e', DocumentResponses.DATA_NOT_FOUND)
 				res.status(400).json({

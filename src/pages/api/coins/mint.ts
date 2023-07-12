@@ -8,13 +8,19 @@ import {
 } from '@/shared/types'
 import { NextApiRequest, NextApiResponse } from 'next'
 import { addDoc, collection, doc, getDoc, getDocs, getFirestore, query, where } from 'firebase/firestore'
-import { getStorage, ref as getStorageRef, uploadBytes, deleteObject, getDownloadURL, updateMetadata } from 'firebase/storage'
+import {
+	getStorage,
+	ref as getStorageRef,
+	uploadBytes,
+	deleteObject,
+	getDownloadURL,
+	updateMetadata
+} from 'firebase/storage'
 import { getRandomInt, getRandomPrice } from '@/shared/utils'
 import firebase_app from '@/lib/firebase'
-import { withAuth } from '@clerk/nextjs/dist/api'
+import { withAuth } from '@clerk/nextjs/api'
 import formidable, { Fields, Files } from 'formidable'
-const fs = require('fs');
-
+const fs = require('fs')
 
 // Disable NextJS body parsing for multipart form
 export const config = {
@@ -64,42 +70,40 @@ const handler = withAuth(async (req: NextApiRequest, res: NextApiResponse) => {
 
 		const user = Object.assign(querySnapshot.docs[0].data(), {})
 		// @ts-ignore
-		const image = files['image'] as PersistentFile;
-		const imageBuffer = await fs.promises.readFile(image.filepath);
+		const image = files['image'] as PersistentFile
+		const imageBuffer = await fs.promises.readFile(image.filepath)
 
 		// Log the buffer object to the console
 
 		// Check if the buffer object has a non-zero length
 		if (imageBuffer && imageBuffer.length > 0) {
-			console.log('Image parsed successfully!');
-		  } else {
-			console.log('Error parsing image!');
+			console.log('Image parsed successfully!')
+		} else {
+			console.log('Error parsing image!')
 		}
-		const imageName = new Date().getTime() + image.originalFilename;
+		const imageName = new Date().getTime() + image.originalFilename
 
 		const storageRef = getStorageRef(getStorage(), `${StorageNames.COINS}/${imageName}`)
 
-
 		try {
-
 			const uploadedImage = await uploadBytes(storageRef, new Uint8Array(imageBuffer))
-						const newMetadata = {
+			const newMetadata = {
 				contentType: image.mimetype
-			  };
-			await updateMetadata(storageRef, newMetadata);
-	
-			const downloadURL = await getDownloadURL(storageRef);
-	
-				const mintedCoinRef = await addDoc(coinsRef, {
+			}
+			await updateMetadata(storageRef, newMetadata)
+
+			const downloadURL = await getDownloadURL(storageRef)
+
+			const mintedCoinRef = await addDoc(coinsRef, {
 				name,
 				description,
-				imageUrl:downloadURL,
+				imageUrl: downloadURL,
 				creatorId: user.clerkId,
 				creatorName: user.firstName,
 				currentPrice: getRandomPrice(1, 100),
 				previousPrice: getRandomPrice(1, 100),
 				amountMinted: getRandomPrice(1, 100),
-				amountPurchased: getRandomInt(1, 10),
+				amountPurchased: getRandomInt(1, 10)
 			})
 
 			res.status(201).json({

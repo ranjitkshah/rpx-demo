@@ -72,7 +72,7 @@ const CollectableCard = ({
 						<h4 className={styles.collectibleCoinName}>{creatorName}</h4>
 					</div>
 				</Link>
-				<div className="absolute text-center bottom-2">
+				<div className="absolute text-center bottom-2 w-full">
 					<p className={`${styles.collectibleText} translate-y-[-4px] font-light text-[12px]`}>
 						Required to buy collectibles
 					</p>

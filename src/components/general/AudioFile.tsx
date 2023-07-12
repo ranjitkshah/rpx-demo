@@ -39,20 +39,22 @@ const AudioFile: FC<Props> = ({ audioFile }) => {
 	// )
 	const soundRef = useRef<Howl | null>(null)
 
-	useEffect(() => {
-		soundRef.current = new Howl({
-			src: ['/resources/sounds/Theme.mp3'],
-			autoplay: true,
-			volume: 0.3
-		})
-	}, [])
+	// useEffect(() => {
+	// 	soundRef.current = new Howl({
+	// 		src: ['/resources/sounds/Theme.mp3'],
+	// 		autoplay: true,
+	// 		volume: 0.3
+	// 	})
+	// }, [])
 
 	return (
 		<div>
 			{' '}
 			<audio
-			// @ts-ignore
-			 ref={soundRef} autoPlay />
+				// @ts-ignore
+				ref={soundRef}
+				autoPlay
+			/>
 		</div>
 	)
 }

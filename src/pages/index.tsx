@@ -12,7 +12,7 @@ export default function Home() {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<>
-				<AudioFile audioFile="/resources/sounds/Theme.mp3" />
+				{/* <AudioFile audioFile="/resources/sounds/Theme.mp3" /> */}
 				<Loading />
 			</>
 		</>
