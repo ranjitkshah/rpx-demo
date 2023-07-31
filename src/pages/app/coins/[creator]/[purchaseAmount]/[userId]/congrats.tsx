@@ -43,6 +43,7 @@ const CongratsPage = () => {
 								priority={true}
 								width={180}
 								height={120}
+								className="rounded-full h-[180px]"
 							/>
 						</div>
 						<div>

@@ -123,6 +123,7 @@ const BuyCoinPage = () => {
 								alt={`${creator}'s coin!`}
 								width={120}
 								height={120}
+								className="rounded-full h-[120px]"
 							/>
 						)}
 						<h1 className="text-3xl font-bold text-white tracking-widest mt-4">{coin.creatorName}</h1>

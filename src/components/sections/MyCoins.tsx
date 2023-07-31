@@ -54,8 +54,6 @@ const MyCoins = ({ coins }: Props) => {
 		}
 	}, [coins])
 
-	console.log('==', { mappedCoins })
-
 	return (
 		<div>
 			<h2 className={`${styles.greenText} text-2xl mb-4 ml-4`}>My Coins</h2>
@@ -77,8 +75,8 @@ const MyCoins = ({ coins }: Props) => {
 					// @ts-ignore
 					if (item.isFiller) {
 						return (
-							<ImageListItem>
-								<img
+							<ImageListItem sx={{ textAlign: 'center' }}>
+								<Image
 									// @ts-ignore
 									src={item.src}
 									// @ts-ignore
@@ -86,6 +84,8 @@ const MyCoins = ({ coins }: Props) => {
 									// alt={item.id}
 									loading="lazy"
 									className="max-w-[66px]"
+									width={66}
+									height={66}
 								/>
 							</ImageListItem>
 						)
@@ -100,7 +100,7 @@ const MyCoins = ({ coins }: Props) => {
 									height={50}
 									// quality={100}
 									// unoptimized
-									className="max-w-[50px] max-h-[50px] rounded-full mt-1 mr-1 mb-1 ml-3"
+									className="max-w-[50px] max-h-[50px] min-h-[50px] rounded-full mt-1 mr-1 mb-1 ml-3"
 									objectFit="cover"
 
 									// @ts-ignore

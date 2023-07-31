@@ -21,7 +21,14 @@ const BuyCoinModalContents = ({
 	return (
 		<div>
 			<div className="mb-2 mt-20 flex flex-col items-center">
-				<Image priority={true} src={imgSrc} alt={`The coin you're about to purchase`} width={150} height={120} />
+				<Image
+					priority={true}
+					src={imgSrc}
+					alt={`The coin you're about to purchase`}
+					width={150}
+					height={120}
+					className="rounded-full h-[150px]"
+				/>
 				<h2 className={`${styles.heading1} text-xl font-bold mb-4`}>
 					Let's confirm <br /> this purchase
 				</h2>
