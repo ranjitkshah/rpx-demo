@@ -1,6 +1,6 @@
 import firebase_app from '@/lib/firebase'
 import { CollectionNames, Coin, APIStatuses, DocumentResponses, GeneralAPIResponses } from '@/shared/types'
-import {  getRandomPrice } from '@/shared/utils'
+import { getRandomPrice } from '@/shared/utils'
 import { getFirestore, writeBatch, collection, doc, getDocs } from 'firebase/firestore'
 import { NextRequest, NextResponse } from 'next/server'
 
@@ -17,15 +17,13 @@ export default async function handler(req: NextRequest) {
 		})
 
 		// Update random prices for each coin
-        console.log({currentCoinsData}, "line20")
-		currentCoinsData.forEach((coin) => {
-			coin.previousPrice = coin.currentPrice  // Set random price here
-            coin.currentPrice = getRandomPrice(1, 100) // Set random price here
 
-            console.log({coin}, "line 24")
+		currentCoinsData.forEach((coin) => {
+			coin.previousPrice = coin.currentPrice // Set random price here
+			coin.currentPrice = getRandomPrice(coin.currentPrice, 5, 10) // Set random price here
+
 			batch.update(doc(coinCollectionRef, coin.id), coin)
 		})
-        console.log({currentCoinsData}, "line 26")
 
 		await batch.commit()
 

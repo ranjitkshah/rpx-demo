@@ -7,6 +7,7 @@ import { NextRequest, NextResponse } from 'next/server'
 export default async function handler(req: NextRequest) {
 	const db = getFirestore(firebase_app)
 	const batch = writeBatch(db)
+
 	const coinCollectionRef = collection(db, CollectionNames.COINS)
 
 	try {
@@ -16,7 +17,8 @@ export default async function handler(req: NextRequest) {
 		coinDocuments.forEach((coinDocument) => {
 			const coinDocumentRef = doc(db, CollectionNames.COINS, coinDocument.id)
 			const updatedCoinData = {
-				currentPrice: getRandomPrice(1, 100),
+				// @ts-ignore
+				currentPrice: getRandomPrice(coinDocument.currentPrice, 5, 10),
 				// @ts-ignore
 				previousPrice: coinDocument.currentPrice,
 				updatedAt: new Date().toISOString()
