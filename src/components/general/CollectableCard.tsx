@@ -67,8 +67,21 @@ const CollectableCard = ({
 		<div className={`${styles.collectibleLinkBox}`}>
 			<div className={`${styles.collectibleContainer}`}>
 				<Link href={linkLocation}>
-					<div className="flex flex-col items-center mt-8 text-center">
-						<Image className="mb-6 rounded-full max-h-full h-[150px]" alt={'A coin!'} src={imgSrc} width={150} height={150} />
+					<div className="flex flex-col items-center mt-8 text-center  ">
+						<Image
+							src={require('../../resources/images/coin-border.png')}
+							width={150}
+							height={150}
+							alt={''}
+							className="absolute"
+						/>
+						<Image
+							className="rounded-full max-h-full h-[110px] mt-[21px]"
+							alt={'A coin!'}
+							src={imgSrc}
+							width={110}
+							height={110}
+						/>
 						<h4 className={styles.collectibleCoinName}>{creatorName}</h4>
 					</div>
 				</Link>
