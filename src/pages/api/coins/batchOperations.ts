@@ -31,8 +31,8 @@ const handler = withAuth(async (req: TypedRequest<NewUser>, res: NextApiResponse
 				const newCoin: Coin = {
 					name: `${coinName}'s Coin`,
 					creatorName: coinName,
-					currentPrice: getRandomPrice(1, 100),
-					previousPrice: getRandomPrice(1, 100),
+					currentPrice: getRandomPrice(80, 5, 10),
+					previousPrice: getRandomPrice(70, 5, 10),
 					amountMinted: mintedAmount,
 					amountPurchased: getRandomInt(1, 10),
 					createdAt: new Date().toISOString(),
@@ -58,7 +58,7 @@ const handler = withAuth(async (req: TypedRequest<NewUser>, res: NextApiResponse
 		coinDocuments.forEach((coinDocument) => {
 			const coinDocumentRef = doc(db, CollectionNames.COINS, coinDocument.id)
 			const updatedCoinData = {
-				currentPrice: getRandomPrice(1, 100),
+				currentPrice: getRandomPrice(75, 5, 10),
 				// @ts-ignore
 				previousPrice: coinDocument.currentPrice,
 				updatedAt: new Date().toISOString()

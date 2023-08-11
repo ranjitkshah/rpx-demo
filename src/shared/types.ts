@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import { Send } from 'express-serve-static-core'
-import { OAuthProvider } from '@clerk/nextjs/dist/api'
+import { OAuthProvider } from '@clerk/nextjs/api'
 
 export enum CollectionNames {
 	USERS = 'users',
@@ -91,7 +91,7 @@ export type NewUser = {
 	createdAt: Date | string
 	updatedAt: Date | string
 	lastSignInAt: Date | string
-	ownedCoins: OwnedCoin[];
+	ownedCoins: OwnedCoin[]
 }
 
 export type Coin = {

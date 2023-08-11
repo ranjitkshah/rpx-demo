@@ -100,9 +100,9 @@ const handler = withAuth(async (req: NextApiRequest, res: NextApiResponse) => {
 				imageUrl: downloadURL,
 				creatorId: user.clerkId,
 				creatorName: user.firstName,
-				currentPrice: getRandomPrice(1, 100),
-				previousPrice: getRandomPrice(1, 100),
-				amountMinted: getRandomPrice(1, 100),
+				currentPrice: getRandomPrice(75, 5, 10),
+				previousPrice: getRandomPrice(80, 5, 10),
+				amountMinted: getRandomPrice(70, 5, 10),
 				amountPurchased: getRandomInt(1, 10)
 			})
 

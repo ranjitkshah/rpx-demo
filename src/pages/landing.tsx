@@ -2,7 +2,7 @@ import * as React from 'react'
 import styles from '../styles/Landing.module.css'
 import Image from 'next/image'
 import Link from 'next/link'
-import { OAuthStrategy } from '@clerk/nextjs/dist/api'
+import { OAuthStrategy } from '@clerk/nextjs/api'
 import { useSignIn, useUser } from '@clerk/nextjs'
 import { useRouter } from 'next/router'
 import Loading from '@/components/general/Loading'
@@ -16,8 +16,6 @@ const LandingPage = () => {
 	const { isSignedIn, isLoaded } = useUser()
 	const [isLoading, setIsLoading] = React.useState<boolean>(true)
 	const [showToast, setShowToast] = React.useState<boolean>(false)
-
-	console.log({isLoaded, isSignedIn})
 
 	React.useEffect(() => {
 		if (isLoaded) {
